@@ -1,0 +1,309 @@
+.Ribbon {
+	background-color: #F5F5F5;
+	/*box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15);*/
+	font-size: @font-size-base;
+	margin: 0px 0px 0px 0px;
+	width: 100%;
+	color: @text-color;
+	border-bottom: 0px solid @m-white;
+    height: 145px;
+    transition: height 250ms ease-out, opacity 250ms ease-out;
+
+	.tabarea {
+		position: absolute;
+        height: 37px;
+        transition: height 250ms ease-out, opacity 250ms ease-out;
+
+		.ribbon-tabarea-cell {
+			border-right: 1px solid @m-gray-300;
+		}
+
+		.ribbon-tabarea-bottom {
+			text-align: center;
+			/*display: none;*/
+			.ribbon-tabarea-cell {
+				border: 0;
+
+				.sectionName {
+					color: @m-gray-400 !important;
+					font-size: 11px;
+				}
+			}
+		}
+
+		.section {
+			margin: 0 6px;
+
+			.input-group {
+				margin-bottom: 0;
+			}
+		}
+
+		table td:last-of-type .section {
+			border: none;
+		}
+
+		.SC {
+			table {
+				margin-right: 4px;
+				float: left;
+			}
+
+			table tr {
+				vertical-align: top;
+			}
+
+			table tr td a, table tr td span {
+				padding: 4px;
+			}
+
+            i.fa, i.md {
+			    width: 16px;
+			    font-size:14px;
+			    margin-right: 4px;
+			    text-align: center;
+                vertical-align: baseline;
+		    }
+
+            .md-delete {
+                margin-top: 1px;
+            }
+		}
+
+		.SCL {
+			.ribbon-section-button {
+				text-align: center;
+				padding: 6px 15px;
+				text-align: center;
+			}
+
+			span.c {
+				i.fa, i.md {
+					font-size: 32px;
+					width: 32px;
+					height: 35px;
+					margin-right: 0;
+				}
+
+                i.fa-caret-down {
+                    height: auto;
+                    font-size: 20px;
+                }
+			}
+
+			.active span.c {
+				color: @m-white;
+			}
+
+			span.c span {
+				margin-bottom: 4px;
+			}
+
+            .std {
+                padding: 1px 4px 2px 4px;
+                height: 25px;
+            }
+
+            select.std {
+                padding: 2px 4px 2px 0;
+            }
+
+            input.std {
+                padding: 1px 4px 2px 4px;
+            }
+
+            .input-group .input-group-addon {
+
+                i.fa, i.md {
+                    font-size: 12px;
+                    margin-top: 0;
+                    width: auto;
+			    	height: auto;
+                    line-height: 25px;
+                }
+            }
+
+			i.fa, i.md {
+				font-size: 32px;
+				width: 32px;
+				height: 35px;
+				margin-right: 0;
+                text-align: center;
+
+                &.h, &#cmdlangSelector_splitRight {
+                    font-size: 16px;
+				    width: 20px;
+				    height: 20px;
+                }
+			}
+
+            .contextmenu a i {
+	            font-size: 18px;
+                width: 19px;
+                margin-right: 10px;
+                height: auto;
+            }
+		}
+
+		table tr td a.ribbon-section-button {
+			color: #5E5E5E;
+			display: inline-block;
+			transition: all, 100ms, ease;
+		}
+
+		table {
+            a, label {
+                &.disabled,
+                &[disabled] {
+			        opacity: 0.3;
+			        cursor: default;
+			        pointer-events: none;
+                }
+            }
+		}
+
+        table a.disabled.ribbon-section-button.active {
+            pointer-events:auto;
+        }
+
+		a:hover:not(.richselectbox) {
+			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+			color: #fff !important;
+			background-color: @brand-primary;
+			transition: all, 100ms, ease;
+
+			i, span.c {
+				color: #fff;
+			}
+		}
+
+		a.active:hover:not(.richselectbox) {
+		}
+
+		.contextmenu {
+			position: fixed;
+			text-align: left;
+
+			a:hover {
+				color: inherit !important;
+				box-shadow: none;
+				background-color: transparent !important;
+
+                i {
+                    color: inherit !important;
+                }
+			}
+		}
+
+		table.ribbon-tabarea-table, .section {
+			height: 100px;
+			max-height: 100px;
+		}
+
+		table.ribbon-tabarea-table {
+			opacity: 1;
+			top: 4px;
+            margin: 0 10px;
+			height: 110px;
+			position: absolute;
+		}
+
+		.active {
+			color: @m-white !important;
+			background-color: @m-blue;
+			cursor: default;
+			box-shadow: none;
+
+            .fa, .md {
+               color: @m-white !important; 
+            }
+		}
+	}
+
+    .ribbon-collapse-button i {
+        -webkit-transition: all 250ms ease-out ;
+        -moz-transition: all 250ms ease-out;
+        -o-transition: all 250ms ease-out;
+        transition: all 250ms ease-out;
+    }
+
+    .ribbon-help-button {
+        padding: 5px;
+        font-size: 18px;
+    }
+
+    &.collapsed {
+        height: 34px;
+
+        .tabarea {
+            height: 0px;
+        }
+
+        .ribbon-collapse-button i {
+            -moz-transform: rotate(-180deg);
+            -webkit-transform: rotate(-180deg);
+            -o-transform: rotate(-180deg);
+            -ms-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+        }
+    }
+
+	.show-ribbon-tab {
+		visibility: visible;
+
+		table.ribbon-tabarea-table {
+			opacity: 1;
+            margin: 0 10px;
+			transition: all 0.2s ease-out;
+		}
+	}
+
+	.hide-ribbon-tab {
+		visibility: hidden;
+
+		table.ribbon-tabarea-table {
+			opacity: 0;
+            margin: 0 4px;
+		}
+	}
+
+	.ajax-rich-control {
+		margin-left: 0 !important;
+
+		.week-overview {
+			width: 530px !important;
+		}
+	}
+
+	.form-group, .std {
+		padding: 0;
+		margin-bottom: 2px;
+		text-align: left;
+	}
+
+    .DateSelectorLabel {
+        width: 170px;
+    }
+
+    .ribbon-section-form-checkbox .checkbox + label + label {
+        line-height: 21px;
+    }
+
+	.input-group-addon {
+		margin: 0;
+		padding: 0;
+		height: 25px;
+        line-height: 23px;
+		vertical-align: middle;
+		width: 24px;
+		box-sizing: border-box;
+	}
+}
+
+.list {
+	#Container_maincontent {
+		li:hover {
+			background-color: @m-gray-50;
+		}
+	}
+}

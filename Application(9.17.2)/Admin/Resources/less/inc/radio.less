@@ -1,0 +1,97 @@
+﻿input[type="radio"] {
+	margin-right: 3px;
+}
+
+.radio {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .form-group &,
+    .radio-list & {
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    label {
+        padding-left: 25px;
+        position: relative;
+
+        &:before, &:after {
+            .transition(all);
+            .transition-duration(250ms);
+            .backface-visibility(hidden);
+            position: absolute;
+            content: "";
+        }
+    
+        &:before { 
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            left: 0;
+            border: 1px solid @m-gray-500;    
+            box-sizing: border-box;                                                                                                 
+        }
+        
+        &:after {
+            width: 10px;
+            height: 10px;
+            background: @brand-primary;
+            border-radius: 50%;
+            top: 4px;
+            left: 4px;
+            .scale(0);
+        }
+    }
+  
+    input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-left: 0 !important;  
+        z-index: 1;                                                                            
+        cursor: pointer;
+        .opacity(0);
+        margin-top: 0;
+        width: 18px;
+        height: 18px;
+
+        &:checked ~ label:after {
+            .scale(1);
+        }
+    }
+    
+    &.disabled {
+        .opacity(0.6);
+    }
+
+    &+.radio {
+        margin-top: -5px;
+    }
+       
+    input[type="radio"]:disabled {
+        cursor: not-allowed;
+
+        & ~ label {
+            color: @m-gray;
+            
+            &::before {
+                background-color: @m-gray-300;
+                border-color: @m-gray-300;
+            }
+
+            &::after {
+                background-color: @m-gray !important;
+            }
+        }
+    }
+}

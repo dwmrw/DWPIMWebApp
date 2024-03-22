@@ -1,0 +1,2283 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dynamicweb.Ecommerce.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController">
+            <summary>
+            Controller for the loyalty points operations.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.GetPointsBalance">
+            <summary>
+            Gets a transaction balance for the authenticated user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get a transaction balance for the authenticated user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            **Sample response**
+            ```
+            825.0 - number which demonstrates the loyalty points balance.
+            ```
+            </remarks>     
+            <returns>The transaction balance for the authenticated user.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.GetUserTransactions">
+            <summary>
+            Gets a list of user transactions information for the authenticated user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get a list of <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse"/>s for the authenticated user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            **Sample response**
+            ```
+            [
+                {
+                    "Id": 1,
+                    "ObjectElement": "OL27171",
+                    "TransactionDate": "2023-08-10T12:13:25.597",
+                    "ExpirationDate": "2023-08-10T12:13:25.597",
+                    "IsOrderLineTransaction": true,
+                    "UserId": 13,
+                    "RewardId": 1,
+                    "OrderId": "ORDER578",
+                    "OrderLineId": "OL27171",
+                    "Points": 1125.0,
+                    "Comment": "Order ID: ORDER578"
+                }
+            ]
+            ```
+            </remarks>     
+            <returns>A list of <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse"/>s, if found; otherwise null.</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse">
+            <summary>
+            Returns the user transaction information or list of user transactions information for an authenticated user.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.Id">
+            <summary>
+            Gets or sets the user transaction ID.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.ObjectElement">
+            <summary>
+            Gets or sets the object element of the transaction. It is usually parsed and the value is assigned to other properties, so you don't need it in most of cases. 
+            For example, for order line transaction, we will have here the order line id, but we can also get the order line id from the OrderLineId property.
+            Use this for the case if something is wrong and data was not parsed properly.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.TransactionDate">
+            <summary>
+            Gets or sets the transaction date.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.ExpirationDate">
+            <summary>
+            Gets or sets the expitarion date for points.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.IsOrderLineTransaction">
+            <summary>
+            Demonstrates whether the transaction is order line transaction.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.IsOrderDiscountTransaction">
+            <summary>
+            Demonstrates whether the transaction is order discount transaction.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.IsUserTransaction">
+            <summary>
+            Demonstrates whether the transaction is user transaction.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.IsScheduledTaskTransaction">
+            <summary>
+            Demonstrates whether the transaction is scheduled task transaction.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.UserId">
+            <summary>
+            Gets or sets the user ID.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.AuthorizingUserId">
+            <summary>
+            Gets or sets the authorizing user ID. Filled only if this is the user transaction.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.RewardId">
+            <summary>
+            Gets or sets the reward ID.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.OrderId">
+            <summary>
+            Gets or sets the transaction order ID. Filled only if this is the order line transaction or order discount transaction.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.OrderLineId">
+            <summary>
+            Gets or sets the transaction order line ID. Filled only if this is the order line transaction.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.Points">
+            <summary>
+            Gets or sets the number of points.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.LoyaltyPointsController.UserTransactionResponse.Comment">
+            <summary>
+            Gets or sets the comment for transaction.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController">
+            <summary>
+            Controller for both commands and queries related to ecommerce carts.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.CreateCartBody(System.String,System.String,System.String,Dynamicweb.Ecommerce.Frontend.OrderViewModel)">
+            <summary>
+            Create a cart for the authenticated user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get a list of <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s for the authenticated user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            Creates a new cart for the user with the given content, however nothing is mandatory aside from the <paramref name="currencyCode"/>, <paramref name="countryCode"/> and <paramref name="languageId"/> as it can be updated through the PATCH endpoints.
+            
+            **Sample query parameters**
+            - currencyCode=DKK
+            - countryCode=DK
+            - languageId=LANG1
+            
+            If the CustomerUserId parameter is filled, it will check if the currently authorized user is allowed to impersonate that customer and create the cart for that customer.
+            
+            **Notifications**
+            - Ecom7CartBeforeDiscountCalculations
+            - DWN_ECOM_ORDER_BEFORE_SAVE
+            - DWN_ECOM_ORDER_AFTER_SAVE
+            - DWN_ECOM_ORDER_STATE_CHANGED
+            </remarks>
+            <param name="currencyCode">The currency code to create the order in - i.e. EUR</param>
+            <param name="countryCode">The country code to use for VAT, shipping and payment fees and rules, i.e. DE</param>
+            <param name="languageId">The language to use for product data, i.e. LANG1</param>     
+            <param name="cartModel">Parameters for the cart, see <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/></param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.CreateCart(System.String,System.String,System.String,Dynamicweb.Ecommerce.Frontend.OrderViewModel)">
+            <summary>
+            Create a cart for the authenticated user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get a list of <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s for the authenticated user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            This uses a large amount of query parameters even thought it's a POST endpoint, as such it has been obsoleted in favor of /ecommerce/carts/create which uses a JSON body.
+            </remarks>
+            <param name="currencyCode">The currency code to create the order in - i.e. EUR</param>
+            <param name="countryCode">The country code to use for VAT, shipping and payment fees and rules, i.e. DE</param>
+            <param name="languageId">The language to use for product data, i.e. LANG1</param>     
+            <param name="cartModel">Parameters for the cart, see <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/></param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.GetCarts(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Gets a list of cart secrets for the authenticated user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get a list of <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse"/>s for the authenticated user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            Only shows cartss in the NotCompleted state, ordered by CreatedAt descending.
+            </remarks>
+            <param name="PageSize">Maximum amount of carts to return.</param>
+            <param name="CurrentPage">The page number.</param>
+            <param name="ByCustomerNumber">If set to true, orders are feteched for all users sharing the current users customer number. Default is false</param>
+            <returns>A list of <see cref="T:System.Collections.Generic.List`1"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.GetCartsAsList(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Gets a list of cart secrets for the authenticated user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get a <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsListResponse"/> with a list of <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse"/>s for the authenticated user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            Only shows cartss in the NotCompleted state, ordered by CreatedAt descending.
+            </remarks>
+            <param name="PageSize">Maximum amount of carts to return.</param>
+            <param name="CurrentPage">The page number.</param>
+            <param name="ByCustomerNumber">If set to true, orders are feteched for all users sharing the current users customer number. Default is false</param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsListResponse"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.GetActiveCart">
+            <summary>
+            Gets the latest active cart secret for the authenticated user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get a <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse"/>s for the authenticated user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            Only shows <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse"/> in the NotCompleted state.
+            </remarks>
+            <returns>Instance of <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.GetCart(System.String)">
+            <summary>
+            Gets the cart for the specified secret.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Fetches the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/> by the given secret if it's found and not completed.
+            
+            To get a list of all <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s and their secrets for a given user, refer to GET /dwapi/ecommerce/carts.
+            </remarks>
+            <param name="secret">The secret identifying a specific cart.</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UpdateCart(System.String,Dynamicweb.Ecommerce.Frontend.OrderViewModel)">
+            <summary>
+            Updates the specified cart with the request body.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Updates the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/> found by the given secret with the model in the request body. A valid request body will contain a JSON representation of the values that needs to be updated from <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>.
+            
+            **Notifications**
+            - Ecom7CartBeforeDiscountCalculations
+            - DWN_ECOM_ORDER_BEFORE_SAVE
+            - DWN_ECOM_ORDER_AFTER_SAVE
+            - DWN_ECOM_ORDER_STATE_CHANGED
+            
+            To get a list of all <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s and their secrets for a given user, refer to GET /dwapi/ecommerce/carts.
+            </remarks>
+            <param name="secret">The secret identifying a specific cart.</param>
+            <param name="cartModel">Parameters for the cart, see <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/></param>
+            <returns>Updated instance of <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UpdateShipping(System.String,System.String)">
+            <summary>
+            Updates the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s shipping.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Updates the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/> found by the given secret with another shipping method, found by the given shippingId. Use GET /dwapi/ecommerce/shippings to get all <see cref="T:Dynamicweb.Ecommerce.Frontend.ShippingViewModel"/>s and their <see cref="P:Dynamicweb.Ecommerce.Frontend.ShippingViewModel.Id"/>.
+            
+            **Notifications**
+            - Ecom7CartBeforeDiscountCalculations
+            - DWN_ECOM_ORDER_BEFORE_SAVE
+            - DWN_ECOM_ORDER_AFTER_SAVE
+            - DWN_ECOM_ORDER_STATE_CHANGED
+            
+            To get a list of all <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s and their secrets for a given user, refer to GET /dwapi/ecommerce/carts.
+            </remarks>
+            <param name="secret">The secret identifying a specific cart.</param>
+            <param name="shippingId">The new shipping method id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UpdatePayment(System.String,System.String)">
+            <summary>
+            Updates the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s payment.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Updates the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/> found by the given secret with another payment method. Use GET /dwapi/ecommerce/payments to get all <see cref="T:Dynamicweb.Ecommerce.Frontend.PaymentViewModel"/>s and their <see cref="P:Dynamicweb.Ecommerce.Frontend.PaymentViewModel.Id"/>.
+            
+            **Notifications**
+            - Ecom7CartBeforeDiscountCalculations
+            - DWN_ECOM_ORDER_BEFORE_SAVE
+            - DWN_ECOM_ORDER_AFTER_SAVE
+            - DWN_ECOM_ORDER_STATE_CHANGED
+            
+            To get a list of all <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s and their secrets for a given user, refer to GET /dwapi/ecommerce/carts.
+            </remarks>
+            <param name="secret">The secret identifying a specific cart.</param>
+            <param name="paymentId">The new payment method id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.DeleteCart(System.String)">
+            <summary>
+            Delete the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Deletes the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/> found by the specified secret.
+            
+            **Notifications**
+            - DWN_ECOM_ORDER_BEFORE_DELETE
+            - DWN_ECOM_ORDER_AFTER_DELETE
+            
+            Fires a BeforeDelete notification before the deletion takes place and AfterDelete once the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/> has been deleted successfully.
+            
+            To get a list of all <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s and their secrets for a given user, refer to GET /dwapi/ecommerce/carts.
+            </remarks>
+            <param name="secret">The secret identifying a specific cart.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.AddLineToCart(System.String,Dynamicweb.Ecommerce.Frontend.OrderLineViewModel)">
+            <summary>
+            Add a new <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/> to the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Adds the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/> specified in the request body to the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>.
+            
+            **Required properties**
+            - ProductId
+            - ProductLanguageId
+            - ProductVariantId
+            - Quantity
+            
+            **Notifications**
+            - Ecom7CartBeforeDiscountCalculations
+            - DWN_ECOM_ORDER_BEFORE_SAVE
+            - DWN_ECOM_ORDER_AFTER_SAVE
+            - DWN_ECOM_ORDER_STATE_CHANGED
+            
+            To get a list of all <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s and their secrets for a given user, refer to GET /dwapi/ecommerce/carts.
+            </remarks>
+            <param name="secret">The secret identifying a specific cart.</param>
+            <param name="cartItem">The new <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/> to add to the cart.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.RemoveLineFromCart(System.String,System.String)">
+            <summary>
+            Delete the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/> from the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Deletes the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/> found by the specified <see cref="P:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel.Id"/> on the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>.
+            
+            **Notifications**
+            - Ecom7CartBeforeDiscountCalculations
+            - DWN_ECOM_ORDER_BEFORE_SAVE
+            - DWN_ECOM_ORDER_AFTER_SAVE
+            - DWN_ECOM_ORDER_STATE_CHANGED
+            
+            To get a list of all <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s and their secrets for a given user, refer to GET /dwapi/ecommerce/carts.
+            </remarks>
+            <param name="secret">The secret identifying a specific cart.</param>
+            <param name="itemId">The <see cref="P:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel.Id"/> specifying the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/> to be removed.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UpdateCartLine(System.String,System.String,Dynamicweb.Ecommerce.Frontend.OrderLineViewModel)">
+            <summary>
+            Updates the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/> on the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Updates the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/> found by the specified <see cref="P:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel.Id"/> on the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>.
+            
+            **Required properties**
+            - ProductId
+            - ProductLanguageId
+            - ProductVariantId
+            - Quantity
+            
+            **Notifications**
+            - Ecom7CartBeforeDiscountCalculations
+            - DWN_ECOM_ORDER_BEFORE_SAVE
+            - DWN_ECOM_ORDER_AFTER_SAVE
+            - DWN_ECOM_ORDER_STATE_CHANGED
+            
+            To get a list of all <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s and their secrets for a given user, refer to GET /dwapi/ecommerce/carts.
+            </remarks>
+            <param name="secret">The secret identifying a specific cart.</param>
+            <param name="itemId">The <see cref="P:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel.Id"/> specifying the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/> to be updated.</param>
+            <param name="cartItem">The new properties in the form of a <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/> to be applied to the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.EmptyCart(System.String)">
+            <summary>
+            Deletes all the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderLineViewModel"/>s on the specified <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            **Notifications**
+            - DWN_ECOM_ORDER_BEFORE_SAVE
+            - DWN_ECOM_ORDER_AFTER_SAVE
+            - DWN_ECOM_ORDER_STATE_CHANGED
+            
+            To get a list of all <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s and their secrets for a given user, refer to GET /dwapi/ecommerce/carts.
+            </remarks>
+            <param name="secret">The secret identifying a specific cart.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.CreateOrder(System.String,Dynamicweb.Ecommerce.Frontend.OrderViewModel)">
+            <summary>
+            Converts a cart into an order.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            **Notifications**
+            - DWN_ECOM_ORDER_BEFORE_CART_TO_ORDER
+            - DWN_ECOM_ORDER_STATE_CHANGED
+            - DWN_ECOM_STOCK_STATUS_CHANGED
+            - DWN_ECOM_ORDER_BEFORE_SAVE
+            - DWN_ECOM_ORDER_AFTER_SAVE
+            
+            To get a list of all <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s and their secrets for a given user, refer to GET /dwapi/ecommerce/carts.
+            
+            The returned <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/> and its <see cref="P:Dynamicweb.Ecommerce.Frontend.OrderViewModel.Secret"/> can no longer be viewed here as it's no longer a cart, to see the orders details, see the /dwapi/ecommerce/orders section.
+            </remarks>
+            <param name="secret">The secret identifying a specific cart.</param>
+            <param name="cartModel">Changes for the cart before it becomes an order, see <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/></param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/> model</returns>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsListResponse.PageSize">
+            <summary>
+            Gets or sets the items count per page.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsListResponse.PageCount">
+            <summary>
+            Gets or sets the count of pages.
+            If this value is greater than 0, the view model result will be paginated, otherwise, plain list.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsListResponse.CurrentPage">
+            <summary>
+            Gets or sets the current page number.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsListResponse.TotalCartsCount">
+            <summary>
+            Gets or sets the total number of orders in the list.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsListResponse.Carts">
+            <summary>
+            Gets or sets the list of carts, see <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse"/>
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse">
+            <summary>
+            Returns the cart secret or list of cart secrets for an authenticated user
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse.CartSecret">
+            <summary>
+            Secretid of cart for the users
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse.DisplayName">
+            <summary>
+            Gets or sets the order display name.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse.CreatedAt">
+            <summary>
+            Gets or sets the order record creation date.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse.Modified">
+            <summary>
+            Gets or sets the order record modified date.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse.ShopId">
+            <summary>
+            Gets or sets the order shop id.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.CartsController.UserCartsResponse.Id">
+            <summary>
+            Gets or sets the order Id.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.InternationalController">
+            <summary>
+            Controller for both commands and queries related to ecommerce countries and currencies.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.InternationalController.GetCountries(System.String)">
+            <summary>
+            Get all countries set up in the DW solution.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Finds all the countries that has been set up in the solution and returns their information with the name translated to the language specified in the languageId query parameter.
+            
+            If no languageId is specified, or the specified languageId doesn't exist, it will fallback on the default languageId set in the solution.
+            </remarks>
+            <param name="languageId">ID of language to use for names of the returned countries.</param>
+            <returns>List of <see cref="T:Dynamicweb.Ecommerce.Frontend.CountryViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.InternationalController.GetRegions(System.String,System.String)">
+            <summary>
+            Get all the regions for the country specified by the <paramref name="countryCode"/>.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Finds all the regions for the specified country and returns their information with the name translated to the language specified in <paramref name="languageId"/>.
+            
+            If no languageId is specified, or the specified languageId doesn't exist, it will fallback on the default languageId set in the solution.
+            </remarks>
+            <param name="countryCode">2 letter iso code of a country defined in Ecommerce, i.e. US</param>
+            <param name="languageId">ID of language to use for names of the returned countries.</param>
+            <returns>List of <see cref="T:Dynamicweb.Ecommerce.Frontend.CountryViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.InternationalController.GetCurrencies(System.String)">
+            <summary>
+            Get all the currencies set up in the DW solution.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Finds all the currencies that has been set up in the solution and returns their information with the name translated to the language specified in the languageId query parameter.
+            
+            If no languageId is specified, or the specified languageId doesn't exist, it will fallback on the default languageId set in the solution.
+            </remarks>
+            <param name="languageId">ID of language to use for names of the returned currencies</param>
+            <returns>List of <see cref="T:Dynamicweb.Ecommerce.Frontend.CurrencyViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.OrderController">
+            <summary>
+            Controller for both commands and queries related to ecommerce carts.
+            </summary>
+            <remarks>test</remarks>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.OrderController.GetOrders(Dynamicweb.Ecommerce.Frontend.OrderListViewModelSettings,System.String,Dynamicweb.Ecommerce.Orders.SortOrderType)">
+            <summary>
+            Gets all orders for the authenticated user filtered by the query parameters.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get a list of <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s for the authenticated user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            Will return an instance of <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderListViewModel"/> with an empty list of <see cref="P:Dynamicweb.Ecommerce.Frontend.OrderListViewModel.Orders"/> if none are found.
+            
+            Only shows <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>s in the Completed state.
+            </remarks>
+            <param name="request">Parameters for the order list, see <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderListViewModelSettings"/></param>
+            <param name="sortBy">Name of field to sort by - one of: OrderId, OrderCompletedDate, OrderDate, OrderModified, OrderStateId, OrderTotalPrice</param>
+            <param name="sortOrder">Sort direction</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderListViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.OrderController.GetOrder(System.String,Dynamicweb.Ecommerce.Frontend.OrderViewModelSettings)">
+            <summary>
+            Gets the specific order by the given secret.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Will return an instance of <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/> filtered by the <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModelSettings"/>.
+            </remarks>
+            <param name="secret">The secret identifying a specific order.</param>
+            <param name="request">Parameters for the order, see <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModelSettings"/></param>
+            <returns>Instance of <see cref="T:Dynamicweb.Ecommerce.Frontend.OrderViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.GridRowController">
+            <summary>
+            Grid row endpoint.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.GridRowController.GetById(System.Int32,System.Nullable{Dynamicweb.Frontend.Devices.DeviceType})">
+            <summary>
+            Gets a pages Grid Rows based on the given pageId.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            To get a list of all <see cref="T:Dynamicweb.Frontend.PageInfoViewModel"/> and their <see cref="P:Dynamicweb.Frontend.PageInfoViewModel.ID"/>, refer to GET /dwapi/content/pages.
+            
+            Will return an empty list if there's no <see cref="P:Dynamicweb.Frontend.GridViewModel.Rows"/> on the <see cref="T:Dynamicweb.Frontend.PageInfoViewModel"/>.
+            </remarks>
+            <param name="pageId">The ID specifying a page.</param>
+            <param name="device">The device type - one of 'Desktop' (default), 'Mobile', 'Tablet'.</param>
+            <returns>A collection of <see cref="T:Dynamicweb.Frontend.GridRowViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.GridRowController.GetByUrl(System.String,System.String)">
+            <summary>
+            Gets a pages Grid Rows based on the given url.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            It will find all the areas for the given <paramref name="hostname"/>, then finds the node for the url given and uses that ID in GET /content/rows/{pageId}.
+            </remarks>
+            <param name="url">The path for a specific page, i.e. /page/subpage/page</param>
+            <param name="hostname">The hostname for the website to match with. If none is specified, the hostname of the request is used.</param>
+            <returns>List of <see cref="T:Dynamicweb.Frontend.GridRowViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController">
+            <summary>
+            Controller for both commands and queries related to ecommerce payments.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController.GetPayments(Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController.PaymentFilter)">
+            <summary>
+            Get all the payment types registered in the DW solution.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Finds all the payments types, translating the <see cref="P:Dynamicweb.Ecommerce.Frontend.PaymentViewModel.Name"/> and <see cref="P:Dynamicweb.Ecommerce.Frontend.PaymentViewModel.Description"/> to the given <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController.PaymentFilter.LanguageId"/>.
+            As such, <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController.PaymentFilter.LanguageId"/> is required.
+            
+            Filters all the payment types to the <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController.PaymentFilter.CountryCode"/> and <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController.PaymentFilter.RegionCode"/> given, if none, will return all payment types.
+            </remarks>
+            <param name="filter">The filter to filter all the payment types found.</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Ecommerce.Frontend.PaymentViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController.PaymentFilter">
+            <summary>
+            Parameters to find payments.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController.PaymentFilter.LanguageId">
+            <summary>
+            The ID of the language to translate Name and Description of the payment.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController.PaymentFilter.CountryCode">
+            <summary>
+            The CountryCode to filter the payment types with.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController.PaymentFilter.RegionCode">
+            <summary>
+            The region to filter the payment types with, only used if <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PaymentsController.PaymentFilter.CountryCode"/> is set.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController">
+            <summary>
+            To get information about favorite lists and products in those lists.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.GetFavoriteLists(Dynamicweb.Ecommerce.Frontend.FavoriteListListViewModelSettings)">
+            <summary>
+            Get all the favorite lists for the authenticated user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find the authenticated user and then all the favorite lists belonging to that user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            The query parameters can be used to filter and paginate the result, so setting a specific <see cref="P:Dynamicweb.Ecommerce.Frontend.FavoriteListListViewModelSettings.PageSize"/> will limit the amount of results given, 
+            while setting <see cref="P:Dynamicweb.Ecommerce.Frontend.FavoriteListListViewModelSettings.CurrentPage"/> will change which results is returned depending on the amount and the <see cref="P:Dynamicweb.Ecommerce.Frontend.FavoriteListListViewModelSettings.PageSize"/>.
+            
+            None of the query parameters are mandatory, as such, a simple request will require no parameters at all, as it will fetch the user based on the Authorization header and find all the favorite lists based on that user.
+            </remarks>
+            <param name="settings">The filters for the response.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.GetFavoriteListById(System.Int32,Dynamicweb.Ecommerce.Frontend.FavoriteListViewModelSettings)">
+            <summary>
+            Get a specific favorite list for the authenticated user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find the authenticated user and then the specific favorite list found by the given ID. Use GET /dwapi/users/authenticate to generate the token.
+            
+            None of the query parameters are mandatory, as such, a simple request will require no parameters at all, as it will fetch the user based on the Authorization header and find all the favorite lists based on that user.
+            
+            It's possible to further filter the product details of all the products that is on the specified list.
+            
+            **Sample query parameters**
+            
+            - FilledProperties=ProductList
+            - ProductListSettings.CurrentPage=1
+            - ProductListSettings.PageSize=1
+            - ProductListSettings.FilledProperties=Products
+            - ProductListSettings.ProductSettings.FilledProperties=Title
+            
+            **Sample response**
+            ```
+            {
+                "ProductList": {
+            	    "Products": [
+                        {
+            			    "Title": "Performance Elite Short"
+                        }
+                    ]
+                }
+            }
+            ```
+            </remarks>
+            <param name="id">The ID identifying a specific favorite list.</param>
+            <param name="settings">The filters for the response.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.PostFavoriteLists(Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.FavoriteListRequest)">
+            <summary>
+            Creates a new favorite list.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to the authenticated user and then creates a new favorite list for that user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            If <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.FavoriteListRequest.IsDefault"/> is set to true, it will clear the previous default favorite list and set this new one to default.
+            
+            **Sample request**
+            ```
+            {
+                "name": "New list"
+            }
+            ```
+            
+            **Sample response**
+            ```
+            {
+            	"Id": 35,
+            	"Name": "New list",
+            	"UserId": 13,
+            	"ProductList": {
+            		"Products": []
+                }
+            }
+            ```
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.PatchFavoriteListById(System.Int32,Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.FavoriteListRequest)">
+            <summary>
+            Patches an existing favorite list.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to the authenticated user and then patches the specified favorite list for that user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            If <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.FavoriteListRequest.IsDefault"/> is set to true, it will clear the previous default favorite list and set this new one to default.
+            
+            **Sample request**
+            ```
+            {
+                "isDefault": true
+            }
+            ```
+            
+            To get a list of all the favorite lists and their IDs, refer to GET /dwapi/favorites/lists.
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.DeleteFavoriteListById(System.Int32)">
+            <summary>
+            Deletes the specified favorite list.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to the authenticated user and then deletes the specified favorite list for that user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            To get a list of all the favorite lists and their IDs, refer to GET /dwapi/favorites/lists.
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.GetFavoriteItems(System.Int32,Dynamicweb.Ecommerce.Frontend.FavoriteProductListViewModelSettings)">
+            <summary>
+            Get all the products for a specific favorite list.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find the authenticated user and then the specific favorite list found by the given ID to return all the favorite products in that list. Use GET /dwapi/users/authenticate to generate the token.
+            
+            None of the query parameters are mandatory, as such, a simple request will only require the mandatory path parameter identifying the favorite list to get all products for.
+            
+            To get a list of all the favorite lists and their IDs, refer to GET /dwapi/favorites/lists.
+            </remarks>
+            <param name="listId">The ID identifying a specific favorite list.</param>
+            <param name="settings">The filters for the response.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.PostFavoriteItems(System.Int32,Dynamicweb.Ecommerce.CustomerExperienceCenter.Favorites.FavoriteProduct)">
+            <summary>
+            Creates a new favorite product on the specified list identified by the listId.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find the authenticated user and then the specific favorite list found by the given ID to create a new favorite product in. Use GET /dwapi/users/authenticate to generate the token.
+            
+            If quantity is not set, it will default to 1.
+            
+            **Sample request**
+            ```
+            {
+                "productId": "10150",
+                "quantity": 2,
+                "productVariantId": ""
+            }
+            ```
+            
+            To get a list of all the favorite lists and their IDs, refer to GET /dwapi/favorites/lists.
+            </remarks>
+            <param name="listId">The ID identifying a specific favorite list.</param>
+            <param name="request">The new favorite product to add to the list.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.PatchFavoriteItems(System.Int32,System.Int32,Dynamicweb.Ecommerce.CustomerExperienceCenter.Favorites.FavoriteProduct)">
+            <summary>
+            Updates the specified favorite product on the specified list identified by the listId and ID.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find the authenticated user and then the specific favorite list found by the given listId to update the favorite product specified by the ID. Use GET /dwapi/users/authenticate to generate the token.
+            
+            **Sample request**
+            ```
+            {
+                "productId": "222",
+                "quantity": 5,
+            }
+            ```
+            
+            To get a list of all the favorite products and their IDs for a specific favorite list, refer to GET /dwapi/favorites/items/{listId}.
+            </remarks>
+            <param name="listId">The ID identifying a specific favorite list.</param>
+            <param name="id">The ID identifying a specific favorite product.</param>
+            <param name="request">The new favorite product to add to the list.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.DeleteFavoriteItems(System.Int32,System.Int32)">
+            <summary>
+            Deletes the specified favorite product on the specified list identified by the listId and ID.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find the authenticated user and then the specific favorite list found by the given listId to delete the favorite product specified by the ID. Use GET /dwapi/users/authenticate to generate the token.
+            
+            To get a list of all the favorite products and their IDs for a specific favorite list, refer to GET /dwapi/favorites/items/{listId}.
+            </remarks>
+            <param name="listId">The ID identifying a specific favorite list.</param>
+            <param name="id">The ID identifying a specific favorite product.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.FavoriteListRequest">
+            <summary>
+            The request object to create and update a favorite list.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.FavoriteListRequest.Name">
+            <summary>
+            The name of the favorite list.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.FavoritesController.FavoriteListRequest.IsDefault">
+            <summary>
+            Determining if the favorite list is default, defaults to false.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ApiControllerExtensions">
+            <summary>
+            Contains extended functionality for use in our webapis.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ApiControllerExtensions.GetUserId(System.Web.Http.ApiController)">
+            <summary>
+            Gets the user id from the principal on the request principal.
+            </summary>
+            <returns>A user id</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.AreasController">
+            <summary>
+            Areas endpoint.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.AreasController.GetAll">
+            <summary>
+            Gets all areas for the DW solution.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Does not include areas that;
+            - are not published
+            - does not have read permission
+            
+            Returns an empty list if no areas are found.
+            </remarks>
+            <returns>List of <see cref="T:Dynamicweb.Frontend.AreaInfoViewModel"/></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.AreasController.GetById(System.Int32)">
+            <summary>
+            Gets the area by the specified ID.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            To get a list of all <see cref="T:Dynamicweb.Frontend.AreaInfoViewModel"/>s and their IDs, refer to GET /dwapi/content/areas.
+            </remarks>
+            <param name="id">The ID identifying a specific area.</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Frontend.AreaInfoViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.AreasController.GetByDomain(System.String)">
+            <summary>
+            Gets all areas associated to the given domain.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            To get a list of all <see cref="T:Dynamicweb.Frontend.AreaInfoViewModel"/>s and their <see cref="P:Dynamicweb.Frontend.AreaInfoViewModel.Domains"/>s for the DW solution, refer to GET /dwapi/content/areas.
+            </remarks>
+            <param name="domain">The domain to find all the areas for, i.e. www.dynamicweb.com</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Frontend.AreaInfoViewModel"/>, if found; otherwise null. The instance contains a list of websites that is valide for a given hostname</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.GroupsController">
+            <summary>
+            Controller for both commands and queries related to ecommerce groups.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.GroupsController.GetAll(Dynamicweb.Ecommerce.WebAPI.Controllers.GroupsController.GroupRequest)">
+            <summary>
+            Gets all groups for the DW solution.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            The response can be filtered with the use of the different settings parameters.
+            
+            **Sample query parameters**
+            - FieldSettings.FilledProperties=SystemName
+            - FilledProperties=Id,GroupFields
+            
+            **Sample response**
+            ```
+            [
+                {
+                	"Id": "GROUP230",
+                	"GroupFields": [
+                		{
+                			"SystemName": "SelectedGroup"
+                		},
+                		{
+                			"SystemName": "ProductGroupNavigationImage"
+                		},
+                		{
+                			"SystemName": "ProductGroupPromotionImage"
+                		},
+                		{
+                			"SystemName": "ProductGroupPromotionDescription"
+                		},
+                		{
+                			"SystemName": "ProductGroupPromotionLinkLabel"
+                		},
+                		{
+                			"SystemName": "ProductGroupPromotionLink"
+                		}
+                	]
+                },
+                ...
+            ]
+            ```
+            
+            The ParentId and the ShopId are used to further filter which groups to be returned, they can both be used at the same time, the filtering happens on ParentId first, then the ShopId.
+            
+            The group(s) will be translated to the given languageId, fallback to the default language on the DW solution.
+            </remarks>
+            <param name="request">Specify shopId, parentId, languageId and other settings to filter groups by.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.GroupsController.GetGroup(System.String,Dynamicweb.Ecommerce.WebAPI.Controllers.GroupsController.GroupRequest)">
+            <summary>
+            Get the group for the specified groupId.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            The response can be filtered with the use of the different settings parameters.
+            
+            **Sample query parameters**
+            - FieldSettings.FilledProperties=SystemName
+            - FilledProperties=Id,GroupFields
+            
+            **Sample response**
+            ```
+            {
+            	"Id": "GROUP230",
+            	"Assets": [
+            		{
+            			"Name": "SmallImage"
+            		},
+            		{
+            			"Name": "LargeImage"
+            		},
+            		{
+            			"Name": "Icon"
+            		}
+            	]
+            }
+            ```
+            
+            The group will be translated to the given languageId, fallback to the default language on the DW solution.
+            </remarks>
+            <param name="groupId">The ID identifying the group to get.</param>
+            <param name="request">The shopId, parentId, languageId and settings to filter groups by.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.GroupsController.GroupRequest">
+            <summary>
+            Settings for getting groups.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.GroupsController.GroupRequest.ParentId">
+            <summary>
+            If this is specified, it will find all the children of the group with the given <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.GroupsController.GroupRequest.ParentId"/>.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.GroupsController.GroupRequest.ShopId">
+            <summary>
+            If this is specified, it will find all the top level groups of the given <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.GroupsController.GroupRequest.ShopId"/>.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.NavigationsController">
+            <summary>
+            Endpoint which handles requests related to navigations.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.NavigationsController.GetById(System.Int32,System.Int32,Dynamicweb.Frontend.Navigation.NavigationSettings)">
+            <summary>
+            Gets a navigation for a given area.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            If both an areaId and a pageId is specified, it will use both to create a navigation context to determine which navigations to return, otherwise only the areaId will be used.
+            
+            If the parameter <see cref="P:Dynamicweb.Frontend.Navigation.NavigationSettings.StartLevel"/> is higher than 1, a <paramref name="pageId"/> may be required.
+            </remarks>
+            <param name="areaId">An ID identifying the specific area to get navigations for.</param>
+            <param name="pageId">An ID identifying the specific page to get navigations for.</param>
+            <param name="settings">Settings for the navigation, see <see cref="T:Dynamicweb.Frontend.Navigation.NavigationSettings"/>.</param>
+            <returns>An instance of a <see cref="T:Dynamicweb.Frontend.Navigation.NavigationTreeViewModel"/> with the items filtered by settings</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.PagesController">
+            <summary>
+            Pages endpoint - returns page models without their content. Use PageViews, Paragraphs or GridRow endpoints to retrieve the content.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.PagesController.GetAll(Dynamicweb.Ecommerce.WebAPI.Controllers.PageQuery)">
+            <summary>
+            Gets all pages based on the query parameters.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Each query parameter can be used by itself, or they can be used together to create a stronger filter.
+            
+            The order of execution for each filter is the following;
+            - Find all pages by their parentId matching <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PageQuery.PageId"/>
+            - Find all pages on the area given the <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PageQuery.AreaId"/> or filters the previously found pages on that <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PageQuery.AreaId"/>
+            - Find all pages with the given <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PageQuery.ItemType"/> or filters the previously found pages on their <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PageQuery.ItemType"/>
+            
+            To get a list of all <see cref="T:Dynamicweb.Frontend.AreaInfoViewModel"/> and their <see cref="P:Dynamicweb.Frontend.AreaInfoViewModel.ID"/>, refer to GET /dwapi/content/areas.
+            
+            To get a list of all <see cref="T:Dynamicweb.Frontend.PageInfoViewModel"/> and their <see cref="P:Dynamicweb.Frontend.PageInfoViewModel.ID"/>, refer to GET /dwapi/content/pages.
+            </remarks>
+            <returns>List of <see cref="T:Dynamicweb.Frontend.PageInfoViewModel"/></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.PagesController.GetById(System.Int32)">
+            <summary>
+            Gets a specific page by the given <paramref name="id"/>.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            To get a list of all <see cref="T:Dynamicweb.Frontend.PageInfoViewModel"/> and their <see cref="P:Dynamicweb.Frontend.PageInfoViewModel.ID"/>s, refer to GET /dwapi/content/pages.
+            </remarks>
+            <param name="id">The ID identifying a specific page.</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Frontend.PageInfoViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.PagesController.GetByUrl(System.String,System.String)">
+            <summary>
+            Gets a specific page by the given <paramref name="url"/>.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            It will find all the areas for the given <paramref name="hostname"/>, then finds the node for the url given and uses that ID in GET /content/pages/{id}.
+            </remarks>
+            <param name="url">The path for a specific page, i.e. /page/subpage/page</param>
+            <param name="hostname">The hostname for the website to match with. If none is specified, the hostname of the request is used.</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Frontend.PageInfoViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.PageQuery">
+            <summary>
+            Query parameters for GET /pages
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PageQuery.AreaId">
+            <summary>
+            The ID identifying the specific area to get all page models for.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PageQuery.PageId">
+            <summary>
+            The ID identifying the specific page to get all its child page models for.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.PageQuery.ItemType">
+            <summary>
+            The ItemType of the page models to find.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.PageViewsController">
+            <summary>
+            Pageview endpoint - returns a page with all its content from paragraphs. Does not return module output.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.PageViewsController.GetById(System.Int32)">
+            <summary>
+            Get the full pageview with content and items for the specified page id.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            ID has to be larger than 0, otherwise it will be not found by default.
+            
+            Firstly checks if a page exists with the given ID.
+            
+            Then retrieves the instance of the pageview for the page.
+            
+            If a page has restricted access, it may be accessed if provided an Authorization header for a user with proper permissions.
+            
+            To get a list of all <see cref="T:Dynamicweb.Frontend.PageInfoViewModel"/> and their <see cref="P:Dynamicweb.Frontend.PageInfoViewModel.ID"/>s, refer to GET /dwapi/content/pages.
+            </remarks>
+            <param name="id">The ID identifying the page to get all content and items for.</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Frontend.PageViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.PageViewsController.GetByUrl(System.String,System.String)">
+            <summary>
+            Get the full pageview with content and items for the specified url and host.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            It will find all the areas for the given <paramref name="hostname"/>, then finds the node for the url given and uses that ID in GET /content/frontend/pageviews/{id}.
+            </remarks>
+            <param name="url">The path of the page, i.e. /page/subpage/page</param>
+            <param name="hostname">Specify the hostname setup on the website to match with. If none is specified, the request hostname is used for lookup</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Frontend.PageInfoViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphsController">
+            <summary>
+            Paragraphs endpoint.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphsController.GetAll(Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphQuery)">
+            <summary>
+            Gets all paragraphs based on the query parameters.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Each query parameter can be used by itself, or they can be used together to create a stronger filter.
+            
+            The order of execution for each filter is the following;
+            - Find all pages by their parentId matching <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphQuery.PageId"/>
+            - Find all pages on the area given the <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphQuery.AreaId"/> or filters the previously found pages on that <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphQuery.AreaId"/>
+            - Find all pages with the given <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphQuery.ItemType"/> or filters the previously found pages on their <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphQuery.ItemType"/>
+            
+            To get a list of all <see cref="T:Dynamicweb.Frontend.AreaInfoViewModel"/> and their <see cref="P:Dynamicweb.Frontend.AreaInfoViewModel.ID"/>, refer to GET /dwapi/content/areas.
+            
+            To get a list of all <see cref="T:Dynamicweb.Frontend.PageInfoViewModel"/> and their <see cref="P:Dynamicweb.Frontend.PageInfoViewModel.ID"/>, refer to GET /dwapi/content/pages.
+            
+            Paragraphs returned will always have a <see cref="P:Dynamicweb.Content.Paragraph.ValidFrom"/> later than the request time and <see cref="P:Dynamicweb.Content.Paragraph.ValidTo"/> earlier than the request time, and their <see cref="P:Dynamicweb.Content.Paragraph.ShowParagraph"/> will also be true.
+            
+            The paragraphs page will have to be both active and published, as well as the pages area has to be active.
+            
+            If a page has restricted access, it may be accessed if provided an Authorization header for a user with proper permissions.
+            
+            To get a list of all <see cref="T:Dynamicweb.Frontend.PageInfoViewModel"/> and their <see cref="P:Dynamicweb.Frontend.PageInfoViewModel.ID"/>s, refer to GET /dwapi/content/pages.
+            </remarks>
+            <param name="query">Specify a valid value for one of the properties to filter what paragraphs to get. If more parameters are specified, the result is combined.</param>
+            <returns>List of <see cref="T:Dynamicweb.Frontend.ParagraphInfoViewModel"/></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphsController.GetById(System.Int32)">
+            <summary>
+            Gets a specific paragraph by the given <paramref name="id"/>.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Paragraphs returned will always have a <see cref="P:Dynamicweb.Content.Paragraph.ValidFrom"/> later than the request time and <see cref="P:Dynamicweb.Content.Paragraph.ValidTo"/> earlier than the request time, and their <see cref="P:Dynamicweb.Content.Paragraph.ShowParagraph"/> will also be true.
+            
+            The paragraphs page will have to be both active and published, as well as the pages area has to be active.
+            
+            If a page has restricted access, it may be accessed if provided an Authorization header for a user with proper permissions.
+            </remarks>
+            <param name="id">The ID identifying a specific paragraph.</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Frontend.ParagraphInfoViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphsController.GetByUrl(System.String,System.String)">
+            <summary>
+            Gets a specific paragraph by the given <paramref name="url"/>.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            It will find all the areas for the given <paramref name="hostname"/>, then finds the node for the url given and uses that ID in GET /content/paragraphs with the found ID as the query parameter.
+            </remarks>
+            <param name="url">The path for a specific page, i.e. /page/subpage/page</param>
+            <param name="hostname">The hostname for the website to match with. If none is specified, the hostname of the request is used.</param>
+            <returns>List of <see cref="T:Dynamicweb.Frontend.ParagraphInfoViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphQuery">
+            <summary>
+            Parameters used to find paragraphs. Only one parameter is needed to be filled out.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphQuery.AreaId">
+            <summary>
+            The ID identifying the specific area to get all paragraphs for.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphQuery.PageId">
+            <summary>
+            The ID identifying the specific page to get all its paragraphs for.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ParagraphQuery.ItemType">
+            <summary>
+            The ItemType of the paragraphs to find.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController">
+            <summary>
+            Controller for both commands and queries related to ecommerce products.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.Authenticate(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Gets authenticates the user and returns a token for further access - the token has a default expiration of 1800 seconds/30 minutes.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            This endpoint is the one creating the token used for all the endpoints requiring Authorizaion headers, or able to use it.
+            
+            If the configuration 'IncludeShopIdInExtranetLogIn' is set to true the <paramref name="shopid"/> will be used, otherwise it uses empty string, regardless of what is sent in the query parameter.
+            
+            The default value of <paramref name="expirationInSeconds"/> is 1800 seconds, which is 30 minutes, while the maximum value of <paramref name="expirationInSeconds"/> allowed is 86400, which is 24 hours, if it's any higher a 403 will be returned.
+            </remarks>
+            <param name="userName">The <paramref name="userName"/> for the user to authenticate.</param>
+            <param name="password">The password in plain text to use to authenticate with the <paramref name="userName"/></param>
+            <param name="shopid">The shop that the user belongs to, only used if 'IncludeShopIdInExtranetLogIn' is true.</param>
+            <param name="expirationInSeconds">The amount of time in seconds the returned token will be alive for, has a maximum value of 86400, which is 24 hours.</param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.AuthenticationTokenResponse"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.AuthenticatePost(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Gets authenticates the user and returns a token for further access - the token has a default expiration of 1800 seconds/30 minutes.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            This endpoint is the one creating the token used for all the endpoints requiring Authorizaion headers, or able to use it.
+            
+            If the configuration 'IncludeShopIdInExtranetLogIn' is set to true the <paramref name="shopid"/> will be used, otherwise it uses empty string, regardless of what is sent in the query parameter.
+            
+            The default value of <paramref name="expirationInSeconds"/> is 1800 seconds, which is 30 minutes, while the maximum value of <paramref name="expirationInSeconds"/> allowed is 86400, which is 24 hours, if it's any higher a 403 will be returned.
+            </remarks>
+            <param name="userName">The <paramref name="userName"/> for the user to authenticate.</param>
+            <param name="password">The password in plain text to use to authenticate with the <paramref name="userName"/></param>
+            <param name="shopid">The shop that the user belongs to, only used if 'IncludeShopIdInExtranetLogIn' is true.</param>
+            <param name="expirationInSeconds">The amount of time in seconds the returned token will be alive for, has a maximum value of 86400, which is 24 hours.</param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.AuthenticationTokenResponse"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.Impersonatees">
+            <summary>
+            Gets all impersonations a user is allowed to do.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get a list of <see cref="T:Dynamicweb.Frontend.UserViewModel"/>s that the authenticated user is allowed to impersonate. Use GET /dwapi/users/authenticate to generate the token.
+            </remarks>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.AuthenticationTokenResponse"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.Impersonate(System.Nullable{System.Int32},System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Impersonates the logged in user to the specified user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to impersonate the user specified in the query parameters. Use GET /dwapi/users/authenticate to generate the token.
+            
+            This creates a token impersonating the user specified with the query parameters.
+            
+            The order of execution to find the user to impersonate is the first user matching the;
+            - <paramref name="userId"/>
+            - <paramref name="userName"/> + <paramref name="shopid"/>
+            - <paramref name="shopid"/> + <paramref name="shopid"/>
+            
+            To see all the users the authorized user can impersonate, refer to GET /users/impersonatees.
+            
+            If the configuration 'IncludeShopIdInExtranetLogIn' is set to true the <paramref name="shopid"/> will be used, otherwise it uses empty string, regardless of what is sent in the query parameter.
+            
+            The default value of <paramref name="expirationInSeconds"/> is 1800 seconds, which is 30 minutes, while the maximum value of <paramref name="expirationInSeconds"/> allowed is 86400, which is 24 hours, if it's any higher a 403 will be returned.
+            </remarks>
+            <param name="userId">The <paramref name="userId"/> for the user to impersonate.</param>
+            <param name="userName">The <paramref name="userName"/> for the user to impersonate, will be paired with the <paramref name="shopid"/> if filled.</param>
+            <param name="email">The <paramref name="email"/> for the user to impersonate, will be paired with the <paramref name="shopid"/> if filled.</param>
+            <param name="shopid">The shop that the user belongs to.</param>
+            <param name="expirationInSeconds">The amount of time in seconds the returned token will be alive for, has a maximum value of 86400, which is 24 hours.</param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.AuthenticationTokenResponse"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.Refresh(System.Int32)">
+            <summary>
+            Refreshes the authentication token from a previous authentication.
+            </summary>
+            <remarks>
+            Takes JWT in the Authorization header and refreshes it.
+            
+            The returned renewed token has a default expiration of 1800 seconds/30 minutes.
+            
+            The default value of <paramref name="expirationInSeconds"/> is 1800 seconds, which is 30 minutes, while the maximum value of <paramref name="expirationInSeconds"/> allowed is 86400, which is 24 hours, if it's any higher a 403 will be returned.
+            </remarks>
+            <param name="expirationInSeconds">The amount of time in seconds the returned token will be alive for, has a maximum value of 86400, which is 24 hours.</param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.AuthenticationTokenResponse"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.Resetpassword(System.String)">
+            <summary>
+            Changes the password of the currently logged in user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get the authenticated user to change the password for. Use GET /dwapi/users/authenticate to generate the token.
+            
+            Password will be hashed and fail if password requirements are not met.
+            
+            Uses the global settings in the DW solution to check the password complexity before changing it.
+            
+            If a password with 32 or 128 characters is used, it's assumed to be encrypted and will skip the complexity checks.
+            </remarks>
+            <param name="newPassword">The password the given users password will be changed to.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.GetAddresses">
+            <summary>
+            Get all the adresses for the currently logged in user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find all the addresses belonging to the authenticated user. Use GET /dwapi/users/authenticate to generate the token.
+            
+            If the authenticated user has no addresses, an empty list will be returned.
+            </remarks>
+            <returns>Instance of <see cref="T:Dynamicweb.Ecommerce.Frontend.AddressViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.GetAddress(System.Int32)">
+            <summary>
+            The address for the specified ID if it belongs to the authenticated user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find the user to ensure they have permission to access the specified address. Use GET /dwapi/users/authenticate to generate the token.
+            </remarks>
+            <param name="id">The ID identifying a specific address.</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Ecommerce.Frontend.AddressViewModel"/>, if found.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.CreateAddress(Dynamicweb.Ecommerce.Frontend.AddressViewModel)">
+            <summary>
+            Creates a new address for the authenticated user.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find the user to add the address to. Use GET /dwapi/users/authenticate to generate the token.
+            
+            **Notifications**
+            - DWN_UM_USERADDRESS_ONBEFORE_SAVE
+            - DWN_UM_USERADDRESS_ONAFTER_SAVE
+            
+            **Sample request**
+            ```
+            {
+                "Company": "SomeCompany",
+                "Name": "Home",
+                "Address": "SomeAddress",
+                "Phone": "123456789",
+                "Email": "demouser@something.com"
+            }
+            ```
+            
+            The response will contain the ID of the address created for future use. 
+            </remarks>
+            <param name="userAddress">The address details to add.</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Ecommerce.Frontend.AddressViewModel"/>.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.PatchAddress(System.Int32,Dynamicweb.Ecommerce.Frontend.AddressViewModel)">
+            <summary>
+            Updates the specified address.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find the user to ensure it has permissions to update the specified address. Use GET /dwapi/users/authenticate to generate the token.
+            
+            **Notifications**
+            - DWN_UM_USERADDRESS_ONBEFORE_SAVE
+            - DWN_UM_USERADDRESS_ONAFTER_SAVE
+            
+            **Sample request**
+            ```
+            {
+                "Company": "NewCompany"
+            }
+            ```
+            
+            The response will contain the fully updated address.
+            </remarks>
+            <param name="id">The ID identifying a specific address.</param>
+            <param name="userAddress">The address details to add.</param>
+            <returns>Instance of the updated <see cref="T:Dynamicweb.Ecommerce.Frontend.AddressViewModel"/>.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.DeleteAddress(System.Int32)">
+            <summary>
+            Deletes the specified address if the authenticated user has access to it.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find the user to ensure it has permissions to delete the address. Use GET /dwapi/users/authenticate to generate the token.
+            
+            **Notifications**
+            - DWN_UM_USERADDRESS_ONBEFORE_DELETE
+            - DWN_UM_USERADDRESS_ONAFTER_DELETE
+            </remarks>
+            <param name="id">The ID identifying a specific address.</param>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.GetUserInfo">
+            <summary>
+            Gets the user info of the currently logged in user.
+            </summary>
+            <returns>Instance of <see cref="T:Dynamicweb.Frontend.UserViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.Patch(Dynamicweb.Frontend.UserViewModel)">
+            <summary>
+            Updates the currently logged in user. Only the properties sent in the body is updated.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get the authenticated users info. Use GET /dwapi/users/authenticate to generate the token.
+            
+            Applies all the properties sent in through <paramref name="userModel"/> to the found users info and saves that.
+            </remarks>
+            <param name="userModel">Parameters to update on the user, see <see cref="T:Dynamicweb.Frontend.UserViewModel"/></param>
+            <returns>Returns the updated instance of <see cref="T:Dynamicweb.Frontend.UserViewModel"/></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.Create(Dynamicweb.Frontend.UserViewModel)">
+            <summary>
+            Creates a new user with the given <paramref name="userModel"/>.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            This will create a new user with all the properties send in through the body <paramref name="userModel"/>, as such username, email and password requirements must always be met.
+            
+            The username and email are required, the username has to be unique and the password will be following the global settings set up for password requirements.
+            
+            To see all the properties, view the schema for <see cref="T:Dynamicweb.Frontend.UserViewModel"/>.
+            </remarks>
+            <param name="userModel">Parameters for the user to be created, see <see cref="T:Dynamicweb.Frontend.UserViewModel"/></param>
+            <returns>Returns a new instance of <see cref="T:Dynamicweb.Frontend.UserViewModel"/></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.DeleteUser(System.Int32)">
+            <summary>
+            Deletes the specified user if the authenticated user has access to it.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to find the user to ensure it has permissions to delete the user. Use GET /dwapi/users/authenticate to generate the token.
+            Users can delete themselves and users they can impersonate
+            </remarks>
+            <param name="id">The ID identifying a specific address.</param>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.CreateRecipients(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates recipient tokens for specified recipient emails.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Will validate all the sent in email addresses, if they're valid, it will find the user who has that email and return an encrypted userId of that user. If no user with the email exists, it will create a new user only containing that email.
+            
+            This list of encrypted userIds can be used with the GET /ecommerce/products/export, filling it into the <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings.RecipientTokens"/> property.
+            
+            If no emails are used in the request body, or if all emails sent in are invalid, an empty list will be returned.
+            </remarks>
+            <param name="recipientEmails">The list of email addresses to be used for sending exported products for <see cref="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportProducts(Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest,Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings,Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings,Dynamicweb.Ecommerce.ProductCatalog.ImageExportSettings)"/>.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.SaveAddress(Dynamicweb.Security.UserManagement.UserAddress,Dynamicweb.Ecommerce.Frontend.AddressViewModel)">
+            <summary>
+            Saves a user for patch and post
+            </summary>
+            <param name="user"></param>
+            <param name="userModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.SaveUser(Dynamicweb.Security.UserManagement.User,Dynamicweb.Frontend.UserViewModel)">
+            <summary>
+            Saves a user for patch and post
+            </summary>
+            <param name="user"></param>
+            <param name="userModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.Put(Dynamicweb.Frontend.UserViewModel)">
+            <summary>
+            Updates the currently logged in user. All properties of the existing user will be overriden.
+            </summary>
+            <remarks>
+            Uses JWT in the Authorization header to get the authenticated users info. Use GET /dwapi/users/authenticate to generate the token.
+            
+            Applies all the properties sent in through <paramref name="userModel"/> to the found users info and saves that.
+            
+            If any property is not provided, said property will be overriden on the existing user with null.
+            </remarks>
+            <param name="userModel">Parameters to update on the user, see <see cref="T:Dynamicweb.Frontend.UserViewModel"/></param>
+            <returns>Returns the updated instance of <see cref="T:Dynamicweb.Frontend.UserViewModel"/></returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.AuthenticationTokenResponse">
+            <summary>
+            Returns the authentication token for a user that passes the authentication. The token is valid for 30 minutes if not otherwise specified and then needs to be refreshed.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.UsersController.AuthenticationTokenResponse.Token">
+            <summary>
+            Jwt token that authorises a user after they have been logged in. Send in the authentication header.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController">
+            <summary>
+            Controller for both commands and queries related to ecommerce shippings.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.FindServicePoints(System.String,System.String,Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.SearchRequest)">
+            <summary>
+            Finds all the service points for the specified shipping, filtered by the country, zip code and/or address.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            All the service points the specified shipping delivers to can be found by not specifiying any address, otherwise it can be filtered by using the query parameters.
+            
+            To see all the shippings and their <see cref="P:Dynamicweb.Ecommerce.Frontend.ShippingViewModel.Id"/>s, refer to GET /ecommerce/shippings.
+            
+            Do note all the property names are camelCasing due to a previous implementation, this should generally not be a problem during deserialization though.
+            </remarks>
+            <param name="shippingId">The ID identifying the specific shipping to use.</param>
+            <param name="languageId">The ID identifying the specific languageId to use.</param>
+            <param name="search">The search request.</param>
+            <returns>Returns service point addresses serialized to JSON.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.GetShippings(Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.ShippingFilter)">
+            <summary>
+            Gets all the shippings defined in the DW solution.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            The <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.ShippingFilter.LanguageId"/> is required.
+            
+            If no <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.ShippingFilter.CountryCode"/> is defined, the <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.ShippingFilter.RegionCode"/> will not be used and all active shippings will be returned.
+            
+            Otherwise both the <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.ShippingFilter.CountryCode"/> and <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.ShippingFilter.RegionCode"/> are used to get the country relations to the shippings, only active shippings will be returned.
+            </remarks>
+            <param name="filter">The filters for the shippings.</param>
+            <returns>Instance of <see cref="T:Dynamicweb.Ecommerce.Frontend.ShippingViewModel"/>, if found; otherwise null.</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.SearchRequest">
+            <summary>
+            Parameters to find service points.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.SearchRequest.CountryCode">
+            <summary>
+            The country code defining where the service point should be filtered to.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.SearchRequest.ZipCode">
+            <summary>
+            The zip code defining where the service point should be filtered to.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.SearchRequest.Address">
+            <summary>
+            The specific address the service point should be filtered to.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.SearchRequest.NumberOfServicePoints">
+            <summary>
+            The number of service points to return.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.ShippingFilter">
+            <summary>
+            Parameters to find shippings.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.ShippingFilter.LanguageId">
+            <summary>
+            The language to translate the shippings <see cref="P:Dynamicweb.Ecommerce.Frontend.ShippingViewModel.Name"/> and <see cref="P:Dynamicweb.Ecommerce.Frontend.ShippingViewModel.Description"/>. This parameter is required.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.ShippingFilter.CountryCode">
+            <summary>
+            The country code to use for shippings country relations.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.ShippingFilter.RegionCode">
+            <summary>
+            The region code to use for shippings country relations, only used if <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ShippingController.ShippingFilter.CountryCode"/> is defined.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ServicePoint">
+            <summary>
+            Lowercase property names for backwards compatability, as the previous anonymous class was serialized to lowercase.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.OrderPaymentsController">
+            <summary>
+            The class <c>PaymentController</c> represents controller of payment operations such as caprute/return/cancel etc.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.OrderPaymentsController.Capture(System.String,System.Double)">
+            <summary>
+            Captures the order with specified Id and amount.
+            </summary>
+            <param name="orderid">The order Id.</param>
+            <param name="amount">The amount to capture.</param>
+            <returns>Returns <seealso cref="T:Dynamicweb.Ecommerce.Orders.Gateways.PaymentOperationResultModel"/> with operation info serialized to JSON.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.OrderPaymentsController.Return(System.String,System.Double)">
+            <summary>
+            Proceeds a return operation for order with specified Id.
+            </summary>
+            <param name="orderid">The order Id.</param>
+            <param name="amount">The amount to return.</param>
+            <returns>Returns <seealso cref="T:Dynamicweb.Ecommerce.Orders.Gateways.PaymentOperationResultModel"/> with operation info serialized to JSON.</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.OrderPaymentsController.Cancel(System.String)">
+            <summary>
+            Proceeds a cancel operation for order with specified Id.
+            </summary>
+            <param name="orderid">The order Id.</param>
+            <returns>Returns <seealso cref="T:Dynamicweb.Ecommerce.Orders.Gateways.PaymentOperationResultModel"/> with operation info serialized to JSON.</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController">
+            <summary>
+            Controller for both commands and queries related to ecommerce products.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.GetAll(Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest,Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings)">
+            <summary>
+            Gets products based on the query parameters and request body.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Will fetch all the products on the DW solution based on the provided query parameters and properties in the request body.
+            
+            There's a hierarchy of how the query parameters for this product search is done;
+            - If both <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.RepositoryName"/> and <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.QueryName"/> are present, they will be used, if only one or none are present, it will continue to the next step
+            - If <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.GroupId"/> is present, it will be used, if it is not present, it will continue to the next step
+            - If <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.ProductIds"/> contains any elements, they will be used, however, if it's present but with only null values, it will simply just return 204 No Content.
+            
+            The rest of the query parameters can be used to sort the result.
+            
+            The body parameters can be used to further filter and paginate the result, so setting a specific <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.PageSize"/> will limit the amount of results given, 
+            while setting <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.CurrentPage"/> will change which results is returned depending on the amount and the <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.PageSize"/>.
+            
+            **Sample body**
+            
+            ```
+            {
+                "FilledProperties": [
+                    "Products"
+                ],
+                "PageSize": 1,
+                "CurrentPage": 1,
+                "ProductSettings": {
+                    "FilledProperties": [
+                        "Name"
+                    ]
+                }
+            }
+            ```
+            
+            This example uses the FilledProperties property on the base ViewModel to only return Products, it then uses pagination to show 1 product per page and saying we're on page 1.
+            
+            At the end it uses the ProductSettings property to further filter what properties to show on the specific products, in this case all returned is the name of the property.
+            
+            **Sample response**
+            
+            ```
+            {
+                "Products": [
+                    {
+                        "Name": "Scattante XRL Team Frame"
+                    }
+                ]
+            }
+            ```
+            
+            To get a list of all the groups and their IDs, refer to GET /dwapi/ecommerce/groups.
+            
+            This uses the GET /ecommerce/products/search, as both uses the same properties, this endpoint has a request body, the other has it as query parameters.
+            </remarks>
+            <param name="search">Parameters for the query, see <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest"/>.</param>        
+            <param name="request">Parameters for the product list, see <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings"/>.</param>
+            <returns>Returns an instance of a <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModel"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.Search(Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest,Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings)">
+            <summary>
+            Gets products based on the query parameters.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Will fetch all the products on the DW solution based on the provided query parameters and properties in the request body.
+            
+            There's a hierarchy of how the query parameters for this product search is done;
+            - If both <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.RepositoryName"/> and <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.QueryName"/> are present, they will be used, if only one or none are present, it will continue to the next step
+            - If <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.GroupId"/> is present, it will be used, if it is not present, it will continue to the next step
+            - If <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.ProductIds"/> contains any elements, they will be used, however, if it's present but with only null values, it will simply just return 204 No Content.
+            
+            The rest of the query parameters can be used to sort and filter the result.
+            
+            To be able to use the filtering, the different properties of the inner models will have to be filled.
+            
+            **Sample query parameters**
+            
+            - GroupId=GROUP49
+            - ProductSettings.FilledProperties=Name
+            - PageSize=1
+            - CurrentPage=1
+            - FilledProperties=Products
+            
+            Note that in this example we're filling the 'FilledProperties' property of the 'ProductSettings' parameter, this lets us filter which properties gets returned in the 'Products' property in the response.
+            
+            We're further filtering the outputs root ViewModel by using the 'FilledProperties' query parameter itself, as that refers to the root ViewModel, so this example only returns the Products and not other properties, such as Groups.
+            
+            **Sample response**
+            
+            ```
+            {
+                "Products": [
+                    {
+                        "Name": "Scattante XRL Team Frame"
+                    }
+                ]
+            }
+            ```
+            
+            To get a list of all the groups and their IDs, refer to GET /dwapi/ecommerce/groups.
+            </remarks>
+            <param name="search">Parameters for the query, see <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest"/>.</param>        
+            <param name="request">Parameters for the product list, see <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings"/>.</param>
+            <returns>Returns an instance of a <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModel"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.GetProduct(System.String,Dynamicweb.Ecommerce.ProductCatalog.ProductViewModelSettings)">
+            <summary>
+            Get the product found by the given ID.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            With the addition that UserId will be filled with the ID of the user taken from the Authorization header, if present.
+            
+            All the settings parameters can be used to filter the result.
+            
+            **Sample query parameters**
+            - PriceSettings.FilledProperties=Id,Name,Title
+            - FilledProperties=Products
+            
+            In this example we're taking the Price, PriceBeforeDiscount and Discount properties from the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModel"/> and then further filtering the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.PriceViewModel"/>s to only show Price and CurrencyCode.
+            
+            **Sample response**
+            ```
+            {
+            	"Products": [
+            		{
+            			"Id": "10007",
+            			"Name": "Scattante XRL Team Frame",
+            			"Title": "Scattante XRL Team Frame"
+            		}
+            	]
+            }
+            ```
+            
+            To get a list of all the products and their IDs, refer to GET /dwapi/ecommerce/products/search.
+            </remarks>
+            <param name="id">The ID identifying the product to get.</param>
+            <param name="request">Parameters for the product, see <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModelSettings"/></param>
+            <returns>Returns an instance of a <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModel"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.GetProduct(System.String,System.String,Dynamicweb.Ecommerce.ProductCatalog.ProductViewModelSettings)">
+            <summary>
+            Get the product found by the given ID and VariantId.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            All the settings parameters can be used to filter the result.
+            
+            **Sample query parameters**
+            - PriceSettings.FilledProperties=Id,Name,Title
+            - FilledProperties=Products
+            
+            In this example we're taking the Price, PriceBeforeDiscount and Discount properties from the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModel"/> and then further filtering the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.PriceViewModel"/>s to only show Price and CurrencyCode.
+            
+            **Sample response**
+            ```
+            {
+            	"Products": [
+            		{
+            			"Id": "10007",
+            			"Name": "Scattante XRL Team Frame",
+            			"Title": "Scattante XRL Team Frame"
+            		}
+            	]
+            }
+            ```
+            
+            With the addition that UserId will be filled with the ID of the user taken from the Authorization header, if present.
+            
+            To get a list of all the products and their IDs, refer to GET /dwapi/ecommerce/products/search.
+            </remarks>
+            <param name="id">The ID identifying the product to get.</param>
+            <param name="request">Parameters for the product, see <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModelSettings"/></param>
+            <param name="id">ProductId for the product to get</param>
+            <param name="variantId">VariantId for the variant to get - master if not specified</param>
+            <param name="request">Parameters for the product, see <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModelSettings"/></param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModel"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.Related(System.String,Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings)">
+            <summary>
+            Gets a products related products based on the ID of a product.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            All the settings parameters can be used to filter the result.
+            
+            **Sample query parameters**
+            - ProductSettings.FilledProperties=Id,Name,Title
+            - FilledProperties=Products
+            
+            In this example we're taking the Price, PriceBeforeDiscount and Discount properties from the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModel"/> and then further filtering the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.PriceViewModel"/>s to only show Price and CurrencyCode.
+            
+            **Sample response**
+            ```
+            {
+            	"Products": [
+            		{
+            			"Id": "10007",
+            			"Name": "Scattante XRL Team Frame",
+            			"Title": "Scattante XRL Team Frame"
+            		}
+            	]
+            }
+            ```
+            
+            With the addition that UserId will be filled with the ID of the user taken from the Authorization header, if present.
+            
+            Setting a specific <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.PageSize"/> will limit the amount of results given, 
+            while setting <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.CurrentPage"/> will change which results is returned depending on the amount and the <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.PageSize"/>.
+            
+            To get a list of all the products and their IDs, refer to GET /dwapi/ecommerce/products/search.
+            </remarks>
+            <param name="id">The ID identifying the product to get the related products for.</param>
+            <param name="request">Parameters for the product list, see <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings"/>.</param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModel"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.Related(System.String,System.String,Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings)">
+            <summary>
+            Gets a products related products based on the ID and VariantId of a product.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            All the settings parameters can be used to filter the result.
+            
+            **Sample query parameters**
+            - ProductSettings.FilledProperties=Id,Name,Title
+            - FilledProperties=Products
+            
+            In this example we're taking the Price, PriceBeforeDiscount and Discount properties from the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModel"/> and then further filtering the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.PriceViewModel"/>s to only show Price and CurrencyCode.
+            
+            **Sample response**
+            ```
+            {
+            	"Products": [
+            		{
+            			"Id": "10007",
+            			"Name": "Scattante XRL Team Frame",
+            			"Title": "Scattante XRL Team Frame"
+            		}
+            	]
+            }
+            ```
+            
+            With the addition that UserId will be filled with the ID of the user taken from the Authorization header, if present.
+            
+            Setting a specific <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.PageSize"/> will limit the amount of results given, 
+            while setting <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.CurrentPage"/> will change which results is returned depending on the amount and the <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.PageSize"/>.
+            
+            To get a list of all the products and their IDs, refer to GET /dwapi/ecommerce/products/search.
+            </remarks>
+            <param name="id">The ID identifying the product to get the related products for.</param>
+            <param name="request">Parameters for the product list, see <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings"/>.</param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModel"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.GetBomConfiguration(System.String,Dynamicweb.Ecommerce.ProductCatalog.ProductViewModelSettings)">
+            <summary>
+            Gets a product BOM configuration based on the ID of a product.
+            </summary>
+            <param name="id">The ID identifying the product to get the BOM configuration for.</param>
+            <param name="request">Parameters for the product, see <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModelSettings"/></param>
+            <returns>Returns an instance of a <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.BomConfigurationViewModel"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportProducts(Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest,Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings,Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings,Dynamicweb.Ecommerce.ProductCatalog.ImageExportSettings)">
+            <summary>
+            Exports a set of products. Sends a download link for a zip archive created containing files with the specified formats to the given email.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            The UserId will be filled with the ID of the user taken from the Authorization header, if present.
+            
+            
+            There's a hierarchy of how the query parameters for this product search is done;
+            - If both <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.RepositoryName"/> and <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.QueryName"/> are present, they will be used, if only one or none are present, it will continue to the next step
+            - If <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.GroupId"/> is present, it will be used, if it is not present, it will continue to the next step
+            - If <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.ProductIds"/> contains any elements, they will be used, however, if it's present but with only null values, it will simply just return 204 No Content.
+            
+            /// All the settings parameters can be used to filter the result.
+            
+            **Sample query parameters**
+            - ProductSettings.FilledProperties=Id,Name,Title
+            - FilledProperties=Products
+            
+            In this example we're taking the Price, PriceBeforeDiscount and Discount properties from the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModel"/> and then further filtering the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.PriceViewModel"/>s to only show Price and CurrencyCode.
+            
+            Setting a specific <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.PageSize"/> will limit the amount of results given, 
+            while setting <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.CurrentPage"/> will change which results is returned depending on the amount and the <see cref="P:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings.PageSize"/>.
+            
+            To get a list of all the products and their IDs, refer to GET /dwapi/ecommerce/products/search.
+            </remarks>
+            <param name="searchRequest">Parameters for the query, see <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest"/></param>        
+            <param name="request">Parameters for the product list, see <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModelSettings"/></param>
+            <param name="exportSettings">Parameters for the product list export, see <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings"/></param>
+            <returns>A <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductListViewModel"/> model</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest">
+            <summary>
+            Parameters to fetch products.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.RepositoryName">
+            <summary>
+            Used together with the <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.QueryName"/> to perform a search for products.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.QueryName">
+            <summary>
+            Used together with the <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.RepositoryName"/> to perform a search for products.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.GroupId">
+            <summary>
+            Used by itself, will find all products for the given <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.GroupId"/>.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.ProductIds">
+            <summary>
+            Finds all the master products and their details given the <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.ProductIds"/>.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.ProductAutoIds">
+            <summary>
+            Finds all the specific product records and their details given the <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.ProductAutoIds"/>.
+            Can be used to return specific variants or family products instead of masters only
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.SortBy">
+            <summary>
+            The field to sort by, i.e. ProductPrice.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.SearchRequest.SortOrder">
+            <summary>
+            The sort direction. Default is ASC, the other option is DESC.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings">
+            <summary>
+            Export product parameters.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings.FileName">
+            <summary>
+            The name of the file of the export. If not specified file name will be $"export_{DateTime.Now}".
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings.ExportFormat">
+            <summary>
+            The format the products should be exported to. If not specified, no products export will be done.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings.SenderName">
+            <summary>
+            The name of the sender of the export email. If not specified <see cref="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings.SenderEmail">SenderEmail</see> will be used.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings.SenderEmail">
+            <summary>
+            The email of the sender of the export email. If not specified SystemMailAddress will be used.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings.RecipientTokens">
+            <summary>
+            The tokens of the recepients the mail is intended to. To get these tokens, refer to POST /users/createRecipients. 
+            
+            This parameter is required.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings.Subject">
+            <summary>
+            The subject of the export email. If not specified "Export products" will be used.
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportSettings.TemplatePath">
+            <summary>
+            The path for the email template to use. If not specified "eCom/ProductCatalog/ExportProductsMail.cshtml" will be used.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportAssets">
+            <summary>
+            Export Assets model
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportAssets.Images">
+            <summary>
+            Gets or sets image files to be exported
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductsController.ExportAssets.Documents">
+            <summary>
+            Gets or sets document files to be exported
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.FeedController.VerifyConnection">
+            <summary>
+            Can be used as a ping endpoint to confirm connectivity.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            This will always return true, if it returns a positive response.
+            
+            It can be used for health checks and pinging to verify connectivity to the DW solution.
+            </remarks>
+            <returns>true</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.FeedController.GetFeedOutput(System.Int32,Dynamicweb.Ecommerce.Feeds.FeedContextConfiguration)">
+            <summary>
+            Gets the output for the specified feed with the specified context.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Will find a feed with the given <paramref name="id"/> and then generate the output based on the context parameters sent in.
+            
+            The output is based on the provider used and/or the template specified for the feed. Given that, it's not possible to give an example output as it depends on the configuration of the feed.
+            </remarks>
+            <param name="id">The ID identifying the feed.</param>
+            <param name="feedContextConfiguration">The context to be sent into the feed.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.ProductController">
+            <summary>
+            Gets products filtered by query parameters
+            </summary>
+            <returns>products</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.TranslationsController">
+            <summary>
+            Translations for website labels and texts used in the layout.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.TranslationsController.GetAll(System.Int32)">
+            <summary>
+            Gets all translations for an areas layouts design.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            Finds the area with the given <paramref name="areaid"/> and uses GET /translations/{designname}/{culture} with the areas layouts designs name and the areas cultureinfos name.
+            </remarks>
+            <param name="areaid">The ID identifying the area to get the translations for.</param>
+            <returns>Translation key collection <see cref="T:Dynamicweb.Rendering.Translation.KeyCollection"/></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.TranslationsController.GetAll(System.String)">
+            <summary>
+            Gets all translations for a specific design given the designs name.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            </remarks>
+            <param name="designname">The name of the design to get the translations for.</param>
+            <returns>Translation key collection <see cref="T:Dynamicweb.Rendering.Translation.KeyCollection"/></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.TranslationsController.GetAll(System.String,System.String)">
+            <summary>
+            Gets all translations for a design given the designs name and the culture name.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            </remarks>
+            <returns>List of translations <see cref="T:Dynamicweb.Ecommerce.WebAPI.Controllers.TranslationsController.Translation"/></returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.TranslationsController.Translation">
+            <summary>
+            Represents a translation of a key and its default fallback value.
+            </summary>
+        </member>
+        <member name="F:Dynamicweb.Ecommerce.WebAPI.Controllers.TranslationsController.Translation.Key">
+            <summary>
+            The translation key.
+            </summary>
+        </member>
+        <member name="F:Dynamicweb.Ecommerce.WebAPI.Controllers.TranslationsController.Translation.DefaultValue">
+            <summary>
+            The default value to use if no translation (value) exists.
+            </summary>
+        </member>
+        <member name="F:Dynamicweb.Ecommerce.WebAPI.Controllers.TranslationsController.Translation.Value">
+            <summary>
+            The translation for the culture of the specified key.
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.Controllers.VariantsController">
+            <summary>
+            To get information about variants of a given product.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.VariantsController.GetVariantInfo(System.String,Dynamicweb.Ecommerce.ProductCatalog.ProductViewModelSettings)">
+            <summary>
+            Gets the variant information for the product specified by the given productId.
+            </summary>
+            <remarks>
+            No Authorization header required.
+            
+            **Sample query parameters**
+            - PriceSettings.FilledProperties=Price,CurrencyCode
+            - MediaSettings.FilledProperties=Value
+            
+            In this example we're taking the Price, PriceBeforeDiscount and Discount properties from the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModel"/> and then further filtering the <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.PriceViewModel"/>s to only show Price and CurrencyCode.
+            
+            **Sample response**
+            ```
+            {
+            	"ProductID": "10007",
+            	"VariantID": "",
+            	"ProductName": "Scattante XRL Team Frame",
+            	"ProductNumber": "10007",
+            	"ProductStock": 1.0,
+            	"Image": {
+            		"Value": "/Files/Images/missing_image.jpg"
+            	},
+            	"Price": {
+            		"Price": 299.0,
+            		"CurrencyCode": "EUR"
+            	},
+            	"PriceMin": {
+            		"Price": 299.0,
+            		"CurrencyCode": "EUR"
+            	},
+            	"PriceMax": {
+            		"Price": 299.0,
+            		"CurrencyCode": "EUR"
+            	},
+            	"Stock": 1.0
+            }
+            ```
+            </remarks>
+            <param name="productId">The ID identifying the specific product to get the variant information for.</param>
+            <param name="request">parameters for the request - use to filter by language etc: <see cref="T:Dynamicweb.Ecommerce.ProductCatalog.ProductViewModelSettings"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.JwtService.ToggleDebug">
+            <summary>
+            Toggles if it is possible to see debug information.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.JwtService.GetToken(Dynamicweb.Security.UserManagement.LimitedUser,System.Int32)">
+            <summary>
+            Gets a JWT from based upon the current user
+            </summary>
+            <param name="user">A <see cref="T:Dynamicweb.Security.UserManagement.User"/> model</param>
+            <returns>a JWT string</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.JwtService.Refresh(System.String,System.Int32)">
+            <summary>
+            Gets a new JWT from an old one that is still valid.
+            </summary>
+            <param name="token">A JWT string</param>
+            <param name="expirationInSeconds">The token expiration in seconds</param>
+            <returns>A JWT string</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.JwtService.GetPrincipal(System.String)">
+            <summary>
+            Gets a principal from the JWT token
+            </summary>
+            <param name="token">A JWT string</param>
+            <returns>A <see cref="T:System.Security.Principal.IPrincipal"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.JwtService.GetPrincipal(System.String,Dynamicweb.Security.UserManagement.User@)">
+            <summary>
+            Gets a principal from the JWT token
+            </summary>
+            <param name="token">A JWT string</param>
+            <param name="user">A User</param>
+            <returns>A <see cref="T:System.Security.Principal.IPrincipal"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.JwtService.GetUser(System.String)">
+            <summary>
+            Gets a user from the token
+            </summary>
+            <param name="token"></param>
+            <returns>A <see cref="T:Dynamicweb.Security.UserManagement.User"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.JwtService.GetUser(System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Gets a user from the principal
+            </summary>
+            <param name="principal">A <see cref="T:System.Security.Claims.ClaimsPrincipal"/> model</param>
+            <returns>A <see cref="T:Dynamicweb.Security.UserManagement.User"/> model</returns>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.Controllers.JwtService.GetUserId(System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Gets a user from the principal
+            </summary>
+            <param name="principal">A <see cref="T:System.Security.Claims.ClaimsPrincipal"/> model</param>
+            <returns>A user id</returns>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.CustomStringResultExtension">
+            <summary>
+            All credit goes to https://stackoverflow.com/questions/40833162/web-api-recommended-way-to-return-json-string#answer-40836422
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.JsonStringResultExtension">
+            <summary>
+            All credit goes to https://stackoverflow.com/questions/40833162/web-api-recommended-way-to-return-json-string#answer-40836422
+            </summary>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.OwinStartup">
+            <summary>
+            This class is used for Owin context startup.
+            It is called at Application Startup.
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.OwinStartup.Configuration(Owin.IAppBuilder)">
+            <summary>
+            Configures the owin startup for the webapi and it's documentation
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Dynamicweb.Ecommerce.WebAPI.ViewModelFormatProviderBase`2">
+            <summary>
+            Base class to implement to support alternative return models
+            </summary>
+        </member>
+        <member name="P:Dynamicweb.Ecommerce.WebAPI.ViewModelFormatProviderBase`2.InputModel">
+            <summary>
+            The model that needs to be converted to another format
+            </summary>
+        </member>
+        <member name="M:Dynamicweb.Ecommerce.WebAPI.ViewModelFormatProviderBase`2.GetModel">
+            <summary>
+            Override this method to return a custom response model to replace the input model.
+            The model must be serializable.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

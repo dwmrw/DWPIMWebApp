@@ -1,0 +1,47 @@
+﻿@option-gap: 4px;
+@optiongroup-gap: 0;
+
+body .ss-main {
+    .ss-single-selected {
+        border-radius: initial !important;
+        height: 32px !important;
+
+        .placeholder > i {
+            width: 20px !important;
+            font-size: 16px;
+            margin-right: 6px;
+        }
+    }
+
+    .ss-option > i {
+        font-size: 16px;
+        margin-right: 6px;
+    }
+
+    .ss-content {
+        .ss-list {
+            .ss-option {
+                padding-top: @option-gap;
+                padding-bottom: @option-gap;
+                line-height: 1.5em;
+            }
+
+            .ss-optgroup {
+                .ss-optgroup-label {
+                    padding-top: @optiongroup-gap;
+                    padding-bottom: @optiongroup-gap;
+                    line-height: 1.5em;
+                }
+
+                .ss-option {
+                    padding-top: @option-gap;
+                    padding-bottom: @option-gap;
+                }
+            }
+        }
+    }
+}
+
+.dialog-page .ss-content {
+    z-index: 999999;
+}

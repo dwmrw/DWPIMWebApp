@@ -1,0 +1,119 @@
+.contextmenu {
+	display: none;
+	position: absolute;
+	float: left;
+    z-index: 10000;
+    background-color: #fff;
+    border-color: #e0e0e0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    margin: 0;
+    min-width: 160px;
+    padding: 5px 0;
+    border-radius: 2px;
+
+    span {
+        float: none;
+        padding-left: 0;
+    }
+
+    .container {
+	    display: block;
+        width: auto;
+        padding: 0;
+        max-height: ~'calc(100vh - 10px)';
+        overflow-y: auto;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    img {
+        padding-right: 12px;
+        vertical-align: middle; 
+    }
+
+    .containerFixed {
+	    overflow: auto;
+	    overflow-x: hidden;
+    }
+
+    a {
+        cursor: pointer;
+        color: #4C4C4C;
+        display: block;
+        padding: 4px 17px;
+        font-size: 13px;
+
+        &.button-disabled,
+        &.button-disabled:hover {
+	        color: #c3c3c3;
+	        background-color:#FCFCFC !important;
+	        cursor: default !important;
+	        background-image: none !important;
+	        border: 1px solid transparent !important;
+        }
+
+        &.button-disabled:active {
+	        outline: none;
+        }
+
+        i {
+            line-height: 100%;
+            vertical-align: top;
+            font-size: 18px;
+            width: 19px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .arrow_icon {
+            padding-right: 0;
+            margin: 0 8px;
+        }
+    }
+
+    .divider {
+        height: 1px;
+        margin: 4px 0;
+        overflow: hidden;
+        background-color: rgba(0,0,0,.08);
+    }
+
+    .submenu {
+        list-style: none;
+        padding-left: 0;
+        background-color: #fff;
+        width: 100%;
+        min-width: 170px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+        a {
+            display: block;
+        }
+
+        li > a:hover, li > a:focus {
+            text-decoration: none;
+            color: #333;
+            background-color: rgba(0,0,0,.075);
+        }
+    }
+
+    .container > span, .submenu > span {
+        display: block;
+        -webkit-transition: background-color;
+        -moz-transition: background-color;
+        -o-transition: background-color;
+        transition: background-color;
+        -webkit-transition-duration: 300ms;
+        transition-duration: 300ms;
+
+        &:hover {
+            background-color: rgba(0,0,0,.075);
+        }
+    }
+}

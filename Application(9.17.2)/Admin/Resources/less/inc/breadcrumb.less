@@ -1,0 +1,26 @@
+#breadcrumb, .breadcrumb {
+    display: inherit;
+    vertical-align: middle;
+    font-size: @font-size-base;
+    color: @m-gray-400;
+    border-bottom: 1px solid @m-gray-100;
+    padding: 5px 16px;
+
+    &.is-master {
+        background-color: @m-black;
+        color: @m-white;
+    }
+
+    &.is-language {
+        background-color: @m-orange;
+        color: @m-white;
+    }
+
+    .breadcrumb-seperator {
+        margin: 0 4px 0 3px
+    }
+
+    #BreadcrumbActive, #BreadcrumbParagraphHeader {
+        font-weight: bold;
+    }
+}

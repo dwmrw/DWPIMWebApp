@@ -1,0 +1,104 @@
+﻿/*.editablegrid-container {
+    overflow: auto;
+}*/
+
+table.editablegrid {
+    
+    tr {
+
+        &:not(.header):hover {
+            background: inherit;
+        }
+        
+        th {
+            text-transform: uppercase;
+            text-align: left;
+            background: @m-gray-100;
+        }
+
+        td, th {
+            padding: 10px;
+            outline: none;
+            line-height: normal;
+            border-bottom: 1px @m-gray-300 solid;
+            
+            &:first-child {
+                border-left: 1px @m-gray-300 solid;
+            }
+
+            &:last-child {
+                border-right: 1px @m-gray-300 solid;
+            }
+
+            &.text-center {
+                text-align: center;
+            }
+
+            &[valign=middle] {
+                vertical-align: middle;
+            }
+        }
+
+        td {
+            .filemanager:not(.box-control) {
+                height: 33px;
+            }
+
+            .form-group {
+                margin-bottom: 0;
+
+                .form-group-input,
+                .sidebox .boxbody & .form-group-input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .header {
+        border-bottom: 0;
+        line-height: normal;
+
+        th {
+            border-top: 1px @m-gray-300 solid;
+        }
+    }
+
+    .footer {
+        text-align: center;
+
+        td:last-child,
+        td:first-child,
+        td {
+            border: 0;
+        }
+
+        .footer-btn {
+
+            i {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    &:active:not(:disabled) {
+        box-shadow: none;
+    }
+    
+    :not(button) {
+        > .fa-times,
+        > .md-error {
+            font-size: 20px;
+        }
+    }
+
+    .empty td {
+        text-align: left;
+    }
+
+    tr.footer:hover,
+    .empty:hover {
+        background: transparent;
+    }
+}
+

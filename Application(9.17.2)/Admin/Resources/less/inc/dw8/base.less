@@ -1,0 +1,35 @@
+
+.dw8-container, .screen-container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    position: relative;
+    margin-bottom: 160px;
+    padding: 10px; 
+
+    .card {
+        padding-bottom: 0;
+    }
+}
+
+.NewUIinput, .textInput, .std {
+    border: 1px solid #bdbdbd;
+    padding: 0 8px;
+    resize: none;
+    background-color: transparent;
+}
+
+.std-active {
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.34);
+    transition: all 200ms;
+}
+
+.std:active, .std:focus, .NewUIinput:active, .NewUIinput:focus, .textInput:active, .textInput:focus {
+    .std-active;
+}
+
+.bootstrap-select {
+    vertical-align: top;
+    padding: 0;
+    border: 0;
+}

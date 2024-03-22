@@ -1,0 +1,707 @@
+﻿table.recognition-editor {
+	table-layout: fixed;
+	border: none;
+	background-color: transparent;
+	width: ~"calc(100% - 180px)";
+	max-width: 768px;
+	min-width: 50%;
+
+	ul, li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.recognition-editor-left {
+		float: left;
+	}
+
+	.recognition-editor-right {
+		float: right;
+	}
+
+	div.recognition-editor-empty {
+		text-align: center;
+	}
+
+	div.recognition-editor-loading {
+		margin: 0 auto;
+		text-align: center;
+
+		img {
+			display: block;
+			width: 32px;
+			height: 32px;
+			margin: 0 auto;
+		}
+	}
+
+	div.recognition-editor-rules,
+	div.recognition-editor-expression {
+		overflow: hidden;
+		border: 1px solid #bdbdbd;
+		background-color: #ffffff;
+	}
+
+	div.recognition-editor-rules div.recognition-editor-rules-list,
+	div.recognition-editor-expression div.recognition-editor-expression-container {
+		overflow: auto;
+		overflow-x: hidden;
+	}
+
+	div.recognition-editor-rules {
+
+		ul {
+			padding-bottom: 1px;
+
+			li {
+				margin: 2px 2px 8px 2px;
+				background: #ffffff;
+				border: 1px solid #ffffff;
+				cursor: default;
+
+				&:hover {
+					border: 1px solid #bdbdbd;
+					background-color: #eeeeee;
+				}
+
+				strong {
+					display: block;
+					margin: 0;
+					padding: 2px;
+					overflow: hidden;
+					width: 1000px;
+					white-space: nowrap;
+				}
+
+				span {
+					margin: 0;
+					padding: 2px;
+					display: block;
+					color: #757575;
+				}
+			}
+		}
+	}
+
+	div.recognition-editor-expression {
+
+		.std {
+			border: 1px solid #bdbdbd;
+		}
+
+		ul.recognition-editor-expression-table-header,
+		div.recognition-editor-expression-container ul {
+			float: left;
+
+			li {
+				float: left;
+				min-height: 20px;
+				padding: 5px 0;
+
+				&.recognition-editor-combination-offset {
+					width: 20px;
+					margin: 0;
+				}
+
+				&.recognition-editor-cell-select {
+					width: 30px;
+					text-align: center;
+
+					label:before {
+						margin-right: 0;
+					}
+				}
+
+				&.recognition-editor-cell-rule {
+					width: 210px;
+				}
+
+				&.recognition-editor-cell-constraint-operator {
+					width: 120px;
+				}
+
+				&.recognition-editor-cell-constraint-value {
+					width: 310px;
+				}
+
+				&.recognition-editor-cell-actions {
+					width: 100px;
+					text-align: center;
+				}
+
+				.date-selector-time-minute, .date-selector-time-hour {
+					width: 40px;
+				}
+
+				.ajax-rich-control {
+					margin: 0;
+					position: relative;
+					width: 100%;
+
+					.input-group {
+						width: 100%;
+					}
+				}
+
+				.date-selector-label {
+					float: left;
+				}
+
+				.date-selector-button {
+					border: 1px solid @m-gray-400;
+				}
+
+				.date-selector-button:before {
+					font-family: 'FontAwesome';
+					content: "\f073";
+				}
+
+				.date-selector-label,
+				.date-selector-button,
+				.date-selector-dynamic-values,
+				&.recognition-editor-cell-constraint-value .date-selector-dynamic-values {
+					height: 30px;
+					width: 30px;
+					color: @text-color;
+				}
+
+				.date-selector-calendar, .dynamicDatesSelector {
+					top: 31px;
+					left: 0;
+				}
+			}
+		}
+
+		ul.recognition-editor-expression-table-header {
+			border-bottom: 1px solid #f0f0f0;
+			background-color: #f5f5f5;
+			cursor: default;
+			width: 100%;
+
+			li {
+				font-size: @font-size-base;
+				font-weight: bold;
+				text-transform: uppercase;
+
+				&.recognition-editor-cell-constraint-value {
+					width: 150px;
+				}
+			}
+		}
+
+		div.recognition-editor-expression-container {
+			position: relative;
+			overflow-x: auto;
+
+			ul {
+				background-color: #FFFFFF;
+				background-image: none;
+				border-bottom: 1px solid #f0f0f0;
+				cursor: default;
+				min-width: 740px;
+				width: 100%;
+
+				&:hover {
+					background: #eee;
+				}
+
+				&.recognition-editor-row-selected,
+				&.recognition-editor-row-combination-highlight {
+					background-color: #0085ca;
+					border-bottom: 1px #0085ca solid;
+				}
+
+				li {
+					margin: 0;
+
+					&.recognition-editor-cell-select {
+						padding: 10px 0;
+					}
+
+					&.recognition-editor-cell-select input {
+						margin-top: 9px;
+					}
+
+					select {
+						padding: 5px 4px;
+						background: white;
+					}
+
+					span.recognition-editor-cell-content-overflow {
+						float: left;
+						white-space: nowrap;
+						overflow: hidden;
+						width: 1000px;
+					}
+
+					&.recognition-editor-cell-constraint-operator select {
+						width: 110px;
+					}
+
+					&.recognition-editor-cell-constraint-value {
+
+						> div {
+							text-align: left;
+						}
+
+						select,
+						input,
+						a {
+							display: inline-block;
+							width: 304px;
+						}
+
+						input {
+							padding: 6px 8px;
+							background: white;
+						}
+
+						.field-group {
+
+							input {
+								width: 208px;
+							}
+
+							span {
+								vertical-align: top;
+
+								> a {
+									display: inline;
+								}
+							}
+
+							i {
+								text-align: center;
+								width: 32px;
+								height: 32px;
+								padding-top: 8px;
+								border: 1px solid #bdbdbd;
+								border-left: none;
+								vertical-align: top;
+								cursor: pointer;
+								background-color: white;
+
+								&:hover {
+									background-color: #f5f5f5;
+								}
+							}
+						}
+
+						select.allow-expression,
+						input.allow-expression {
+							width: 208px;
+						}
+					}
+
+					&.recognition-editor-cell-actions {
+						text-align: center;
+
+						a,
+						a:focus,
+						a:active,
+						a:hover {
+							outline: none;
+							color: #353535;
+						}
+					}
+				}
+			}
+
+			button.smartsearch-expression {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				border: none;
+			}
+		}
+	}
+
+	.recognition-editor-expression-hover {
+		background-color: #fafafa;
+	}
+
+	.recognition-editor-btn {
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+}
+
+.recognition-editor-rule-draggable {
+    width: 150px;
+    position: absolute;
+    padding: 2px;
+
+    &, &:hover {
+        border: 1px solid #bdbdbd;
+        background-color: #fafafa;
+    }
+
+    div.recognition-editor-rule-draggable-content {
+
+        strong {
+            display: block;
+            height: 16px;
+            max-height: 16px;
+            margin: 0;
+            padding: 2px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        span {
+            display: block;
+            color: #7b7b7b;
+        }
+    }
+}
+
+div.recognition-editor-balloon {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 9;
+    cursor: default;
+
+    div.recognition-editor-balloon-clear {
+        height: 0;
+        width: 0;
+        display: block;
+        visibility: hidden;
+        clear: both;
+        content: ".";
+    }
+
+    table.recognition-editor-balloon-grid {
+        table-layout: fixed;
+        margin: 0;
+        padding: 0;
+        border: none;
+
+        tr td {
+            margin: 0;
+            padding: 0;
+            border: none;
+
+            &.recognition-editor-balloon {
+
+                &-grid-tl,
+                &-grid-tr,
+                &-grid-bl,
+                &-grid-br {
+                    width: 19px;
+                    background-repeat: no-repeat;
+                    background-image: url('/Admin/Module/OMC/img/balloon-corners.png');
+                }
+
+                &-grid-tl,
+                &-grid-tr {
+                    height: 19px;
+                }
+
+                &-grid-bl,
+                &-grid-br {
+                    height: 15px;
+                }
+
+                &-grid-tl {
+                    background-position: 0 0;
+                }
+
+                &-grid-tr {
+                    background-position: 0 -1000px;
+                }
+
+                &-grid-bl {
+                    background-position: 0 -66px;
+                }
+
+                &-grid-br {
+                    background-position: 0 -81px;
+                }
+
+                &-grid-tm,
+                &-grid-bm {
+                    background-repeat: repeat-x;
+                }
+
+                &-grid-ml,
+                &-grid-mr {
+                    background-repeat: repeat-y;
+                }
+
+                &-grid-tm {
+                    height: 19px;
+                    background-image: url('/Admin/Module/OMC/img/balloon-border-t.png');
+                    background-position: 0 -10px;
+                }
+
+                &-grid-bm {
+                    height: 15px;
+                    background-image: url('/Admin/Module/OMC/img/balloon-border-b.png');
+                }
+
+                &-grid-ml {
+                    width: 19px;
+                    background-image: url('/Admin/Module/OMC/img/balloon-border-l.png');
+                }
+
+                &-grid-mr {
+                    width: 19px;
+                    background-image: url('/Admin/Module/OMC/img/balloon-border-r.png');
+                }
+
+                &-grid-mm {
+                    background-color: #ffffff;
+                }
+            }
+        }
+    }
+
+    div.recognition-editor-balloon-title-container {   
+        left: 0;
+        right: -1px;
+        top: -15px;
+        position: absolute;
+        background-color: transparent;
+
+        table.recognition-editor-balloon-title {
+            table-layout: fixed;
+            float: right;
+            margin: 0;
+            padding: 0;
+            border: none;
+
+            tr td {
+                margin: 0;
+                padding: 0;
+                border: none;
+
+                &.recognition-editor-balloon-title {
+
+                    &-tl,
+                    &-tr {
+                        width: 19px;
+                        height: 34px;
+                        background-repeat: no-repeat;
+                        background-image: url('/Admin/Module/OMC/img/balloon-title.png');
+                    }
+
+                    &-tl {
+                        background-position: 0 0;
+                    }
+
+                    &-tr {
+                        background-position: -20px 0;
+                    }
+
+                    &-tm {
+                        height: 34px;
+                        background-repeat: repeat-x;
+                        background-image: url('/Admin/Module/OMC/img/balloon-border-t.png');
+                        background-position: 0 -10px;
+                        padding-top: 10px;
+
+                        span {
+                            background-color: #ffffff;
+                            display: block;
+                            color: #0e639f;
+                            margin: 0;
+                            padding: 0;
+                            padding-top: 2px;
+                            height: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+div.recognition-editor-actions-list {
+    margin: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    div.recognition-editor-points-description,
+    div.recognition-editor-points-parent-description,
+    div.recognition-editor-points-value {
+        width: 200px;
+        margin-bottom: 5px;
+    }
+
+    div.recognition-editor-points-parent-description {
+        color: #9a9a9a;
+        font-size: 9px;
+        margin-bottom: 10px;
+    }
+
+    div.recognition-editor-points-value {
+        margin-bottom: 10px;
+    }
+
+    ul li {
+        height: 16px;
+        line-height: 16px;
+
+        a {
+            display: block;
+            float: left;
+            padding-left: 18px;
+            background-position: left top;
+            background-repeat: no-repeat;
+
+            &,
+            &:hover,
+            &:active,
+            &:focus {
+                outline: none;
+            }
+
+            &.recognition-editor-action {
+
+                &-orderup {
+                    background-image: url('/Admin/Module/OMC/img/arrow_up_small.png');
+                }
+
+                &-orderdown {
+                    background-image: url('/Admin/Module/OMC/img/arrow_down_small.png');
+                }
+
+                &-remove {
+                    background-image: url('/Admin/Module/OMC/img/delete_small.png');
+                }
+
+                &-ungroup {
+                    background-image: url('/Admin/Module/OMC/img/unlink_small.png');
+                }
+
+                &-disabled {
+                    opacity: 0.5;
+
+                    &,
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        color: #727272;
+                        cursor: default;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.recognition-editor-combination {
+    position: absolute;
+    z-index: 9;
+    background-color: transparent;
+    background-image: none;
+    cursor: default;
+    margin: 0;
+    padding: 0;
+
+    .recognition-editor-combination-top,
+    .recognition-editor-combination-bottom {
+        margin: 0;
+        padding: 0;
+    }
+
+    .recognition-editor-combination-top,
+    .recognition-editor-combination-bottom {
+        background-image: url('/Admin/Module/OMC/img/selection.png');
+        background-repeat: no-repeat;
+    }
+
+    .recognition-editor-combination-top {
+        background-position: left top;
+    }
+
+    .recognition-editor-combination-bottom {
+        background-position: left bottom;
+    }
+
+    .recognition-editor-combination-operator {
+        width: 20px;
+        height: 8px;
+        line-height: 8px;
+        text-align: center;
+        margin: 2px 0 2px -8px;
+        cursor: pointer;
+        padding: 0;
+
+        .recognition-editor-combination-operator-text,
+        .recognition-editor-combination-operator-and,
+        .recognition-editor-combination-operator-or {
+            margin: 0 auto;
+            padding: 0;
+            border: none;
+            outline: none;
+            white-space: nowrap;
+            overflow: hidden;
+            background-color: #ffffff;
+            font-size: 8px;
+            text-transform: uppercase;
+            color: #353535;
+        }
+
+        .recognition-editor-combination-operator-and {
+            width: 20px;
+        }
+
+        .recognition-editor-combination-operator-or {
+            width: 16px;
+        }
+    }
+}
+
+.date-selector {
+
+    &-label {
+        width:70px;
+        text-align: left;
+    }
+
+    &-button {
+        margin-top: 1px;
+    }
+
+    &-time-hour {
+        width:20px
+    }
+
+    &-time-minute {
+        width:20px
+    }
+
+    &-dynamic-values {    
+        display: table-cell;
+        float: left;
+        width: 1%;
+        white-space: nowrap;
+        vertical-align: middle;
+        text-align: center;
+        height: 18px;
+        margin-left: 0;
+        background-color: #ffffff;
+        padding: 0 7px;
+        margin-left:-1px;
+
+        &:hover  {    
+            background-color: #ffffff;
+        }
+    }
+}
+
+.dynamicDatesSelector {
+   border: 1px solid @m-gray-400;
+   position: absolute;
+   width: 210px;
+   z-index: 4;
+}
+
+.DateSelectorLabel {
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,113 @@
+.pagination {
+    border-radius: 0;
+    margin: 0;
+    padding: 10px 10px 10px 0;
+    float: left;
+    
+    & > li {
+        display: inline-block;
+        vertical-align: top;
+        float: left;
+
+        &:not(.disabled):hover,
+        &:not(.disabled):focus,
+        &:not(.disabled):active {
+            a {
+                background-color: @m-gray-100;
+                border-color: transparent;
+            }
+        }
+        
+        &.pg-label {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 5px;
+            float: left;
+            padding: 5px;
+            line-height: 21px;
+        }
+        
+        & > a,
+        & > span {
+            display: block;
+            text-align: center;
+            line-height: 20px;
+            height: 30px;
+            width: 30px;
+            font-size: 20px;
+            vertical-align: top;
+            float: left;
+            padding: 4px 5px 6px;
+            background-color: transparent;
+            border: 1px transparent solid;
+            box-sizing: border-box;
+            border-radius: 0 !important;
+            
+            & > .md {
+                font-size: 20px;
+            }
+        }
+        
+        &.disabled {
+            opacity: 0.5;
+
+            a {
+                background-color: transparent !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+} 
+
+/*
+ * Listview Pagination
+ */
+.lv-pagination {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid #F0F0F0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.list-pagination {
+    text-align: right;
+    padding: 10px;
+    float: left;
+
+    .pg-button {
+        display: block;
+        text-align: center;
+        line-height: 20px;
+        height: 30px;
+        width: 30px;
+        font-size: 20px;
+        vertical-align: top;
+        float: left;
+        padding: 4px 5px 6px;
+        border: 1px transparent solid;
+        box-sizing: border-box;
+
+        &:not(.disabled):hover,
+        &:not(.disabled):focus,
+        &:not(.disabled):active {
+            background: @m-gray-100;
+            border-color: transparent;
+        }
+
+        &.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    span.pg-label {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 5px;
+        float: left;
+        padding: 5px;
+        line-height: 21px;
+    }
+}

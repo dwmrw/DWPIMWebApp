@@ -1,0 +1,231 @@
+﻿.color-swatch-picker input[type=radio] {
+    visibility: hidden;
+    position: absolute;
+}
+
+.color-swatch-picker__set {
+    height: 32px;
+    border-right: 1px solid #bdbdbd;
+    float: left;
+    padding: 0 7px;
+    position: relative;
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &.color-swatch-picker__set--custom {
+        border-right: none;
+        padding-right: 0;
+    }
+
+    &.color-swatch-picker__set--transparent {
+        .color-swatch-picker__color-label::before {
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 50 50'><path d='M 0 50 L 50 0' stroke='red' stroke-width='4' /></svg>");
+            background-repeat: no-repeat;
+        }
+    }
+}
+                        
+.color-swatch-picker__color {
+    margin-right: 4px;
+    float: left;
+    position: relative;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &.color-swatch-picker__color--with-shade {
+        position: relative;
+        width: 47px;
+        box-sizing: border-box;
+
+        .color-swatch-picker__color-label::before {
+            border-radius: 30px !important;
+        }
+
+        .color-swatch-picker__color-label:hover {
+            position: relative;
+            z-index: 3;
+
+            &:before {
+                box-shadow: -1px 2px 1px rgba(0,0,0,0.2);
+            }
+        }
+    }
+
+    .color-swatch-picker__color--shade {
+        position: absolute;
+        top: 0;
+        left: 15px;
+
+        .color-swatch-picker__color-label::before {
+            box-shadow: -1px 2px 1px rgba(0,0,0,0.2);
+        }
+    }
+
+    .color-swatch-picker__color-label {
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        position: relative;
+        margin-bottom: 0;
+        display: block;
+        box-sizing: border-box;
+
+        &::before {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #bdbdbd;
+            float: left;
+            background: var(--color);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            content: "";
+            box-sizing: border-box;
+        }
+
+        &::after {
+            transition: all 0.25s ease;
+            height: 8px;
+            width: 15px;
+            border-left: 3px var(--markColor) solid;
+            border-bottom: 3px var(--markColor) solid;
+            transform: rotate(-45deg);
+            left: 8px;
+            top: 11px;
+            display: inline-block;
+            position: absolute;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        &.color-swatch-picker__color-label--editable {
+            width: 100px;
+            text-indent: 28px;
+            font-size: 15px;
+            color: var(--markColor);
+        }
+    }
+
+    //for custom color
+    input.color-swatch-picker__color-label {
+        border: 1px solid #bdbdbd;
+        transition: all 0.25s ease;
+        cursor: pointer;
+        outline: none;
+        text-indent: 200px;
+
+        &::before {
+            content: unset;
+        }
+    }
+
+    input[type=radio]:checked {
+        & + .color-swatch-picker__color-label {
+            position: relative;
+            z-index: 2;
+
+            &::before {
+                border-radius: 30px;
+            }
+
+            &::after {
+                content: "";
+            }
+        }
+
+        & + input.color-swatch-picker__color-label {
+        //custom color support
+            border-radius: 30px;
+
+            &::after {
+                content: unset;
+            }
+
+            & + .color-swatch-picker__color-mark {
+                height: 8px;
+                width: 15px;
+                border-left-style: solid;
+                border-left-width: 3px;
+                border-bottom-style: solid;
+                border-bottom-width: 3px;
+                border-color: black;
+                transform: rotate(-45deg);
+                left: 8px;
+                top: 11px;
+                display: inline-block;
+                position: absolute;
+                cursor: pointer;
+                box-sizing: border-box;
+                z-index: 2;
+            }
+        }
+    }
+
+    input[type=radio]:not(:checked) {
+        & + .color-swatch-picker__color-label:hover::before,
+        & + input.color-swatch-picker__color-label:hover
+        //custom color support
+        {
+            border-radius: 5px;
+        }
+    }
+}
+
+.color-swatch-picker__edit {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background: white;
+    font-size: 20px;
+    float: left;
+    margin-left: 3px;
+    outline: none;
+}
+
+.color-swatch-picker__shades {
+    background: white;
+    position: absolute;
+    top: 39px;
+    padding: 4px;
+    height: 42px;
+    left: -5px;
+    width: 186px;
+    border: 1px #bbb solid;
+    display: none;
+    z-index: 9;
+    box-sizing: border-box;
+    box-shadow: -1px 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.25s ease;
+    
+    &::before {
+        border: 8px transparent solid;
+        border-bottom-color: #bbbbbb;
+        margin-left: -8px;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        top: -16px;
+        left: var(--left);
+    }
+ 
+    &::after {
+        border: 8px transparent solid;
+        border-bottom-color: white;
+        margin-left: -8px;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        top: -15px;
+        left: var(--left);
+    }
+}

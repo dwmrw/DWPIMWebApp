@@ -1,0 +1,14 @@
+<GetEcomData ExternalUserId="UserIdHere" AccessUserCustomerNumber="UserIdHere">
+  <tables>
+    <Products type="filter">
+      <Product>
+        <ProductId>ProductId</ProductId>
+        <ProductVariantId />
+        <ProductNumber>ProductId</ProductNumber>
+        <ProductIdentifier>ProductIdentifier</ProductIdentifier>
+        <CurrencyCode>USD</CurrencyCode>
+        <Quantity>1</Quantity>
+      </Product>
+    </Products>
+  </tables>
+</GetEcomData>

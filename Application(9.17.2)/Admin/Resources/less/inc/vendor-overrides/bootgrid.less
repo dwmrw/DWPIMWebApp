@@ -1,0 +1,214 @@
+.bootgrid-footer .infoBar, .bootgrid-header .actionBar {
+    text-align: right;
+}
+
+.bootgrid-footer .search, .bootgrid-header .search {
+    vertical-align: top;
+}
+
+.bootgrid-header {
+    padding: 7px 7px;
+	background-color: @m-gray-100;
+    border-bottom: 1px solid @m-gray-300;
+
+    .search.form-group {
+        padding: 0 !important;
+        display: inline-block;
+        margin: 0;
+        vertical-align: middle;
+        float: left;
+        width: auto;
+
+        .input-group {
+            width: initial !important;
+            margin-right: initial;
+            float: initial;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .actions {
+
+        .row-count-select {
+            width: auto;
+            float: right;
+            margin-left: 20px;
+        }
+
+        .btn-group {
+            display: inline-block;
+            vertical-align: top;
+
+            .dropdown-menu {
+                padding: 10px 20px;
+
+                .dropdown-item {
+                    padding: 0 0 0 27px !important;
+
+                    &:hover {
+                        background-color: #fff !important;
+                    }
+                }
+
+                @media (min-width: @screen-sm-min) {
+                    left: 0;
+                    .transform-origin(top left);
+                    margin-top: 1px;
+                }
+            }
+
+            .caret {
+                display: none;
+            }
+
+            .md {
+                line-height: 100%;
+                font-size: 18px;
+                vertical-align: top;
+                .transition(all);
+                .transition-duration(250ms);
+            }
+
+            &.open {
+                .md {
+                    .rotate(90deg);
+                }
+            }
+        }
+
+        @media (max-width: @screen-xs-min) {
+            position: absolute;
+            top: 0;
+            right: 15px;
+        }
+    }
+}
+
+.bootgrid-table {
+    th > .column-header-anchor > .icon {
+        top: 0px;
+        font-size: 20px;
+        line-height: 100%;
+    }
+
+    td {
+        cursor: pointer;
+    }
+
+    .no-results {
+        cursor: default;
+        background: white;
+    }
+
+    td.dw-select-cell label {
+        cursor: pointer;
+    }
+
+    &.table {
+        margin-bottom: 0;
+
+        & > thead, & > tbody, & > tfoot {
+            & > tr {
+                & > td, & > th {
+                    border-top: 1px solid @m-gray-300;
+                }
+
+                &.active,
+                &.dw-multi-active {
+                    & > td, & > th {
+                        border-top: 1px solid @brand-primary;
+                        background: @brand-primary;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+
+    &.table > thead {
+        border-bottom: 0;
+     
+        & > tr > th {
+            border-bottom: 0;
+        }
+    }
+    
+    td.text-ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 0;
+    }
+
+    td.dw-select-cell {
+        width: 35px;
+    }
+}
+
+.widget .grid-container {
+    height: 318px;
+    margin: 0px;
+}
+
+.card > .card-body > .row .grid-container {
+    margin: -10px 5px;
+}
+
+.card-row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.card-row .list td {
+    padding: 5px;
+}
+
+.grid-container {
+    table {
+        padding-bottom: 4px;
+    }
+}
+
+.bootgrid-footer {
+    padding-left: 7px;
+    padding-right: 7px;
+
+    .col-sm-6 {
+        padding: 10px 30px 20px;
+
+        @media (max-width: @screen-sm-min) {
+            text-align: center;
+        }
+    }
+
+    .infoBar {
+        @media (max-width: @screen-sm-min) {
+            display: none;
+        }
+
+        .infos, .selected-files-info {
+            border: 1px solid #EEE;
+            display: inline-block;
+            float: right;
+            padding: 7px 15px;
+            font-size: 12px;
+            margin: 5px 0;
+        }
+    }
+}
+
+.select-cell {
+    .checkbox {
+        margin: 0;
+    }
+}
+
+.select-cell-hidden .select-cell {
+    display: none;
+}
+
+.command-edit, .command-delete {
+    background: #fff;
+    border: 1px solid #eee !important;
+}

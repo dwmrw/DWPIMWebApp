@@ -1,0 +1,148 @@
+
+
+#profile-menu {
+    display: none;
+}
+
+#hax-layout {
+    padding-top: 54px;
+
+    .b-container > #content-container > iframe, .dw8-container {
+        top: -54px;
+    }
+
+    #header {
+        background-color: #1a1a1a;
+        height: 54px;
+        z-index: 10000;
+    }
+
+    .header-inner {
+        padding: 10px 0;
+
+        .logo {
+            position: relative;
+            background-color: @m-blue;
+            top: -10px;
+            height: 54px;
+            padding-top: 0px;
+        }
+
+        #header-burger > div {
+            margin-top: 9px;
+            margin-right: 8px;
+            margin-left: 45px;
+        }
+    }
+
+    #sidebar-trigger {
+        display: none;
+    }
+
+    #static-sidebar {
+        background-color: @m-blue; 
+        height: auto;
+
+        a {
+            color: #fff !important;
+        }         
+    }
+
+    .tree .tree-btn:hover, .tree .tree-btn:active, .tree .tree-btn:focus {
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 0;
+    }
+
+    #static-sidebar, #sidebar {
+        width: 308px;
+
+        a {
+            display: inline-block;
+            padding: 15px;
+            width: 100%;
+            position: relative;
+            text-align: left;
+        } 
+
+        .btn-clean:hover, .btn-clean:active, .btn-clean:focus, .btn-clean.active {
+            background-color: rgba(0,0,0,0.2) !important;
+        }
+
+        .static-menu-title {
+            display: inline-block;
+            margin-left: 15px;
+            padding-bottom: 7px;
+        }
+    }  
+}
+
+
+/*
+Fields boxed vs. material layout
+*/
+
+.boxed-fields {
+    .form-control {
+        min-height: 32px; 
+    }
+
+    .form-control, .selectpicker {
+        border: 1px solid @m-gray-400 !important;  
+    }
+
+    .form-control {
+        padding: 6px 8px;
+    }
+
+    button.selectpicker {
+        padding: 6px 16px 6px 8px;
+        height: 32px;
+    }
+
+    .form-control:focus {
+        box-shadow: 0 0 4px 0 rgba(0,0,0,0.34);
+        transition: all 200ms;
+    }
+
+    .form-group-input:not(.disabled)::after, .form-group-input:not(.readonly)::after {
+        height: 0;    
+    }
+
+    .input-group-addon {
+        padding-right: 8px;
+        border: 1px solid @m-gray-400;
+        background-color: @m-gray-50;
+    }
+}
+
+
+/*
+Fields and groupboxes configurations
+*/
+
+.column-boxes {
+    .groupbox {
+        width: 50%;
+
+        .groupbox {
+            width: 100%;
+        }
+    }
+
+    .groupbox-line {
+        left: -5px;
+        width: ~"calc(100% + 5px)"; 
+    }
+
+    .vertical-line-seperator {
+        border-left: 1px solid @m-gray-200;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: ~"calc(50% - 5px)";
+    }
+
+    .list-editor-box {
+        width: 100%;
+    }
+}

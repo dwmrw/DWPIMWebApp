@@ -1,0 +1,186 @@
+/*
+ * Block Header
+ * Used for Heading outside the Cards.
+ */
+.block-header {
+    padding: 0 16px 10px; 
+    margin-bottom: 0 !important;
+    position: relative;
+    /*height: 32px;*/
+
+    & > h2 {
+        font-size: 15px;
+        color: #777;
+        margin: 0;
+        font-weight: 400;
+        text-transform: uppercase;
+        
+        & > small {
+            display: block;
+            text-transform: none;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            color: #9E9E9E;
+            line-height: 140%;
+        }
+
+        i {
+            margin: 0px 4px;
+        }
+    }
+    
+    .actions {
+        position: absolute; 
+        right: 12px;
+        top: -4px;
+        z-index: 3;
+    }
+
+    & a {
+        color: #777 !important;
+    }
+}
+
+/*
+ * Header Actions
+ */
+.actions {
+    list-style: none;
+    padding: 0;
+    z-index: 2; 
+    margin: 0;
+    
+    & > li {
+        display: inline-block;
+        vertical-align: baseline;
+    }
+
+    .vertical-line {
+        margin-left: 6px;
+        margin-right: 6px;
+        border-left: 1px solid rgba(0,0,0,0.12);
+    }
+    
+    & > li > a,
+    & > a {
+        width: 30px;
+        height: 30px;
+        line-height: 29px;
+        display: inline-block; 
+        text-align: center;
+
+        & > i {
+            .transition(color);
+            .transition-duration(1300ms);
+            color: rgba(0,0,0,0.5);
+            font-size: 18px;
+        }
+        
+        /*&:hover {
+            & > i {
+                color: #000;
+            }
+        }
+
+        .hover-pop(rgba(0,0,0,0.1), 50%, 250ms, 0);*/
+    }
+ 
+    & > li.open, 
+    &.open {
+        & > a {
+            & > i {
+                color: #000;
+            }
+            
+            &:before {
+                .scale(1);
+                .opacity(1);
+            }
+        }
+    }
+    
+    &.actions-alt {
+        & > li {
+            & > a > i {
+                color: #fff;
+                
+                &:hover {
+                    color: #fff;
+                }
+            }
+            
+            &.open {
+                & > a {
+                    & > i {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    
+    &.open {
+        z-index: 3;
+    }
+}
+
+/*
+ * Header Tools
+ */
+.headertools {
+    list-style: none;
+    padding: 0;
+    z-index: 2; 
+    margin: 0;
+    position: absolute; 
+    right: 20px;
+    top: 10px;
+    z-index: 3;
+    
+    & > li {
+        display: inline-block;
+        vertical-align: baseline;
+    }
+
+    .vertical-line {
+        margin-left: 6px;
+        margin-right: 6px;
+        border-left: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .active {
+        & > i {
+            color: #fff;
+        }
+    }
+    
+    & > li > a,
+    & > a {
+        width: 30px;
+        height: 30px;
+        line-height: 29px;
+        display: inline-block; 
+        text-align: center;
+        background-color: transparent;
+
+        & > i {
+            .transition(color);
+            .transition-duration(300ms);
+            color: #adadad;
+            font-size: 16px;
+        }
+        
+        &:hover {
+            .transition(all);
+            .transition-duration(300ms);
+
+            & > i {
+                color: #fff;
+            }
+        }
+
+        &:before {
+            border-radius: 0px !important;
+        }
+    }
+}

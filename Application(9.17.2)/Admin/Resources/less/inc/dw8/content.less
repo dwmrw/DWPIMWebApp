@@ -1,0 +1,56 @@
+
+body {
+	#content {
+		top: 0;
+	}
+
+	.card {
+		legend, .groupbox-header {
+			margin-bottom: 10px;
+			font-size: @font-size-base;
+			text-transform: uppercase;
+			color: @m-gray-700;
+			font-weight: bold;
+			border: 0;
+		}
+
+		fieldset {
+			max-width: 100%;
+			margin-bottom: 20px;
+		}
+	}
+
+	.groupbox {
+		margin-bottom: 16px;
+	}
+
+	.groupbox-line {
+		height: 1px;
+		background-color: @m-gray-300;
+		position: absolute;
+		left: -10px;
+		width: ~"calc(100% + 20px)";
+	}
+}
+
+.content-table {
+    label {
+        height: 35px;
+        display: block;
+        margin-top: 8px;
+    }
+
+    td {
+        min-width: 220px;
+        vertical-align: top;
+    }
+}
+
+.overflow-x {
+    overflow-x: inherit;
+    overflow-y: hidden;
+}
+
+.ContainerDummy {
+    background-color: @m-gray-200;   
+}

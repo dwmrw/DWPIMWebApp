@@ -1,0 +1,83 @@
+﻿@import 'inc/bootstrap-master/mixins/clearfix';
+
+.row {
+    .clearfix();
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.infobar {
+    padding: 10px;
+}
+
+@media (min-width: 768px) {
+    #UniqueLinksDiv, #TotalLinksDiv {
+        max-height: 249px;
+    }
+}
+
+.statistics {
+    * {
+        box-sizing: border-box;
+    }
+
+    .clear-left {
+        clear: left;
+    }
+
+    .overflow-table {
+        overflow-y: auto;
+        border-top: 1px @m-gray-300 solid;
+        border-bottom: 1px @m-gray-300 solid;
+
+        .table {
+            border-top: 0;
+            border-bottom: 0;
+
+            .listRow:last-child td {
+                border-bottom: 0;
+            }
+        }
+    }
+
+    .groupbox {
+        border-bottom: 0;
+        padding: 15px 0;
+
+        &.full-width .form-group-input {
+            width: 100%;
+        }
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+
+    .table th {
+        padding: 5px;
+    }
+
+    .table thead tr:hover {
+        background: inherit;
+    }
+
+    .statistics-legend {
+        padding-left: 0;
+        margin-bottom: 0;
+        margin-top: 0;
+
+        li {
+            list-style: none;
+
+            .statistics-legend-item {
+                width: 10px;
+                height: 10px;
+                float: left;
+                margin-right: 5px;
+                margin-top: 4px;
+            }
+        }
+    }
+}

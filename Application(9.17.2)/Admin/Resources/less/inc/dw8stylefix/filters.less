@@ -1,0 +1,151 @@
+﻿.list {
+
+    .filters {
+		padding: 5px 16px;
+		background-color: @m-gray-100;
+
+        .filter {
+		    float: left;
+		    padding-right: 10px;
+		    line-height: 20px;
+		    vertical-align: middle;
+		    margin-top: 2px;
+		    margin-bottom: 2px;
+
+            .checkbox {
+		        float: left;
+	        }
+
+            .filterLabel {
+		        display: block;
+		        padding-right: 10px;
+		        float: left;
+		        vertical-align: top;
+		        font-size: 12px;
+                width: 140px;
+                padding-top: 5px;
+                line-height: 1;
+	        }
+
+	        .filterLabelRight {
+		        display: block;
+		        padding-right: 10px;
+		        float: right;
+		        vertical-align: top;
+		        font-size: 12px;
+	        }
+
+	        input.submitImage {
+		        margin-top: 0px;
+		        height: 20px;
+		        vertical-align: top;
+		        border: 1px solid #ABADB3;
+		        border-left: 0px solid black;
+
+                &:focus {
+		            outline: none;
+	            }
+	        }
+
+	        a.optionLink {
+		        text-decoration: underline;
+		        margin-left: 2px;
+		        margin-right: 2px;
+
+                &:focus {
+                    outline: none;
+                }
+	        }
+
+	        a.optionLinkSelected {
+		        font-weight: bold;
+	        }
+
+            .ListDateFilterSelectorDiv {
+                float: left;
+	            width: 220px;
+            }
+
+            .ListDateTimeFilterSelectorDiv {
+	            float: left;
+	            width: 220px;
+            }
+
+            .list-link-filter-selector-container {
+	            float: left;
+	            width: 220px;
+            }
+
+            .std {
+                padding: 2px 4px;
+                height: 25px;
+            }
+
+            select.std {
+                padding: 2px 4px 2px 0;
+            }
+
+            input.std {
+                padding: 1px 4px 2px 4px;
+            }
+
+            .input-group-addon {
+                height: 25px;
+                width: 24px;
+                box-sizing: border-box;
+                line-height: 23px;
+
+                i {
+                    font-size: 12px;
+                    margin-top: 0;
+                    line-height: 23px;
+                    vertical-align: top;
+                }
+            }
+
+            .DateSelectorLabel {
+                width: 172px;
+            }
+            
+            .list-filter-link-single-selector{
+                width: 196px;
+            }
+
+            .list-filter-link-double-selector{
+                width: 172px;
+            }
+
+            .list-filter-link-triple-selector{
+                width: 148px;
+            }
+
+            .number-selector-field .number-selector-arrows a {
+               height: 12px;
+
+               i {
+                    line-height: 12px;
+               }
+            }
+
+            .ajax-rich-control .input-group .std {
+                width: 168px;
+            }
+	    }
+
+	    br {
+		    clear: both;
+	    }
+	}
+}
+
+#collapseFiltersCell {
+	background-color: @m-gray-400;
+	text-align: center;
+	background-repeat: repeat-x;
+	background-position: bottom;
+	height: 1px;
+}
+
+#collapseFiltersCell > i {
+    cursor: pointer;
+}

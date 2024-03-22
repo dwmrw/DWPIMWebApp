@@ -1,0 +1,1 @@
+﻿<GetEcomData Qty="10" ReimportTable="true" SetCheckpointToNow="false" CustomModifier="Test"><tables><ProductStock type="all" /></tables></GetEcomData>

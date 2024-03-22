@@ -1,0 +1,84 @@
+#toolspane {
+    position: fixed;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(51, 51, 51, 0.38);
+    top: 0px;
+    height: 100%;
+    .translate3d(-250px, 0, 0);
+    z-index: 4;
+    width: 180px;
+    overflow: hidden;
+    .opacity(0);
+    .transition(all);
+    .transition-duration(300ms);
+    
+    .sidebar-inner {
+        height: 100%;
+        overflow-y: auto;
+        width: 300px;
+
+        .si-inner {
+            width: 250px;
+        }
+    }
+    
+    &.toggled {
+        .translate3d(250px, 0, 0);
+        .opacity(1);
+    }
+    
+    .main-menu {
+        list-style: none;
+        padding-left: 0;
+        
+        & > li {
+            & > a {
+                padding: 14px 20px 14px 52px;
+                display: block;
+                color: #4C4C4C;
+                font-weight: 500;
+                position: relative;
+                background-color: #fff;
+                .transition(all);
+                .transition-duration(300ms);
+                
+                &:hover {
+                    color: #262626;
+                    background-color: #f7f7f7;
+                }
+                
+                & > i {
+                    position: absolute;
+                    left: 16px;
+                    font-size: 20px;
+                    top: 0;
+                    width: 25px;
+                    text-align: center;
+                    padding: 9px 0;
+                }
+            }
+
+            &.active {
+                & > a {
+                    color: #262626;
+                    background-color: #F4F4F4;
+                }
+            }
+
+            & > hr {
+                margin: 0px;
+            } 
+        }
+    }
+}
+
+/*
+ * For Stupid IE9
+ */
+.ie9 {
+    #panetools:not(.toggled) {
+        .translate3d(0, 0, 0);
+        .opacity(0);
+        display: none;
+    }
+}

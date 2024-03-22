@@ -1,0 +1,144 @@
+﻿.box-control {
+
+	& &-box {
+		min-height: 155px;
+		height: 155px;
+		width: 300px;
+		max-width: ~'calc(100% - 33px)';
+		display: inline-block;
+		border: 1px #bdbdbd solid;
+		margin: 0;
+		padding: 0;
+		overflow: auto;
+
+		li {
+			cursor: pointer;
+			list-style: none;
+			margin: 0;
+			padding: 5px 6px;
+			border: 0;
+			position: relative;
+			height: 31px;
+			box-sizing: border-box;
+			white-space: nowrap;
+
+			&:hover {
+				background: @m-gray-200;
+			}
+
+			&.selected,
+			&.selected:hover {
+				background-color: @brand-primary;
+				color: @m-white;
+
+				i {
+					color: @m-white !important;
+				}
+			}
+
+			i {
+				width: 20px;
+				text-align: center;
+				margin-right: 5px;
+				font-size: 18px;
+				padding-top: 2px;
+			}
+
+			.text {
+				display: inline-block;
+				vertical-align: top;
+				white-space: nowrap;
+				max-width: ~'calc(100% - 30px)';
+				overflow: hidden;
+				text-overflow: ellipsis;
+				line-height: 21px;
+			}
+		}
+	}
+
+	&.disabled {
+		.box-control-box {
+			cursor: default;
+			pointer-events: none;
+            border-color: @m-gray-100;
+
+			img {
+				opacity: 0.7;
+			}
+		}
+
+		.box-control-actions button {
+			cursor: default;
+			pointer-events: none;
+            border-color: #f5f5f5;
+
+			&:last-child {
+				border-bottom: 1px @m-gray-100 solid;
+            }
+
+			i {
+				opacity: 0.3;
+			}
+		}
+	}
+
+	.has-error & {
+		.box-control-box {
+            border-color:  @state-danger-text;
+		}
+
+		.box-control-actions button {
+            border-color: @state-danger-text;
+
+			&:last-child {
+				border-bottom: 1px @state-danger-text solid;
+            }
+		}
+	}
+
+	& &-actions {
+		display: inline-block;
+		vertical-align: top;
+
+		button {
+			width: 31px;
+			height: 31px;
+			display: block;
+			text-align: center;
+			background: #fff;
+			transition: all,100ms,ease;
+			border: 1px #bdbdbd solid;
+			padding: 0;
+			border-left: 0;
+			border-bottom: 0;
+			box-sizing: border-box;
+			outline: none;
+
+			i {
+				vertical-align: top;
+				font-size: 18px;
+				line-height: 18px;
+
+				&.fa {
+					font-size: @font-size-base;
+				}
+			}
+
+			&:last-child {
+				border-bottom: 1px @m-gray-400 solid;
+				height: 32px;
+
+				&:nth-child(5) {
+					height: 33px;
+				}
+			}
+
+			&:hover {
+				background: @m-gray-100;
+				box-shadow: none;
+				-webkit-box-shadow: none;
+				color: @text-color;
+			}
+		}
+	}
+}

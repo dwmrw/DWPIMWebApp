@@ -1,0 +1,81 @@
+﻿.dwe-values.attachmentControl {
+	padding: 0;
+
+	.dwe-values-list {
+		display: inline-block;
+
+		ul li {
+			font-size: @font-size-base;
+			padding: 6px 27px 6px 6px;
+			height: auto;
+			border: 0;
+			border-bottom: 1px @m-gray-400 solid;
+			position: relative;
+
+			a {
+				.md-icons;
+				visibility: hidden;
+				color: @brand-danger;
+				width: 27px;
+				height: 21px;
+				margin: 0;
+				position: absolute;
+				top: 0;
+				right: 0;
+				text-align: center;
+				padding-top: 6px;
+				float: none;
+
+				&:before {
+					content: "";
+				}
+			}
+
+			&:hover {
+				border: 0;
+				border-bottom: 1px @m-gray-400 solid;
+				background-color: transparent;
+
+				a {
+					visibility: visible;
+
+					i.color-default {
+						color: @m-white;
+					}
+				}
+			}
+
+			span {
+				overflow: auto;
+				float: none;
+			}
+		}
+	}
+
+	.dwe-values-add {
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 0;
+		text-align: center;
+		background: @m-gray-100;
+		transition: all,100ms,ease;
+		position: relative;
+		margin-left: -3px;
+
+		i {
+			width: 25px;
+			height: 21px;
+			padding-top: 4px;
+		}
+
+		&:hover {
+			background: @brand-primary;
+			color: @m-white;
+			box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+
+			i.color-default {
+				color: @m-white;
+			}
+		}
+	}
+}

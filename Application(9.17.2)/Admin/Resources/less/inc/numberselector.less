@@ -1,0 +1,49 @@
+﻿.number-selector-field {
+    position: relative;
+    width: 120px;
+    padding: 0;
+    margin: 0;
+
+    input {
+        width: 100% !important;
+        padding-right: 20px;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    .number-selector-clear,
+    .number-selector-arrows a {
+        padding: 0;
+        margin: 0;
+    }
+
+    .number-selector-arrows {
+        font-size: 14px;
+        position: absolute;
+        top: 1px;
+        right: 1px;
+
+        a {
+            cursor: pointer;
+            display: block;
+            width: 19px;
+            height: 15px;
+            text-align: center;
+
+            &, &:hover, &:focus, &:active, &:visited {
+                text-decoration: none;
+                outline: none;
+            }
+
+            &:hover {
+                background-color: @brand-primary;
+                color: @m-white;
+            }
+
+            i {
+                line-height: 15px;
+                vertical-align: top;
+            }
+        }
+    }
+}

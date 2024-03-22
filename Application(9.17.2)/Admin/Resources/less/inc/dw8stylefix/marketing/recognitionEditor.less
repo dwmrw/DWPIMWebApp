@@ -1,0 +1,505 @@
+﻿.fontawesome-mix {
+    background: none;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0,0);
+}
+
+table.recognition-editor {
+    table-layout: fixed;
+    border: none;
+    background-color: transparent;
+
+    .recognition-editor {
+
+        &-right {
+            float: right;
+        }
+
+        &-clear {
+            display: none;
+        }
+
+        &-expression-hover {
+            background-color: #f8fbff !important;
+        }
+    }
+
+    div.recognition-editor {
+
+        &-section-heading {
+            line-height: 20px;
+            background-color: #eee;
+            font-weight: bold;
+            border-bottom: 1px #E0E0E0 solid;
+        }
+
+        &-empty {
+            text-align: center;
+            height: auto !important;
+        }
+
+        &-loading {
+            margin: 0px auto;
+            text-align: center;
+
+            img {
+                display: block;
+                width: 32px;
+                height: 32px;
+                margin: 0px auto;
+            }
+        }
+
+        &-rules,
+        &-expression {
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            background-color: #ffffff;
+        }
+
+        &-rules div.recognition-editor-rules-list,
+        &-expression div.recognition-editor-expression-container {
+            overflow: auto;
+            overflow-x: hidden;
+        }
+
+        &-rules {
+
+            div.recognition-editor-rules-list {
+                overflow-x: hidden;
+            }
+
+            ul {
+
+                &, li {
+                    margin: 0px;
+                    padding: 0px;
+                    list-style-type: none;
+                }
+
+                & {
+                    padding-bottom: 1px;
+                }
+
+                li {
+                    padding: 6px;
+                    background: #ffffff;
+                    cursor: pointer;
+                    transition: all,100ms,ease;
+                    position: relative;
+                    margin: 5px 0;
+
+                    strong {
+                        display: block;
+                    }
+
+                    span {
+                        display: block;
+                    }
+
+                    &:hover {
+                        box-shadow: 0 1px 5px 0 rgba(0,0,0,.16), 0 1px 10px 0 rgba(0,0,0,.12);
+                    }
+                }
+            }
+        }
+
+        &-expression {
+
+            div.recognition-editor-expression-container {
+
+                ul {
+                    background-color: #FFFFFF;
+                    background-image: none;
+                    border-bottom: 1px solid #e0e0e0;
+                    cursor: default;
+
+                    &.recognition-editor-row-selected, 
+                    &.recognition-editor-row-combination-highlight {
+                        background-color: #fff8dc;
+                    }
+
+                    li {
+                        min-height: 32px;
+
+                        &.recognition-editor-cell-select input {
+                            display: block;
+                            margin-top: 7px;
+                        }
+
+                        span.recognition-editor-cell-content-overflow {
+                            float: none;
+                            white-space: normal;
+                            overflow: hidden;
+                            width: auto;
+                            margin-top: 5px;
+                            display: inline-block;
+                        }
+
+                        &.recognition-editor-cell-actions {
+                            text-align: center;
+
+                            a {
+                                color: #0c4f88;
+                                display: inline-block;
+                                margin-top: 5px;
+
+                                &, &:focus, &:active, &:hover {
+                                    outline: none;
+                                }
+                            }
+                        }
+
+                        &.recognition-editor-cell-constraint-value {
+
+                            select, input {
+                                display: block;
+                                width: 100%;
+                            }
+                        }
+
+                        &.recognition-editor-cell-constraint-operator select {
+                            display: block;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            ul.recognition-editor-expression-table-header {
+                border-bottom: 1px solid #e0e0e0;
+                cursor: default;
+
+                li {
+                    font-weight: bold;
+                    min-height: 20px;
+                    margin-left: -4px;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    &.recognition-editor-cell-select input {
+                        margin-top: 3px;
+                    }
+                }
+            }
+
+
+            ul.recognition-editor-expression-table-header,
+            div.recognition-editor-expression-container ul {
+                margin: 0px;
+                padding: 0px;
+
+                li {
+                    list-style: none;
+                    display: inline-block;
+                    padding: 10px;
+                    line-height: 1.42857143;
+                    vertical-align: top;
+                    
+                    &.recognition-editor-combination-offset {
+                        width: 20px;
+                    }
+
+                    &.recognition-editor-cell-select {
+                        width: 25px;
+                    }
+
+                    &.recognition-editor-cell-rule {
+                        width: 150px;
+                    }
+
+                    &.recognition-editor-cell-constraint-operator {
+                        width: 125px;
+                    }
+
+                    &.recognition-editor-cell-constraint-value {
+                        width: 153px;
+                    }
+
+                    &.recognition-editor-cell-actions {
+                        width: 100px;
+                        text-align: center;
+                    }
+
+                    &.recognition-editor-cell-rest {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.recognition-editor-rule-draggable {
+    width: 150px;
+    position: absolute;
+    padding: 2px;
+
+    div.recognition-editor-rule-draggable-content {
+
+        strong {
+            display: block;
+            height: 16px;
+            max-height: 16px;
+            margin: 0px;
+            padding: 2px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        span {
+            display: block;
+            color: #7b7b7b;
+        }
+    }
+
+    &, &:hover {
+        border: 1px solid #d1e1f1 !important;
+        background-color: #f4f9ff !important;
+    }
+}
+
+div.recognition-editor-balloon {
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    z-index: 9;
+    cursor: default;
+
+    div.recognition-editor-balloon-clear {
+        height: 0px;
+        width: 0px;
+        display: block;
+        visibility: hidden;
+        clear: both;
+        content: ".";
+    }
+
+    table.recognition-editor-balloon-grid {
+        table-layout: fixed;
+        position: relative;
+        top: 20px;
+        left: 25px;
+
+        .number-selector {
+            float: left;
+            margin-bottom: 10px;
+        }
+
+        &, tr td {
+            margin: 0px;
+            padding: 0px;
+            border: none;
+        }
+
+        tr td.recognition-editor-balloon-grid {
+
+            &-tl,
+            &-tr,
+            &-bl,
+            &-br,
+            &-tm,
+            &-bm,
+            &-ml,
+            &-mr {
+                display: none;
+            }
+
+            &-mm {
+                background-color: #ffffff;
+                border: 1px #ddd solid;
+            }
+        }
+    }
+
+    div.recognition-editor-balloon-title-container {
+        left: 0px;
+        right: 11px;
+        top: -9px;
+        position: absolute;
+        background-color: transparent;
+        z-index: 1;
+
+        table.recognition-editor-balloon-title {
+            table-layout: fixed;
+            float: right;
+
+            &, tr td {
+                margin: 0px;
+                padding: 0px;
+                border: none;
+            }
+
+            tr td.recognition-editor-balloon-title {
+
+                &-tl,
+                &-tr {
+                    display: none;
+                }
+
+                &-tm {
+                    
+                    span {
+                        background-color: #ffffff;
+                        display: block;
+                        color: #0e639f;
+                        margin: 0px;
+                        padding: 5px;
+                        border: 1px #ddd solid;
+                        border-radius: 5px 5px 0 0;
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    div.recognition-editor-actions-list {
+        padding: 10px;
+        margin: 0px;
+
+        div.recognition-editor-points {
+
+            &-description,
+            &-parent-description,
+            &-value {
+                width: 180px;
+                margin-bottom: 10px;
+            }
+
+            &-parent-description {
+                color: #9a9a9a;
+                font-size: 9px;
+            }
+        }
+
+        ul,
+        ul li {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul {
+            display: block;
+            text-align: right;
+
+            li {
+                display: inline-block;
+                list-style: none;
+
+                a {
+                    padding: 5px;
+                    width: 20px;
+                    height: 20px;
+                    display: inline-block;
+                    text-align: center;
+                    outline: none;
+                    transition: all,100ms,ease;
+
+                    .md, .fa {
+                        font-size: 15px;
+                    }
+                
+                    &:hover, &:focus, &:active {
+                        background: #0085CA;
+                        color: white;
+                        outline: none;
+                    }
+
+                    &.recognition-editor-action {
+
+                        &-disabled {
+                            opacity: 0.5;
+                            -moz-opacity: 0.5;
+                            -webkit-opacity: 0.5;
+
+                            &, &:hover, &:active, &:focus {
+                                color: #727272;
+                                background: transparent;
+                                cursor: default;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.recognition-editor-combination {
+    position: absolute;
+    z-index: 9;
+    background-color: transparent;
+    background-image: none;
+    cursor: default;
+    margin: 0px;
+    padding: 0px;
+
+    .recognition-editor-combination {
+
+        &-top,
+        &-bottom,
+        &-operator {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        &-top,
+        &-bottom {
+            background-image: url('/Admin/Module/OMC/img/selection.png');
+            background-repeat: no-repeat;
+        }
+
+        &-top {
+            background-position: left top;
+        }
+
+        &-bottom {
+            background-position: left bottom;
+        }
+
+        &-operator {
+            width: 20px;
+            height: 8px;
+            line-height: 8px;
+            text-align: center;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            margin-left: -8px;
+            cursor: pointer;
+
+            .recognition-editor-combination-operator {
+
+                &-text,
+                &-and,
+                &-or {
+                    margin: 0px auto;
+                    padding: 0px;
+                    border: none;
+                    outline: none;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    background-color: #ffffff;
+                    font-size: 8px !important;
+                    text-transform: uppercase;
+                    color: #0035a2;
+                }
+
+                &-and {
+                    width: 20px;
+                }
+
+                &-or {
+                    width: 16px;
+                }
+            }
+        }
+    }
+}

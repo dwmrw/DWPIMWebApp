@@ -1,0 +1,40 @@
+
+.std:not(.bootstrap-select) {
+	width: 250px;
+	border: 1px solid @m-gray-400;
+	padding: 4px 6px;
+	resize: none;
+	background-color: @m-white;
+	font-size: @font-size-base;
+	line-height: normal;
+    outline: none;
+    box-sizing: border-box;
+    height: 32px;
+
+    .form-group-input & {
+        width: 100%;
+    }
+
+    textarea& {
+        height: auto;
+    }
+}
+
+label {
+    font-weight: normal;
+}
+
+.filter {
+    float: left;
+    margin: 10px;
+}
+
+.filterLabelRight {
+    float: right;
+    padding-left: 20px;
+}
+
+.item-lists {
+    list-style: none;
+    padding-left: 0;
+}

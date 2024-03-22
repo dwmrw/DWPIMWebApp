@@ -1,0 +1,88 @@
+#static-sidebar {
+	z-index: 1000;
+	width: 70px;
+	height: ~"calc(100% - 42px)";
+	position: fixed;
+	box-shadow: 0 0 4px rgba(52, 52, 52, 0.22);
+	background-color: #fff;
+	/*border-right: 1px solid rgb(239, 239, 239);
+	background-color: #fdfdfd;*/
+	overflow-y: auto;
+	top: @administration-top-height;
+
+	.static-menu {
+		list-style: none;
+		padding-left: 0;
+		margin: 3px 0 0 0;
+
+		& > li {
+			& > a {
+				padding: 9px 0px 0px 0px;
+				display: block;
+				color: #4C4C4C;
+				font-weight: 500;
+				position: relative;
+
+				&:hover {
+					background-color: @m-gray-200;
+
+					& > i, & > .static-menu-title {
+						left: -2px;
+						position: relative;
+					}
+				}
+
+				& > i {
+					position: relative;
+					font-size: 20px;
+					top: 0;
+					text-align: center;
+				}
+
+				& .static-menu-title {
+					font-size: 10px;
+					padding-bottom: 10px;
+				}
+			}
+
+			& > .active {
+				background-color: @m-gray-200;
+				color: #000;
+				font-weight: 400;
+			}
+
+			& > .active .contextTrigger {
+				color: @m-gray-200;
+
+				& > i, & > .static-menu-title {
+					left: -2px;
+					position: relative;
+				}
+			}
+		}
+	}
+
+	.menu-footer {
+		@media (min-height: 550px) {
+			position: absolute;
+			bottom: 10px;
+			width: 100%;
+		}
+	}
+}
+
+#sidebar-trigger  {
+    padding: 16px 0 0 22px;
+    display: block;
+    height: 55px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(12, 12, 12, 0.07);
+
+    .line-wrap {
+        margin: 1px 4px;
+    }
+
+    .line-wrap .line {
+        background-color: @text-color;
+    }
+}

@@ -1,0 +1,45 @@
+.color-selector {
+
+    .form-group-input {
+        width: 149px !important;
+    }
+
+    .color-box {
+        width: 32px;
+        height: 32px;
+        float: left;
+        color: transparent;
+        border: 1px solid @m-gray-400;
+        border-left: 0;
+        box-sizing: border-box;
+        cursor: auto !important;
+    }    
+}
+
+.color-note {
+    cursor: pointer;
+    transition: all 200ms ease 0s;   
+
+    input {
+        width: 32px;
+        height: 32px;
+        border: solid 1px @m-gray-400;
+        color: transparent;
+        font-size: 0;
+        cursor: pointer;
+        box-sizing: border-box;
+        margin-top: 5px;
+        margin-right: 5px;
+        float: left;
+    }
+}
+
+.color-selector-disabled {
+    cursor: default;
+    background: @m-gray-100;
+    pointer-events: none;
+
+    &:hover {
+        background: @m-gray-100;
+    }    
+}

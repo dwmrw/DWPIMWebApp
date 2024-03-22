@@ -1,0 +1,93 @@
+.tilesview {
+    margin: 0;
+    margin-bottom: 20px;
+    display: inline-block;
+    list-style-type: none;
+    padding: 0;
+
+    a {
+        color: @text-color;
+    }
+
+    .tile {
+        width: 140px;
+        text-align: center;
+        display: inline-block;
+        margin: 10px;
+        padding: 8px;
+        cursor: pointer;
+        vertical-align: top;
+        transition: all 200ms;
+        position: relative;
+
+        .contextTrigger > i {
+            color: @m-white;
+        }
+
+        .dropdown {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            width: 100%;
+
+            .btn {
+                width: 30px;
+            }
+        }
+
+        input[type="checkbox"].checkbox + label {
+            position: absolute;
+            left: 3px;
+            top: 2px;
+        }
+
+        .tile-image {
+            width: 125px;
+            height: 75px;
+            display: table;
+
+            img {
+                margin: 0 auto;
+                max-height: 75px !important;
+                max-width: 125px;
+            }
+
+            .fa, .md {
+                font-size: 36px;
+                margin-top: 18px
+            }
+        }
+
+        .tile-text {
+            color: @m-gray-500;
+            word-break: break-word;
+            width: 125px;
+            margin-top: 4px;
+        }
+
+        &:hover {
+            box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
+            color: #000;
+        }
+
+        &:not(.tile-multi):hover,
+        &-multi-active {
+            background-color: @brand-primary;
+
+            .tile-image .fa, .tile-image .md, .tile-text {
+                color: @m-white;
+            }
+        }
+
+
+    }
+
+    .tile-card {
+        box-shadow: 0 2px 2px 1px rgba(0,0,0,0.2);
+        background-color: @m-white;
+
+        .tile-image {
+            background-color: @m-gray-100;
+        }
+    }
+}

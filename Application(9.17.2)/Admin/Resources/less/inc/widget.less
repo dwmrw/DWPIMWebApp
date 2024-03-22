@@ -1,0 +1,389 @@
+@big-widget-height:     318px;
+@header-height:         38px;
+@widget-space:          8px;
+@small-widget-height:   174px;
+
+
+.dashboard, .area-black {
+	.card {
+		margin-bottom: @widget-space;
+	}
+
+	[class^=col-] {
+		padding-left: @widget-space / 2;
+		padding-right: @widget-space / 2;
+	}
+
+	.container {
+		/* 6 + 4 from the margin of widgets = 10px padding on sides*/
+		padding-left: 6px;
+		padding-right: 6px;
+	}
+    
+    .list .container {
+        /*fix for containers in list*/
+        padding: 0;
+    }
+
+	#content {
+		padding: 10px 0 0 0;
+	}
+
+	.block-header{
+		padding:0;
+	}
+}
+
+.widget {
+    position: relative;
+
+    .dropdown {
+        opacity: 0;
+        transition: all 250ms ease-in-out;
+        position: absolute;
+        top: 9px;
+        right: 0;
+
+        .btn-link {
+            transition: all 200ms ease;
+            padding: 6px 12px;
+        }
+    }
+
+    &:hover .dropdown,
+    & .dropdown.open {
+        opacity: 1;
+    }
+
+    .card-header {
+        background-color: inherit;
+
+        h2 {
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        &[onclick] {
+            cursor: pointer;
+        }
+    }
+
+    .card-header-info {
+        padding: 5px 10px;
+    }
+
+    // LISTVIEW WIDGET
+    .listview {
+        height: @big-widget-height;
+    }
+    // TEASER WIDGET
+    .teaser {
+        height: @big-widget-height;
+
+        .teaser-text {
+            padding: 15px;
+
+            .teaser-title {
+                margin: 0 0 10px;
+                font-size: 18px;
+                font-weight: 300;
+            }
+
+            .teaser-description {
+                margin: 0 0 10px;
+                color: @text-color;
+            }
+        }
+
+        .teaser-button {
+            white-space: pre-wrap;
+        }
+    }
+    // COUNTER WIDGET
+    .widget__counter {
+        padding: 10px;
+        background-color: @brand-primary;
+        color: #fff;
+        height: 100%;
+        min-height: @small-widget-height;
+
+        .counter-title {
+            padding-right: 20px;
+            color: #fff;
+            font-size: 18px;
+            line-height: 1.2em;
+            font-weight: 300;
+            margin: 0;
+            display: block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .counter-number {
+            font-size: 90px;
+            text-align: center;
+            line-height: 90px;
+            margin-top: 5px;
+        }
+
+        .counter-subtitle {
+            margin-top: 5px;
+        }
+
+        & + .dropdown {
+            position: absolute;
+            top: 8px;
+
+            .btn-link {
+                color: white;
+                padding: 6px 10px;
+            }
+        }
+    }
+    //GRIDVIEW WIDGET
+    .grid-container {
+        th {
+            background-color: transparent;
+
+            span {
+                font-weight: normal;
+                color: #a9a9a9;
+            }
+        }
+
+        tr:hover {
+            background: #ecf9ff;
+        }
+    }
+    // CHART WIDGET
+    .chart-body {
+        height: @big-widget-height;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+
+        .ct-grid {
+            stroke-dasharray: none;
+            color: #929292;
+        }
+
+        .ct-horizontal {
+            stroke: none;
+        }
+
+        .ct-chart {
+            height: 100%;
+        }
+
+        .ct-line {
+            stroke-width: 3px;
+        }
+
+        .ct-point {
+            stroke-width: 8px;
+        }
+
+        .ct-series-a {
+            .ct-bar,
+            .ct-line,
+            .ct-point,
+            .ct-slice-donut {
+                stroke: @brand-greener;
+            }
+        }
+
+        .ct-legend-rect {
+            stroke-width: 20px;
+        }
+
+        .chartist-tooltip {
+            position: absolute;
+            display: inline-block;
+            opacity: 0;
+            background: @m-white;
+            border: 1px solid black;
+            color: @headings-color;
+            min-width: 8em;
+            padding: 0.4em;
+            text-align: center;
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity .1s ease-in;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                margin-left: -6px;
+                border: 6px solid transparent;
+                border-top-color: @text-color;
+            }
+        }
+
+        .chartist-tooltip.tooltip-show {
+            opacity: 1;
+        }
+
+        .chartist-tooltip .ct-tooltip-legend {
+            display: inline-block;
+            margin: 5px 5px 0px 0px;
+
+            svg.color-block {
+                vertical-align: bottom;
+                margin-right: 5px;
+            }
+        }
+
+        .ct-legend {
+            padding-left: 0;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+            overflow: auto;
+            height: 100%;
+
+            li {
+                list-style: none;
+
+                span {
+                    vertical-align: top;
+                    margin-left: 5px;
+                }
+            }
+
+            &.ct-legend-top,
+            &.ct-legend-bottom {
+                height: auto;
+                text-align: center;
+
+                li {
+                    display: inline-block;
+                    padding: 0 4px;
+                }
+            }
+
+            &.ct-legend-bottom {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+            }
+
+            &.ct-legend-left {
+                width: 100px;
+            }
+
+            &.ct-legend-right {
+                padding-left: 8px;
+                float: right;
+                width: 100px;
+            }
+        }
+
+        .ct-area, .ct-line {
+            pointer-events: none;
+        }
+
+        .ct-snap-to-grid-line {
+            stroke: #929292;
+            stroke-width: 2px;
+            stroke-dasharray: 4px;
+            shape-rendering: crispEdges;
+        }
+    }
+
+    iframe.widget-iframe {
+        height: @big-widget-height;
+        padding: 15px;
+        display: flex;
+    }
+}
+
+
+.widget-small-spacer {
+    min-height: @small-widget-height + @widget-space;
+}
+
+.widgets-edit-bar {
+    border-top: 1px solid #dcdcdc;
+    padding: 8px 0;
+    text-align: center;
+}
+
+#customized-dashboard.infobar {
+    padding: 0 0 8px;
+}
+
+#preview-dashboard.infobar {
+    padding: 0 4px 8px 4px;
+}
+
+#preview-dashboard.infobar,
+#customized-dashboard.infobar {
+    .alert-container {
+        background: aliceblue;
+        text-align: left;
+
+        i {
+            color: #77b2de;
+        }
+    }
+}
+
+// DIFFERENT FONT SIZES FOR COUNTERS
+@media (max-width: 992px) {
+    .widget-small-spacer {
+        display: none;
+    }
+}
+
+@media (min-width: 1347px) {
+    .col-md-2 .widget .widget__counter .counter-number {
+    
+        &.widget__counter--xxs { 
+            font-size: 2.1vw;   
+        }
+
+        &.widget__counter--xs {
+            font-size: 2.9vw;
+        }
+
+        &.widget__counter--sm {
+            font-size: 4vw;
+        }
+    
+        &.widget__counter--md {
+            font-size: 5vw;
+        }
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1346px) {
+    .col-md-2 .widget .widget__counter .counter-number {
+        font-size: 7.3vw;
+    
+        &.widget__counter--xxs { 
+            font-size: 1.5vw;
+        }
+
+        &.widget__counter--xs {
+            font-size: 2.3vw;
+        }
+
+        &.widget__counter--sm {
+            font-size: 3.1vw;
+        }
+    
+        &.widget__counter--md {
+            font-size: 4.3vw;
+        }
+    }
+}

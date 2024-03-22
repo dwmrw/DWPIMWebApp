@@ -1,0 +1,196 @@
+.sidebox {
+	background-color: #fff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.31);
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    position: fixed;
+
+    &.dialog-lg, 
+    &.dialog-md, 
+    &.dialog-sm {
+        transform: none;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    .boxhead {
+        padding: 6px 16px;
+        border-bottom: 1px solid @m-gray-300;
+
+        h2 {
+            font-weight: 500;
+            font-size: 18px;
+            padding: 0;
+            color: @text-color;
+            margin: 0;
+            height: 28px;
+            line-height: 28px;
+            cursor: default;
+            vertical-align: middle;
+            text-align: left;
+        }
+
+        .close {
+            font-size: 18px;
+            margin: 5px;
+            margin-right: 0;
+            .opacity(1);
+
+            &:hover, &:focus {
+                .opacity(1);
+            }
+
+            i {
+                color: @m-gray-500;  
+                cursor: pointer; 
+            }
+
+            i:hover {
+                color: @brand-danger;                                 
+            }
+        }
+    }
+
+    .bodywrapper {
+        margin: 0;
+        border: none;
+        background-color: #fff;
+        position: relative;
+        top: 1px;
+        width: 100%;
+
+        .boxbody {
+            margin: 0;
+            padding: 16px;
+            max-height: ~"calc(100vh - 144px)";
+			min-width: 450px;
+            overflow-x: hidden;
+			overflow-y: auto;
+            position: relative;
+            min-height: 1px;
+            box-sizing: border-box;
+
+            iframe {
+                width: 760px;
+                border: none;
+                //min-height: 520px;
+				max-height: 100vh;
+                min-height: ~"calc(100vh - 205px)";
+            }
+
+            fieldset {
+                padding: 0;
+                border-bottom: 0;
+                margin: 0;
+            }
+
+            .groupbox {
+                padding: 0;
+                border-bottom: 0;
+            }
+
+            > .groupbox:last-child {
+                border-bottom: 0;
+            }
+
+            //not affect lists
+            table:not(.columnTable)>tr:not(.header):not(.columnCell)>td {
+                vertical-align: top;
+                padding: 5px 0 5px 0;
+            }
+
+            .dialog-warning-icon {
+                display: block;
+                text-align: center;
+                font-size: 42px;
+                padding: 15px;
+            }
+
+            .NewUIinput, .std, .ecomStd {
+                width: 80%;
+            }
+
+            table.formsTable>tbody>tr>td:first-child {
+                max-width: 160px;
+                width: 160px;
+            }
+
+            .form-group {
+                width: 100%;
+                margin-bottom: 8px;
+
+                > .control-label {
+                    width: 170px;
+                }
+
+                .form-group-input {
+                    width: ~'calc((100% - 170px) * 0.8)';
+                    margin-right: 0;
+
+                    .NewUIinput, .std, .ecomStd {
+                        width: 100%;
+                    }
+                }
+
+                .input-group {
+                    float: none;
+                    display: block;
+                }
+                
+                .left-indent {
+                    margin-left: 170px;
+                }
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+.sidebox, .popup-dialog {
+    display:none;
+    z-index: 10;
+
+    &.dialog-lg, 
+    &.dialog-md, 
+    &.dialog-sm {
+        .bodywrapper .boxbody iframe {
+            width: 100%;
+        }
+    }
+
+    &.dialog-lg {
+        min-width: 850px;
+        width: ~"calc(100% - 30px)";
+    }
+
+    &.dialog-md {
+        width: 660px;
+    }
+        
+    &.dialog-sm {
+        width: 450px;
+    }
+}
+
+.modal-dialog .modal-body .groupbox:last-child {
+    border-bottom: 0;
+}
+
+@media (max-width: @screen-xs-max) {
+    .sidebox {
+        &.dialog-lg, 
+        &.dialog-md, 
+        &.dialog-sm, 
+        &.dialog-xs {
+            width: 90%;
+        }
+    }
+}

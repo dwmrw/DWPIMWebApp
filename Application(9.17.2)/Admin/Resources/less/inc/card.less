@@ -1,0 +1,120 @@
+.card {
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+
+    .card-header {
+        position: relative;
+        background-color: @m-gray-50;
+        
+        &:not(.ch-alt) {
+            @media screen and (min-width: @screen-sm-min) {
+                padding: 10px 10px;
+
+            }
+            
+            @media screen and (max-width: @screen-sm-max) {
+                padding: 10px 10px;
+            }
+        }
+
+        h2 {
+            margin: 0;
+            line-height: 100%;
+            font-size: 18px;
+            font-weight: 600;
+            
+            small {
+                display: block;
+                margin-top: 8px;
+                color: #AEAEAE;
+                line-height: 160%;
+            }
+        } 
+
+        &.ch-alt {
+            @media screen and (min-width: @screen-sm-min) {
+                padding: 23px 26px 48px;
+            } 
+            
+            @media screen and (max-width: @screen-sm-max) {
+                padding: 18px 18px 28px;
+            }
+                        
+            &:not([class*="bgm-"]) {
+                background-color: #f7f7f7;
+            }
+        }
+
+        &[class*="bgm-"] {
+            h2, h2 small { 
+                color: #fff;
+            }
+        }
+        
+        .actions {
+            position: absolute; 
+            right: 20px;
+            z-index: 2; 
+            top: 15px;
+
+            a {
+                width: auto;
+                height: 32px;
+                line-height: 20px;
+            }
+
+            a::before {
+                border-radius: 0;
+            }
+
+            /*i {
+                color: @m-white;
+            }*/
+        }
+        
+        .btn-float {
+            right: 25px;
+            bottom: -23px;
+            z-index: 1;
+        }
+    }
+    
+    .card-body {         
+            padding: 10px;
+       
+            &.card-padding {
+                @media screen and (min-width: @screen-sm-min) {
+                    padding: 23px 26px 48px;
+                }
+            
+                @media screen and (max-width: @screen-sm-max) {
+                    padding: 18px;
+                }
+            }
+        
+            &.card-padding-sm {
+                padding: 10px;
+            }
+
+            iframe {
+                z-index: 1;
+                display: block;
+                width: 100%;
+                border: medium none;
+                position: relative;
+                height: 100vh;
+            }
+    }
+
+    .card-footer {
+        padding: 10px;
+        border-top: 1px solid #E0E0E0;
+		color:@text-secondary-color;
+
+        a {
+            margin: 0px;
+            padding: 0px;
+        }
+    }
+}

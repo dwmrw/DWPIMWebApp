@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dynamicweb.LessCompiler</name>
+    </assembly>
+    <members>
+        <member name="M:Dynamicweb.LessCompiler.LessHelper.GetVariables(System.String)">
+            <summary>
+            Get all variables from less variable files
+            </summary>
+            <param name="content">The content of the variable files</param>
+            <returns>A list of all the variables from the variable files</returns>
+        </member>
+        <member name="M:Dynamicweb.LessCompiler.LessHelper.CheckForMissingVariables(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Check the less content files for which variables are being used, and compare it to the list of variables given in the arguments
+            </summary>
+            <param name="variables">The list of variables which the variables from the content files will be compared to</param>
+            <param name="lessFileContent">A string containing the content from all the less content files</param>
+            <returns>A list of all the variable names, which are used in the content files, but not provided in the 'variables' argument</returns>
+        </member>
+        <member name="M:Dynamicweb.LessCompiler.LessHelper.IsValidValue(System.Object)">
+            <summary>
+            Checks whether the provided value is valid.
+            </summary>
+            <param name="value">The valid to be checked</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

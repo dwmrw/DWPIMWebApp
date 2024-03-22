@@ -1,0 +1,91 @@
+﻿.user-selector {
+	.user-selector-outer {
+		min-height: 154px;
+		height: 150px;
+		min-width: 300px;
+		border: 1px @m-gray-400 solid;
+		margin-bottom: 10px;
+
+		.user-selector-inset {
+
+			& > div {
+				list-style: none;
+				margin: 0;
+				font-size: @font-size-base;
+				padding: 5px 6px;
+				border: 0;
+				//border-bottom: 1px @m-gray-400 solid;
+				position: relative;
+				height: 31px;
+				box-sizing: border-box;
+				white-space: nowrap;
+
+				&:hover {
+					background: @m-gray-200;
+				}
+
+				&.selected,
+				&.selected:hover {
+					background: @brand-primary;
+					color: @m-white;
+					//border-bottom-color: @brand-primary;
+				}
+
+				.icon-box {
+					display: inline-block;
+					vertical-align: top;
+					width: 20px;
+					text-align: center;
+					margin-right: 5px;
+					padding-top: 2px;
+					line-height: 16px;
+
+					i {
+						font-size: 18px;
+					}
+				}
+
+				.name-box {
+					display: inline-block;
+					vertical-align: top;
+				}
+			}
+		}
+	}
+}
+
+.addin-btn {
+	width: 31px;
+    height: 31px;
+    display: block;
+    text-align: center;
+    background: @m-white;
+    padding-top: 4px;
+    transition: all,100ms,ease;
+    border: 1px @m-gray-400 solid;
+    border-left: 0;
+    border-bottom: 0;
+    box-sizing: border-box;
+
+    &:last-child {
+        border-bottom: 1px @m-gray-400 solid;
+        height: 32px;
+    }
+
+    i.md {
+        vertical-align: middle;
+        font-size: 18px;
+    }
+
+    i.fa {
+        vertical-align: middle;
+        font-size: 14px;
+    }
+
+    &:hover {
+        background: @m-gray-100;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        color: @text-color;
+    }
+}

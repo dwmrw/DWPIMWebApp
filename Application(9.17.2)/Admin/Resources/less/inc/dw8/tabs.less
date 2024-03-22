@@ -1,0 +1,49 @@
+ul.tabitems {
+	margin: 0;
+	padding: 0 0 0 16px;
+	list-style: outside none none;
+	background-color: @m-white;
+	height: 34px;
+	box-shadow: 0px -2px 0px 0px #e0e0e0 inset;
+	font-weight: 500;
+
+	a {
+		color: @text-color;
+		padding: 4px 15px 3px;
+		text-transform: uppercase;
+		position: relative;
+		text-decoration: none;
+		display: block;
+		line-height: 25px;
+		float: left;
+	}
+
+	.activeitem a {
+		color: @m-black;
+	}
+
+	a:after {
+		content: "";
+		height: 2px;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: 0px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+        background-color: @brand-primary;
+	}
+
+	.activeitem a:after {
+		transform: scale(1);
+	}
+
+	li img.starter {
+		margin-right: 0px;
+		width: 0px;
+	}
+
+	.lastitem {
+		float: right;
+	}
+}    

@@ -1,0 +1,76 @@
+.card-header {
+    padding: 16px;
+    background-color: @m-gray-50;
+    margin: 0;
+    overflow: auto;
+
+	h2 {
+		margin: 0;
+		line-height: 100%;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+
+.card {
+	box-shadow: 0 1px 1px rgba(0,0,0,.15);
+	/*min-height: 280px;*/
+	background-color: @m-white;
+
+    /*.card-body {
+        padding: 15px;
+    }*/
+
+    .card-header-info {
+        position: absolute;
+        right: 62px; 
+        top: 24px;
+        color: @m-gray-300; 
+    }
+}
+
+.card-footer {
+	padding-top: 16px;
+	padding-bottom: 26px;
+	padding-left: 16px;
+	box-shadow: 0 1px 1px rgba(0,0,0,.15);
+	background-color: #F7F7F7;
+	vertical-align: top;
+	font-size: 12px;
+	color: #ACACAC;
+	margin-bottom: 78px;
+	box-sizing: border-box;
+
+	table {
+		display: inline-block;
+        vertical-align: top;
+		margin-right: 50px;
+
+        @media (max-width: 1024px) {
+            margin-right: 25px;
+        }
+
+		td {
+			padding-top: 3px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			font-size: 12px;
+		}
+
+		tr td:first-child {
+			width: 100px;
+		}
+	}
+}
+
+/*#ecomTab {
+	overflow: hidden;
+
+	.card {
+		padding-bottom: 0;
+	}
+
+	.card-footer {
+		margin-bottom: 0;
+	}
+}*/

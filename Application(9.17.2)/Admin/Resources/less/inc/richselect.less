@@ -1,0 +1,194 @@
+﻿/******* items ul *******/
+
+.richselectitems {
+    display: none;
+	padding: 0;
+	margin: 0;
+	margin-top: -1px;
+	list-style: none;
+	background-color: #fff;
+	overflow: hidden;
+	overflow-y: auto;
+	border: 1px solid @m-gray-400;
+	max-height: 80vh;
+	z-index: 10;
+	position: absolute;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+
+    &.open {
+        display: block;
+    }
+
+    li {
+
+        &:last-child {
+            border-bottom: 0;
+        }
+        
+        .rich-btn {
+            background-color: #fff;
+            box-sizing: border-box;
+            padding: 10px;
+            margin: 0;
+            border: 0;
+            cursor: default;
+            transition: all 250ms;
+            position: relative;
+
+            small {
+                max-height: 25px;
+            }
+        }
+
+        &.selecteditem .rich-btn, 
+        .rich-btn:hover {
+	        background-color: rgba(0,0,0,.075);
+            border: 0;
+        }
+    }
+}
+
+/******* end *******/
+
+.richselect {
+    
+    .richselectbox {
+        /* wrap of selected option */
+        position: relative;
+        transition: all 200ms;
+
+        &.selected {
+	        box-shadow: 0 0 4px 0 rgba(0,0,0,.34);
+        }
+    
+        .selectboxcontent {
+            padding: 6px 0 7px 10px;
+            margin: 1px;
+            border: 0;
+            box-sizing: border-box;
+            cursor: default;
+       }
+
+       .richselectboxarrow {
+           /* right arrow */
+            border-left: solid 1px @m-gray-400;
+	        float: right;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0 3px 0 7px;
+            height: auto;
+            width: 22px;
+            box-sizing: border-box;
+            cursor: pointer;
+
+            i {
+                position: absolute;
+                top: 50%;
+                margin-top: -7px;
+                font-size: 14px !important;
+                width: auto !important;
+                height: auto !important;
+            }
+       }
+    }
+}
+
+/******* items in richselect *******/
+
+.rich-layouts {
+    position: relative;
+    height: 64px;
+
+    &.item-type {
+        /* for item types selector */
+        height: 35px;
+
+        i {
+            font-size: 23px;
+            width: 23px;
+            text-align: center;
+            padding-top: 6px;
+        }
+
+        div.wide-field {
+            margin-left: 37px
+        }
+
+        &.no-description div.wide-field.name {
+            padding-top: 7px;
+        }
+    }
+    
+    img {
+        width: 32px;
+        height: 32px;
+        margin: 0;
+        border: none;
+    }
+
+    .edit-btn {
+        padding: 2px 6px;
+        border: 0;
+        color: @brand-primary;
+        background: transparent;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        transition: all,100ms,ease;
+        cursor: pointer;
+
+        &:hover {
+            color: @m-white;
+            background: @brand-primary;
+        }
+    }
+    
+    div.wide-field {
+        height: auto;
+        margin-left: 44px;
+
+        &.name {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &.file-name,
+        &.description {
+            font-size: 11px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &.file-name {
+            margin-right: 45px;
+        }
+        
+        &.file-date {
+            font-size: 10px;
+            margin-top: 3px;
+            color: @m-gray-400;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+            &.only-date {
+                padding-bottom: 15px;
+            }
+        }
+    }
+}
+
+/******* end *******/
+
+.rich-btn {
+	font-size: @font-size-base;
+
+	.nothing {
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+}

@@ -1,0 +1,237 @@
+.tree {
+    min-height: 20px;
+    min-width: 100%;
+    margin: 0px;
+    margin-bottom: 20px;
+    display: block;
+    list-style-type: none;
+
+    &.navigator-treeview {
+        position: absolute;
+        padding-top: 5px;
+        /*overflow-x: hidden;*/
+        /*text-overflow: ellipsis;*/
+    }
+
+    ul {
+        margin: 0px;
+        padding-left: 16px; /*32px*/
+    }
+
+    .dropdown ul {
+        padding-left: 0;
+    }
+
+    & > ul a {
+        color: #5e5e5e;
+    }
+
+    .list {
+        list-style-type: none;
+        padding: 0 0 0 0;
+        padding-left: 16px;
+        margin-left: -16px;
+        white-space: nowrap;
+    }
+
+    & > ul > .list::before, & > ul > .list::after {
+        content: '';
+        left: -14px;
+        position: absolute;
+        right: auto;
+    }
+
+    .open-btn {
+        text-align: center;
+        cursor: pointer;
+        width: 30px;
+        padding-left: 16px;
+        height: 28px;
+        vertical-align: top;
+        padding-top: 6px;
+
+        &.fa-caret-right.on-demand {
+            opacity: 0.5
+        }
+    }
+
+    .fa-refresh {
+        width: 18px;
+        padding-left: 0px;
+        margin-left: 12px;
+    }
+
+    .dropdown .fa-refresh {
+        margin-left: 0;
+    }
+
+    .tree-indent {
+        padding-left: 30px;
+    }
+
+    .tree-btn {
+        border: none;
+        background-color: transparent;
+        display: inline-block;
+        padding: 7px;
+        white-space: nowrap;
+        text-decoration: none;
+        line-height: 1em;
+        text-align: left;
+        transition: all 250ms ease 0s;
+        width: ~"calc(100% - 32px)";
+
+        i {
+            width: 18px;
+            text-align: center;
+        }
+
+        &[disabled] {
+            color: @m-gray;
+
+            i {
+                color: @m-gray;
+            }
+        }
+
+
+
+        .adornment {
+            font-size: 12px;
+        }
+
+        .id {
+            color: @m-gray-400;
+            display: none;
+        }
+
+        &not:disabled, &not.locked {
+            cursor: pointer;
+        }
+    }
+
+    .inactive {
+        color: @m-gray;
+
+        i {
+            color: @m-gray;
+        }
+    }
+
+    .tree-btn:hover, .tree-btn:active, .tree-btn:focus {
+        &not:disabled {
+            background-color: #EDECEC;
+            border-radius: 3px;
+            transition: all 250ms ease 0s;
+        }
+    }
+
+    .btn-link {
+        position: absolute;
+        right: 0px;
+        height: 28px;
+        width: 26px;
+        padding: 0 0;
+    }
+
+    .tree-btn-highlight-on .btn-link, .btn-wrap:hover .btn-link {
+        background-color: #EDECEC;
+    }
+
+    .tree-highlight {
+        width: 0;
+        padding: 0;
+        position: absolute;
+        height: 0;
+        right: 0;
+        -webkit-transition: width 0.3s; /* Safari */
+        transition: width 0.3s;
+    }
+
+    .list i {
+        font-size: @font-size-base;
+    }
+
+    .btn-wrap {
+        margin-left: -16px;
+        height: 28px;
+    }
+
+    .btn-wrap:hover {
+        color: #000;
+        background-color: @m-gray-200;
+
+        .contextTrigger i {
+            color: #000;
+            display: inline;
+        }
+
+        .id {
+            display: inline-block;
+        }
+    }
+
+    .tree-btn i {
+        font-size: 16px;
+        margin-right: 6px;
+    }
+
+    & > ul > .list::before, & > ul > .list::after {
+        border: 0;
+    }
+
+    .list:last-child::before {
+        height: 22px;
+    }
+
+    .dropdown {
+        position: absolute;
+        display: inline;
+        right: 5px;
+    }
+
+    .contextTrigger > i {
+        color: transparent;
+    }
+
+    .tree-highlight-on {
+        width: 5px;
+        height: 28px;
+    }
+
+    .btn-wrap.tree-btn-highlight-on {
+        background-color: @m-gray-200;
+
+        .contextTrigger i {
+            color: #000;
+            display: inline;
+        }
+    }
+
+    .btn-wrap.tree-btn-highlight-on button {
+        color: 000;
+        font-weight: 400;
+    }
+
+    .tree-highlight-micro-on {
+        width: 5px;
+        height: 15px;
+        margin-top: 8px;
+    }
+    /*.list:hover, .list:focus, .list:active {
+        > .dropdown > .contextTrigger {
+            display: block;
+        }
+    }*/
+    .treeview-checkbox {
+        display: inline-block;
+        margin-left: 8px;
+        margin-right: -5px;
+        vertical-align: top;
+        margin-top: 5px;
+    }
+}
+
+.scrollable-tree-wrapper .tree .tree-btn {
+	width: ~"calc(100% - 60px)";
+}

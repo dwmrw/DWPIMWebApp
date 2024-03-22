@@ -1,0 +1,31 @@
+﻿.infobar {
+	padding: 16px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    word-wrap: break-word;
+    box-sizing: border-box;
+
+    fieldset &, 
+    .modal-body:not(.no-padding) &, 
+    .sidebox .boxbody:not(.no-padding) & {
+        padding-left: 0;
+        padding-right: 0;
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+}
+
+.infobar .alert-container {
+	background-color: @brand-warning;
+    color: @m-gray-700;
+	line-height: 18px;
+	vertical-align: middle;
+	padding: 10px 16px;
+}

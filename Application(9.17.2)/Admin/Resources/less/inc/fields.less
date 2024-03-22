@@ -1,0 +1,110 @@
+﻿.field-example {
+    display: flex;
+    width: 70%;
+    margin-bottom: 10px;
+
+    #second_type & {
+        margin-bottom: 25px;
+    }
+
+    .field__label {
+        width: 180px;
+        padding-right: 10px;
+        box-sizing: border-box;
+        flex-shrink: 0;
+    }
+
+    .field__group {
+        display: flex;
+        flex-grow: 1;
+        flex-flow: row wrap;
+
+        &.left-indent {
+            margin-left: 180px;
+        }
+
+        .std {
+            width: ~'calc(100% - 155px)';
+
+            &[type=number] {
+                min-width: 170px;
+            }
+        }
+
+        .std-addon, 
+        .std-addon-text, 
+        .std-addon-units {
+	        display: inline-block;
+            color: @text-color;
+            text-align: center;
+	        height: 32px;
+            border: 1px solid @m-gray-400;
+	        border-left: none;
+            float: left;
+            box-sizing: border-box;
+            position: relative;
+            transition: all 200ms;
+            flex-shrink: 0;
+        }
+
+        .std-addon {
+            width: 31px;
+	        vertical-align: top;
+            cursor: pointer;
+            background: @m-white;
+            padding: 0;
+
+            &:hover {
+	            background-color: @m-gray-100;
+            }
+
+            .fa {
+                font-size: 14px;
+            }
+
+            .md {
+                font-size: 16px;
+            }
+        }
+
+        .std-addon-text {
+            min-width: 31px;
+            padding: 0 10px 0;
+            line-height: 32px;
+            background: @m-gray-100;
+            cursor: default;
+        }
+
+        .std-addon-units {
+            min-width: 31px;
+            padding: 4px 6px;
+            line-height: normal
+        }
+
+        .tooltip-block {
+            width: ~'calc(100% - 160px)';
+            color: lighten(@text-color, 25%);
+            font-size: 80%;
+            padding-top: 4px;
+            height: 19px;
+
+            #second_type & {
+                margin-bottom: -19px;
+                padding-top: 3px;
+            }
+
+            &.error {
+                color: @state-danger-text;
+                display: none;
+                
+                .field--error& {
+                    display: block;
+
+                    &+.info {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

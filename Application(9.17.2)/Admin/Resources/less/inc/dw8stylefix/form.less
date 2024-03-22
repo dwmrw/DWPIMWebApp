@@ -1,0 +1,399 @@
+@number-field-width: 120px;
+
+/* fix for usage app.css with dwstylefix.css together */
+.input-group {
+    display: block;
+}
+
+/* Tho old dw8 input fileds */
+.textInput:disabled {
+    color: @m-gray-500;
+}
+
+.std-active {
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.34);
+    transition: all 200ms;
+}
+
+.textInput:not(:disabled) {
+    &:focus,
+    &:active {
+        .std-active;
+    }
+}
+
+.std-condensed, .textInput {
+	padding-left:4px;
+}
+
+.std {
+    &.width-1-of-2 {
+	    box-sizing: border-box;
+	    width: 125px !important;
+	    display: inline-block;
+    }
+}
+
+.std.width-1-of-2 + .std.width-1-of-2,
+.std.width-1-of-2 + button {
+	margin-left: 5px;
+}
+
+.NewUIinput,
+.std,
+.ecomStd,
+.form-control,
+.selectpicker {
+    width: 250px;
+    resize: none;
+    background-color: @m-white;
+    font-size: @font-size-base;
+    line-height: 22px;
+    outline: none;
+    box-sizing: border-box;
+    height: 32px;
+
+    &:not(.ss-main) {
+        border: 1px solid @m-gray-400;
+        padding: 4px 6px;
+    }
+
+    select& {
+        height: 32px;
+        position: relative;
+        vertical-align: top;
+
+        &[multiple] {
+            height: auto;
+        }
+    }
+
+    textarea& {
+        height: auto;
+    }
+
+    &:disabled,
+    &.disabled,
+    &:disabled option,
+    &.disabled option {
+        color: @m-gray-500;
+        cursor: default;
+    }
+
+    input[type=number]& {
+        max-width: @number-field-width;
+    }
+
+    &:not(:disabled):not(.disabled) {
+        &:active,
+        &:focus {
+            .std-active;
+        }
+    }
+}
+
+select.NewUIinput.full-height {
+    height: inherit;
+}
+
+.control-description {
+    line-height: 1.6;
+}
+
+/* The input field needs a .std class at a minimum */
+/*input[type=text]:not(.std):not(.NewUIinput):not(.ecomStd):not(.textInput), select:not(.std):not(.NewUIinput):not(.ecomStd):not(.textInput), textarea:not(.std):not(.NewUIinput):not(.ecomStd):not(.textInput) {
+	background-color: #FF9800;
+	color: #fff;
+	font-weight: bold;
+}*/
+
+.form-group {
+    display: inline-block;
+
+    &.required .control-label::after {
+        content: "*";
+        color: @m-red;
+        margin-left: 2px;
+    }
+}
+
+/* Targeting the new dw9 form-fields */
+fieldset .form-group {
+    display: block;
+    margin-bottom: 10px;
+
+    > .control-label {
+        width: 180px;
+        float: left;
+        padding-right: 10px;
+        vertical-align: top;
+        box-sizing: border-box;
+        word-break: break-word;
+        margin-bottom: 0;
+    }
+
+    .form-group-input {
+        width: ~'calc((100% - 180px) * 0.6)';
+        float: left;
+
+        .NewUIinput, .std, .ecomStd, .form-control, .selectpicker {
+            width: 100%;
+        }
+
+        .formsTable & {
+            width: 100%;
+        }
+    }
+
+    &::after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+
+    .left-indent {
+        margin-left: 180px;
+    }
+
+    > .control-label + .input-group > div:not(.form-group-input) .help-block,
+    .input-group .left-indent ~ .help-block {
+        margin-left: 180px;
+    }
+}
+
+.form-inline {
+	display: inline-block;
+	margin-bottom: 0;
+	vertical-align: middle;
+}
+
+.form-inline .input-group {
+	display: inline-table;
+	vertical-align: middle;
+}
+
+.input-group {
+    .form-group-input {
+	    vertical-align: middle;
+	    margin-right: 3px;
+	    margin-right: 0 !important;
+        display: inline;
+
+        .form-control, .std {
+            float: left;
+        }
+    }
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+.input-group-addon {
+	display: inline-block;
+    color: @text-color;
+    text-align: center;
+    width: 31px;
+	height: 32px;
+    padding-top: 0px;
+    border: 1px solid @m-gray-400;
+	border-left:none;
+	vertical-align: top;
+    cursor: pointer;
+    background: @m-white;
+    float: left;
+    box-sizing: border-box;
+    position: relative;
+    line-height: 30px;
+
+    &:hover {
+	    background-color: @m-gray-100;
+        color: inherit;
+    }
+
+    &.disabled,
+    &[disabled],
+    .disabled & {
+        cursor: default;
+        background: @m-gray-100;
+        pointer-events: none;
+
+        &:hover {
+            background: @m-gray-100;
+        }
+    }
+
+    &.disabled:not(:last-of-type) {
+        border-right: 0;
+    }
+
+    &.disabled + &:not(.disabled) {
+        border-left: 1px solid @m-gray-400;
+    }
+
+    &.disabled + &.disabled {
+        border-left: 1px solid @m-gray-100;
+    }
+
+    i {
+        line-height: inherit;
+    }
+}
+
+.toggle-switch {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    position: relative;
+
+    .ts-label {
+        display: inline-block;
+        margin: 0 20px 0 0;
+        vertical-align: top;
+        font-weight: inherit;
+        -webkit-transition: color 0.56s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: color 0.56s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .ts-helper {
+        display: inline-block;
+        position: absolute;
+        right: 15px;
+        width: 40px;
+        height: 16px;
+        border-radius: 8px;
+        background: rgba(0,0,0,0.26);
+        -webkit-transition: background 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: background 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        vertical-align: middle;
+        cursor: pointer;
+        
+        &:before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            width: 24px;
+            height: 24px;
+            background: #fafafa;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.28);
+            border-radius: 50%;
+            webkit-transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    }
+    
+    &:not(.disabled) {
+        .ts-helper {
+            &:active {
+                &:before {
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.28), 0 0 0 20px rgba(128,128,128,0.1);
+                }
+            }
+        }
+    }
+    
+    input {
+        position: absolute;
+        z-index: 1;
+        width: 46px;
+        margin: 0 0 0 -4px;
+        height: 24px;
+        .opacity(0);
+        cursor: pointer;
+
+        &:checked {
+            & + .ts-helper {
+                &:before {
+                    left: 20px;
+                }
+            }
+        }
+    }
+
+    &.disabled {
+        .opacity(0.6);
+    }
+
+    &:not([data-ts-color]){
+        .ts-color(@m-green);
+    }
+
+    &[data-ts-color="green"] {
+        .ts-color(@m-green);
+    }
+}
+
+.ts-color(@color){
+    input {
+        &:not(:disabled) {
+            &:checked {
+                & + .ts-helper {
+                    background: fade(@color, 50%);
+                    
+                    &:before {
+                        background: @color;
+                    }
+                    
+                    &:active {
+                        &:before {
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.28), 0 0 0 20px fade(@color, 20%);
+                        }
+                    }
+                }
+            }   
+        }
+    }
+}
+
+
+.formsTable {
+
+    .form-group {
+        display: block;
+        float: none !important;
+        margin-bottom: 0;
+
+        .form-group-input {
+            width: 60%;
+
+            .std, .form-control {
+                width: 100%;
+            }
+        }
+    }
+} 
+
+//info & error block for controls on old dw8stylefix pages
+.help-block {
+    display: block;
+    padding-top: 4px;
+    line-height: 1;
+    clear: left;
+    
+    &.info {
+        color: lighten(@text-color, 25%);
+    }
+    
+    &.error {
+        color: @state-danger-text;
+        display: none;
+
+        .has-error & {
+            display: block;
+        }
+    }
+}
+
+.has-error .form-control {
+    border: 1px solid @state-danger-text;
+}
+
+input[type="checkbox"].checkbox~.help-block,
+.radio .help-block {
+    margin-left: 25px;
+    clear: both;
+    margin-top: 0;
+}

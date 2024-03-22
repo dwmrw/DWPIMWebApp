@@ -1,0 +1,100 @@
+﻿div.balloon-overlay-wrapper {
+    display: none;
+}
+
+div.balloon-overlay {
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    z-index: 9;
+    cursor: default;
+
+    div.balloon-overlay-clear {
+        height: 0px;
+        width: 0px;
+        display: block;
+        visibility: hidden;
+        clear: both;
+        content: ".";
+    }
+
+    div.balloon-overlay-title-container {
+        left: 0px;
+        right: 12px;
+        top: -9px;
+        position: absolute;
+        background-color: transparent;
+        z-index: 1;
+
+        table.balloon-overlay-title {
+            table-layout: fixed;
+            float: right;
+
+            &, tr td {
+                margin: 0px;
+                padding: 0px;
+                border: none;
+            }
+
+            tr td.balloon-overlay-title {
+
+                &-tl,
+                &-tr {
+                    display: none;
+                }
+
+                &-tm {
+                    background-image: none;
+                    padding-top: 0;
+
+                    span {
+                        background-color: #ffffff;
+                        display: block;
+                        color: #0e639f;
+                        margin: 0px;
+                        padding: 5px;
+                        border: 1px #ddd solid;
+                        border-radius: 5px 5px 0 0;
+                        border-bottom: 0;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    table.balloon-overlay-grid {
+        table-layout: fixed;
+        position: relative;
+        top: 20px;
+        left: 24px;
+
+        &, tr td {
+            margin: 0px;
+            padding: 0px;
+            border: none;
+        }
+
+        td.balloon-overlay-grid {
+            &-tl,
+            &-tr,
+            &-bl,
+            &-br,
+            &-tm,
+            &-bm,
+            &-ml,
+            &-mr {
+                display: none;
+            }
+
+            &-mm {
+                background-color: @m-white;
+                border: 1px @m-gray-200 solid;
+
+                .balloon-overlay-content {
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}

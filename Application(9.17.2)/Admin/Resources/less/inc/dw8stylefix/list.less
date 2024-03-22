@@ -1,0 +1,272 @@
+.list {
+    overflow: auto;
+    height: 100%;
+
+	table {
+		width: 100%;
+	}
+
+	table.main {
+		width: 100%;
+		border-spacing: 0px;
+	}
+
+	table.main_stretcher {
+		margin-top: -35px;
+	}
+
+	.table.main_stretcher tr.header,
+	table.main_stretcher tr.header > td {
+		visibility: hidden;
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+	td {
+		padding: 0px;
+		min-width: 20px;
+	}
+
+	.checkBoxCell {
+		width: 23px;
+	}
+
+	.title {
+		font-size: @font-size-base;
+		border-bottom: solid 1px @m-gray-300;
+		display: block;
+		padding: 5px 16px;
+		color: #a9a9a9;
+	}
+
+	.listIcon {
+		display:block;
+		width:100%;
+		height:100%;
+	}
+
+	.container {
+		background-color: #ffffff;
+
+		.columnCell,
+		.columnCell td {
+			padding: 0 8px;
+		}
+
+		.listRow td {
+			padding: 0 10px;
+			/* list th's padding = 16 (8+8) */
+		}
+	}
+
+	.container .header td.columnCell {
+		padding-top: 0px;
+		padding-bottom: 0px;
+		text-transform: uppercase;
+		font-size: 13px;
+		background-color: @m-gray-100;
+
+        td {
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+	}
+
+	.container .header td.columnCell .columnTable {
+		width: 100%;
+		height: 32px;
+	}
+
+	.container .header td input[type=checkbox] {
+		padding: 0px;
+		height: 13px;
+		width: 13px;
+		margin-left: 7px;
+	}
+
+	.container .header td span.pipe img {
+		margin: 2px 0px 0px 0px;
+		height: 11px;
+		width: 1px;
+		padding: 0px;
+		background-color: @m-gray-500;
+		display: none;
+	}
+
+	.container tbody[id] > tr.listRow > td,
+	table.main_stretcher tr.listRow > td {
+		line-height: 30px;
+		border-bottom: 1px solid @m-gray-300;
+		vertical-align: middle;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		max-width: 220px;
+	}
+
+	.container tbody[id] > tr.listRow > td > img,
+	table.main_stretcher tr.listRow > td > img {
+		vertical-align: middle;
+	}
+
+	.container tbody[id] tr.listRowDisabled > td {
+		opacity: 0.4;
+	}
+
+	.container tbody[id] tr.selected td {
+		background-color: @m-blue;
+		color: @m-white;
+		border-bottom: 1px solid @m-gray-400;
+	}
+
+	a.columnMenu {
+		margin-right: 5px;
+	}
+
+	a.columnMenu img {
+		border: solid 1px transparent;
+	}
+
+	a:focus.columnMenu {
+		outline: none;
+	}
+
+	a:hover.columnMenu img {
+		border: solid 1px #FFBD69;
+		background-color: #FFE7A2;
+	}
+
+	a:active.columnMenu img {
+		border: solid 1px @m-blue;
+		background-color: @m-blue;
+	}
+
+	.subheader {
+		height: 21px;
+		padding-left: 20px;
+		padding-right: 20px;
+		line-height: 20px;
+		text-align: right;
+	}
+
+	.footer {
+		height: 30px;
+		padding-left: 20px;
+		padding-right: 20px;
+		line-height: 30px;
+		text-align: right;
+
+		.dis {
+			color: @m-gray-300;
+		}
+
+		.fa, .md {
+			padding: 5px;
+		}
+	}
+
+	.dis td {
+		background-color: transparent;
+		opacity: 0.4;
+		color: Gray;
+		border-bottom-color: @m-gray-300 !important;
+	}
+
+	.InternalHeaderRow {
+		font-weight: bold;
+		background-color: @m-gray-300;
+	}
+
+	.grey {
+		color: @m-gray-300;
+	}
+
+	.child {
+		padding-left: 0;
+		background-color: @m-gray-300;
+		padding-top: 2px;
+		padding-bottom: 4px;
+	}
+
+	.header, .subheader {
+		border-top: 1px solid @m-gray-300;
+		border-bottom: 1px solid @m-gray-300;
+		background-color: @m-gray-100;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	.container tbody[id] tr.listRow:hover {
+		background-color: @m-gray-100;
+
+		.std {
+			color: @text-color;
+		}
+	}
+
+	.std {
+		background-color: @m-white;
+	}
+}
+
+
+.list-dialog-top {
+	float: left;
+    width: 170px;
+    padding-right: 10px;
+}
+
+.list-dialog-columns {
+	border: thin solid;
+	overflow-y: scroll;
+	height: 200px;
+	width: 210px;
+    display: inline-block;
+	background-color: @m-white;
+
+    > div {
+        padding: 5px;
+
+        input {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 4px; 
+
+            &[type=checkbox]+label::before {
+                position: absolute;
+            }
+        }
+
+        span {
+            display: inline-block;
+            margin-left: 25px;
+            word-break: break-word;
+        }
+    }
+}
+
+.list-dialog-columns-item-selected {
+	background-color: @m-blue;
+	color: @m-white;
+}
+
+.list-dialog-columns span {
+	cursor: pointer;
+}
+
+.list-dialog-buttons {
+    width: 105px;
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+.list-dialog-buttons button {
+	width: 105px;
+	margin-bottom: 10px;
+}
+
+.list-image.missing-image {
+    width: 35px;
+}

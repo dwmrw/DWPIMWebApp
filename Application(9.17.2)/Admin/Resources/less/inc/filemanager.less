@@ -1,0 +1,81 @@
+.filemanager.box-control .box-control-box {
+	height: auto;
+	position: relative;
+	background-color: @m-gray-200;
+	cursor: pointer;
+	width: 400px;
+	height: 253px;
+
+	img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		max-height: 100% !important;
+		max-width: 100%;
+	}
+
+	i {
+		font-size: 32px;
+		text-align: center;
+		display: block;
+		color: @m-gray-400;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+
+.filemanager-isfocal img {
+	cursor: crosshair;
+}
+
+.filemanager-thumbnail {
+	overflow: hidden !important;
+}
+
+.filemanager-filename {
+	color: @m-gray-500;
+	clear: both;
+}
+
+.filemanager-filename small {
+	color: @m-gray-400;
+}
+
+.filemanager-focal {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	color: #fff;
+	font-size: 30px;
+	line-height: .5em;
+	font-weight: normal;
+	margin-left: -16px;
+	margin-top: -15px;
+	z-index: 100;
+	background-color: rgba(228, 228, 228, 0.2);
+	border: 1px solid rgba(228, 228, 228, 0.3);
+	border-radius: 0%;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.focal-icon {
+	color: #fff !important;
+	font-size:30px!important;
+	font-weight:300!important;
+}
+
+.hightlight {
+	background-color: lighten(#ff9800, 45%);
+}
+
+.input-group .filemanager .input-group-addon {
+	vertical-align: top;
+}

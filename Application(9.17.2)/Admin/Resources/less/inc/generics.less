@@ -1,0 +1,108 @@
+@import 'variables';
+
+/*
+ * Generate Margin Class
+ * margin, margin-top, margin-bottom, margin-left, margin-right
+ */
+
+.margin (@label, @size: 1, @key:1) when (@size =< 25){
+    .m-@{key} {
+        margin: @size !important;
+    }
+    
+    .m-t-@{key} {
+        margin-top: @size !important;
+    }
+    
+    .m-b-@{key} {
+        margin-bottom: @size !important;
+    }
+    
+    .m-l-@{key} {
+        margin-left: @size !important;
+    }
+    
+    .m-r-@{key} {
+        margin-right: @size !important;
+    }
+    
+    .margin(@label - 5; @size + 5; @key + 5);
+}
+
+.margin(30, 0px, 0);
+
+/*
+ * Generate Padding Class
+ * padding, padding-top, padding-bottom, padding-left, padding-right
+ */
+
+.padding (@label, @size: 1, @key:1) when (@size =< 25){
+    .p-@{key} {
+        padding: @size !important;
+    }
+    
+    .p-t-@{key} {
+        padding-top: @size !important;
+    }
+    
+    .p-b-@{key} {
+        padding-bottom: @size !important;
+    }
+    
+    .p-l-@{key} {
+        padding-left: @size !important;
+    }
+    
+    .p-r-@{key} {
+        padding-right: @size !important; 
+    }
+    
+    .padding(@label - 5; @size + 5; @key + 5);
+} 
+
+.padding(30, 0px, 0);
+
+/*
+ * Font Weight
+ */
+.f-300 { font-weight: 300 !important; }
+.f-400 { font-weight: 400 !important; }
+.f-500 { font-weight: 500 !important; }
+.f-700 { font-weight: 700 !important; }
+
+/*
+ * Position Classes
+ */
+.p-relative { position: relative !important; }
+.p-absolute { position: absolute !important; }
+.p-fixed { position: fixed !important; }
+.p-static { position: static !important; }
+
+/*
+ * Overflow
+ */
+.o-hidden { overflow: hidden !important; }
+.o-visible { overflow: visible !important; }
+.o-auto { overflow: auto !important; }
+
+/*
+ * Display
+ */
+.d-block { display: block !important; }
+.di-block { display: inline-block !important; } 
+
+
+/*
+ * Background Colors
+ */
+.bg-black-trp { background-color: rgba(0,0,0,0.1) !important; }
+
+/*
+ * Border
+ */
+.b-0 { border: 0 !important; }
+
+/*
+ * width
+ */
+.w-100 { width: 100% !important; } 

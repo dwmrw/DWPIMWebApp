@@ -1,0 +1,378 @@
+
+.blueBody {
+	background-color: @m-gray-200;
+}
+
+/*label {
+	cursor: pointer;
+}*/
+
+small {
+	color: @text-color;
+}
+
+a {
+	text-decoration: None;
+	color: @text-color;
+}
+
+a:active {
+	color: @text-color;
+}
+
+a:hover {
+	color: @brand-primary;
+	cursor: pointer;
+}
+
+a.rma-link {
+	color: @brand-primary;
+}
+
+a.rma-link:active {
+	color: @brand-primary;
+}
+
+a.rma-link:visited {
+	color: @brand-primary;
+}
+
+a.rma-link:hover {
+	text-decoration: underline;
+	color: @brand-primary;
+}
+
+.h, .H {
+	cursor: pointer;
+}
+
+table.formsTable {
+	input[type=text].std,
+    input[type=number].std,
+	input[type=text].NewUIinput,
+	input[type=password].std,
+	input[type=password].NewUIinput,
+	select.std,
+	select.NewUIinput,
+    .form-group-input select.std, /* fix for usage app.css with dwstylefix.css together */
+	input[type=text].ecomStd,
+	input[type=password].ecomStd,
+	textarea {
+		width: 60%;
+	}
+}
+
+table.formsTable {
+	width: 100%;
+}
+
+table.formsTable > tbody > tr > td {
+    padding-top: 4px;
+	padding-bottom: 5px;
+	vertical-align: top;
+}
+
+table.formsTable > tbody > tr:last-child > td {
+	border-bottom: none;
+}
+
+table.formsTable > tbody > tr > td:first-child {
+    max-width: 170px;
+    width: 170px;
+	padding-bottom: 0;
+    padding-right: 10px;
+    word-break: break-word;
+}
+
+table.formsTable > tbody > tr > td:last-child {
+    padding-right: 0;
+}
+
+@media (max-width: 760px) {
+	table.formsTable:not(.disableMedia) {
+	    table, 
+        tr,
+        td {
+		    display: block;
+	    }
+
+	    td:first-child {
+		    padding-left: 8px;
+	    }
+
+	    tr {
+		    padding-bottom: 10px;
+		    border-bottom: 1px solid @m-gray-200;
+	    }
+    }
+}
+
+table.infoTable {
+	width: 100%;
+}
+
+table.infoTable > tbody > tr > td {
+	padding-bottom: 5px;
+	padding-top: 5px;
+	vertical-align: top;
+}
+
+table.infoTable > tbody > tr:last-child > td {
+	border-bottom: none;
+}
+
+table.infoTable > tbody > tr > td:first-child {
+	width: 170px;
+}    
+
+table.infoTable > tbody > tr > td:last-child {
+	padding-right: 16px;
+}
+
+h1.title {
+	margin: 0;
+	padding-left: 5px;
+	border-bottom: solid 1px @m-gray-100;
+	height: 25px;
+	line-height: 23px;
+	vertical-align: middle;
+	font-weight: bolder;
+	font-size: @font-size-base;
+}
+
+/*h2.subtitle {
+	margin: 0;
+	padding-left: 5px;
+	border-bottom: solid 1px @m-gray-100;
+	border-top: solid 1px #ffffff;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	font-size: @font-size-base;
+}*/
+
+.CplHeading {
+	font-size: @font-size-base;
+	font-weight: Bold;
+}
+
+.tabTable {
+	width: 600px;
+}
+
+/* Global styles for item management */
+
+.item-clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.item-clearfix {
+	display: inline-block;
+}
+
+html[xmlns] .item-clearfix {
+	display: block;
+}
+
+* html .item-clearfix {
+	height: 1%;
+}
+
+.item-editor-box {
+	width: 250px;
+	border: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.item-editor-box ul,
+.item-editor-box ul li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.item-editor-box ul {
+	margin: 2px;
+	margin-left: 0;
+}
+
+.item-editor-box ul li {
+	line-height: 20px;
+	white-space: nowrap;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.item-editor-box ul li.item-clearfix input,
+.item-editor-box ul li.item-clearfix label {
+	float: left;
+}
+
+.item-editor-box ul li.item-clearfix input {
+	width: 16px;
+	height: 16px;
+	margin: 2px;
+	margin-left: 1px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	padding: 0;
+	outline: none;
+}
+
+.item-editor-box ul li.item-clearfix label {
+	white-space: nowrap;
+}
+
+ul.item-breadcrumb,
+ul.item-breadcrumb li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.item-breadcrumb li {
+	float: left;
+	margin-right: 5px;
+	height: 20px;
+	line-height: 20px;
+}
+
+ul.item-breadcrumb li.item-breadcrumb-arrow {
+	margin-top: -1px;
+}
+
+ul.item-breadcrumb li.item-breadcrumb-item-active {
+	font-weight: bold;
+}
+
+ul.unstyled {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+ul.unstyled input {
+	margin-left: 0;
+}
+
+textarea.item-field {
+	resize: none;
+	height: 125px;
+}
+
+input[type="checkbox"].item-field {
+	margin: 2px 0 0;
+	padding: 0;
+	outline: none;
+	width: 16px;
+	height: 16px;
+}
+
+div.item-field-rich {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	overflow: hidden;
+
+    > div {
+        width: 60% !important;
+    }
+}
+
+@media (max-width: 1024px) {
+	div.item-field-rich {
+		> div {
+			width: 99% !important;
+		}
+	}
+}
+
+.geolocation-editor {
+    margin-bottom: 10px;
+
+    .map-btn {
+        background: @m-white;
+        border: 1px @m-gray-400 solid;
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
+        vertical-align: top;
+        outline: none;
+
+        &:hover {
+            background: @m-gray-100;
+        }
+    }
+}
+
+
+/* End: Global styles for item management */
+
+.center-block {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-justify {
+	text-align: justify;
+}
+
+.remark {
+	color: @m-gray-400;
+	font-size: 10px;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+.pull-left {
+	float: left !important;
+}
+
+.clearfix:before, .clearfix:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+.left-label, .leftColHigh {
+	width: 180px;
+	vertical-align: top;
+}
+
+.item-field .item-field-row + .item-field-row {
+	margin-top: 4px;
+}
+
+.item-field .item-field-row input[type="checkbox"] {
+	vertical-align: middle;
+}

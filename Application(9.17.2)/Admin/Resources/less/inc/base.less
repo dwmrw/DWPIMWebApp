@@ -1,0 +1,202 @@
+*, button, input, i, a {
+	-webkit-font-smoothing: antialiased;
+}
+
+*,
+*:active,
+*:hover {
+	outline: none !important;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+body {
+	font-weight: 400;
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+	height: 100%;
+}
+
+audio, video {
+	outline: none;
+}
+
+p {
+	margin-bottom: 20px;
+}
+
+small {
+	font-size: 11px;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	color: #212121;
+
+	small {
+		font-size: 12px;
+	}
+}
+
+h4 {
+	text-transform: uppercase;
+}
+
+button, legend, label {
+	font-style: normal;
+}
+
+
+/*
+ * Ordered Lists
+ */
+
+
+.clist {
+	list-style: none;
+
+	& > li {
+		&:before {
+			font-family: 'Material Design Iconic Font';
+			margin: 0 10px 0 -20px;
+			vertical-align: middle;
+		}
+	}
+
+	&.clist-angle > li:before {
+		content: "\f1b6";
+	}
+
+	&.clist-check > li:before {
+		content: "\f299";
+	}
+
+	&.clist-star > li:before {
+		content: "\f2e5";
+	}
+}
+
+
+#main {
+	position: relative;
+	min-height: 100%;
+	height: 100%;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+
+.dialog-page {
+	background-color: transparent;
+
+	.modal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+	}
+}
+
+#a-content-container {
+	width: ~"calc(100% + 15px)";
+	height: ~"calc(100% + 40px)";
+	min-height: 100%;
+	margin: 0 auto 0 auto;
+	padding-top: @administration-top-height;
+	padding-left: 70px;
+	-webkit-overflow-scrolling: touch;
+	overflow-y: scroll;
+	position: fixed;
+}
+
+#main > .center-container {
+	margin: 0 -250px 0 0;
+	padding: 0 0 0 0;
+}
+
+.a-container, .b-container {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.b-container > #content-container {
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	margin: 0 auto 0 auto;
+}
+
+.a-container {
+	iframe {
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		border: none;
+	}
+}
+
+/*
+ * iFrame toggle visibility
+ */
+
+.iframe-open {
+    display: block;
+}
+
+.iframe-closed {
+    display: none;
+}
+
+.no-overflow {
+	overflow: hidden;
+}
+
+.b-container > #content-container > iframe {
+	z-index: 1;
+	display: block;
+	width: 100%;
+	border: none;
+	position: relative;
+	height: ~"calc(100% - 40px)";
+}
+
+.content-container {
+    position: relative;
+    top: -45px;
+    left: 20px;
+}
+
+body {
+	#content {
+		top: -65px;
+		padding: 15px 0 0 0;
+		position: relative;
+	}
+
+	.container {
+		@media (min-width: @screen-lg-min) {
+			width: 100%;
+		}
+	}
+
+    &.boxed-fields {
+        &.sw-toggled {
+            #content-container {
+			    padding-left: @sidebar-width;
+                .transition(all);
+                .transition-duration(200ms);
+		    }
+        }
+
+	    &.sw-toggled-off {
+		    #content-container {
+			    padding-left: @sidebar-closed-width;
+                .transition(all);
+                .transition-duration(200ms);
+		    }
+	    }
+    }
+}

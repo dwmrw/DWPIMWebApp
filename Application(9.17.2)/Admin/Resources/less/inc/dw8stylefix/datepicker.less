@@ -1,0 +1,295 @@
+﻿
+.date-selector {
+
+	* {
+		-moz-box-sizing: border-box !important;
+		-webkit-box-sizing: border-box !important;
+		box-sizing: border-box !important;
+	}
+
+	& &-clear {
+		visibility: hidden;
+		height: 1px;
+		clear: both;
+	}
+
+	& &-time {
+
+		input {
+			width: 25px;
+			margin: 0px;
+
+			&.date-selector-time-hour {
+				margin-left: 10px;
+			}
+		}
+
+		input,
+		div.date-selector-time-separator {
+			float: left;
+			margin-left: 3px;
+			text-align: center;
+		}
+
+		div.date-selector-time-separator {
+			font-weight: bold;
+			height: 18px;
+			line-height: 18px;
+			cursor: default;
+		}
+	}
+
+	&&-disabled .date-selector-field {
+		cursor: default !important;
+
+		.date-selector-label {
+			color: #c3c3c3 !important;
+			border-color: #c3c3c3 !important;
+		}
+
+		.date-selector-button {
+			-moz-opacity: 0.3 !important;
+			-webkit-opacity: 0.3 !important;
+			opacity: 0.3 !important;
+			border-color: #c3c3c3 !important;
+		}
+	}
+
+	& &-field,
+	.ajax-rich-control & &-field {
+		position: relative;
+		display: block;
+		border-collapse: inherit;
+		border-spacing: 0;
+		cursor: pointer;
+		width: 100%;
+		padding: 0;
+		background-color: white;
+		border: 1px #ddd solid;
+
+		.date-selector-label {
+			position: relative;
+			float: none;
+			width: auto !important;
+			display: inline-block;
+			font-size: 11px;
+			text-align: left;
+			background-color: transparent;
+			padding: 6px 4px 4px 6px;
+			color: #4c4c4c;
+			white-space: nowrap;
+			overflow: hidden;
+			margin: 0;
+			border: 0 !important;
+			border-width: 0 !important;
+			border-radius: 0 !important;
+			height: auto;
+			font-size: 12px;
+			height: 23px;
+		}
+
+		a.date-selector-button {
+			background: none;
+			padding: 6px 3px 4px 4px;
+			margin: 0;
+			border: 0 !important;
+			border-width: 0 !important;
+			border-radius: 0 !important;
+			.fontawesome-mix;
+			font-size: 13px;
+			width: auto;
+			vertical-align: top;
+			height: 25px;
+
+
+			&:before {
+				content: "\f073";
+			}
+
+			&:hover {
+				background-color: transparent !important;
+				box-shadow: none;
+				color: inherit !important;
+			}
+		}
+
+		.date-selector-button.mod {
+			float: left;
+			padding-right: 8px;
+			border-right-width: 0px !important;
+		}
+	}
+
+	& &-calendar {
+		top: auto !important;
+		left: auto !important;
+	}
+
+	& &-calendar-outer {
+		padding: 8px;
+		color: #4c4c4c;
+		background-color: #ffffff;
+		border: 1px solid #e0e0e0;
+
+		ul.date-selector-calendar-month-list {
+			margin-bottom: 7px;
+			padding-left: 5px;
+			width: 100%;
+
+			&, li {
+				display: inline-block;
+				list-style: none;
+				color: #4c4c4c;
+				height: auto;
+				margin-top: 0;
+			}
+
+			li.date-selector-calendar {
+
+				&-month {
+					cursor: default;
+					text-align: center;
+					width: 68%;
+					white-space: nowrap;
+					font-size: @font-size-base;
+					font-weight: bold;
+					padding-top: 2px;
+				}
+
+				&-navleft,
+				&-navright,
+				&-navleft2x,
+				&-navright2x {
+					width: 8%;
+
+					a {
+						display: block;
+						width: 20px;
+						height: 20px;
+						margin: 0px;
+						padding: 0px;
+						.fontawesome-mix;
+						font-size: 20px;
+						text-align: center;
+						opacity: .5;
+
+						&:focus, &:active, &:hover {
+							outline: none;
+						}
+
+						&:hover {
+							background-color: transparent !important;
+							box-shadow: none;
+							opacity: 1;
+							color: inherit !important;
+						}
+
+						&.date-selector-calendar-nav-notallowed,
+						&.date-selector-calendar-nav-notallowed:hover {
+							opacity: .3;
+							cursor: default;
+						}
+					}
+				}
+
+				&-navleft a:before {
+					content: "\f104";
+				}
+
+				&-navleft2x a:before {
+					content: "\f100";
+				}
+
+				&-navright a:before {
+					content: "\f105";
+				}
+
+				&-navright2x a:before {
+					content: "\f101";
+				}
+			}
+		}
+
+		table.date-selector-calendar {
+			margin: 0px;
+			padding: 0px;
+			border: none;
+
+			tr.date-selector-calendar {
+
+				&-weekdays th,
+				&-day td {
+					text-align: center;
+					padding: 1px;
+				}
+
+				&-weekdays th {
+					text-align: center;
+					font-weight: normal;
+					color: #a4a4a4;
+					border-bottom: 0;
+					font-weight: bold;
+					padding-bottom: 5px;
+				}
+
+				&-day {
+
+					&.never td {
+						text-align: center;
+						font-weight: normal;
+						border-top: 1px solid #dddddd;
+					}
+
+					td {
+
+						a {
+							display: block;
+							width: 32px;
+							height: 32px;
+							border-radius: 32px;
+							line-height: 32px;
+							border: 0;
+
+							&:hover {
+								background-color: #0085ca !important;
+								color: white !important;
+								box-shadow: none;
+								border: 0 !important;
+							}
+
+							span {
+								display: block;
+								margin-right: 0;
+							}
+						}
+
+						&.date-selector-calendar-current a {
+							background-color: #0085ca !important;
+							color: white !important;
+							border: 0 !important;
+						}
+
+						&.date-selector-calendar-today a {
+							color: #0085ca;
+							border: 0;
+						}
+
+						&.date-selector-calendar-hidden a {
+							cursor: default;
+
+							&:focus, &:active, &:hover {
+								outline: none;
+								background-color: #ffffff !important;
+								border: 0 !important;
+							}
+
+							span {
+								color: #c3c3c3;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

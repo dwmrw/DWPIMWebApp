@@ -1,0 +1,59 @@
+.table {
+    background-color: #fff;
+    overflow-x: visible;
+    width: 100%;
+    border: 1px solid @m-gray-300;
+    /*width: ~"calc(100% - 20px)";*/
+
+    tr {
+        border: 0;
+
+        td {
+            padding: 5px 8px;
+            border: 0;
+        }
+    }
+
+    tr:hover {
+       background-color: @m-gray-100; 
+    }
+
+    a:hover, a:active, a:focus {
+       color: @text-color;
+    }
+
+    &.table-striped:not(.header) {
+        tr {
+            border-bottom: 1px solid @m-gray-300;
+        }
+
+        > tbody > tr:nth-of-type(odd) {
+            background-color: @m-gray-50;
+        }
+    }
+
+    #DWRowHeadLine, .OutlookHeaderStart, .OutlookHeader, .header {
+        background-color: @m-gray-100;
+        border-bottom: 1px solid @m-gray-300;
+
+        td, th {
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 30px;
+        }
+    }
+
+    .OutlookItem {
+        border-bottom: 1px solid @m-gray-300;
+    }
+
+    #clickRow td {
+        border-top: 1px solid @m-gray-300;
+        text-align: center;
+        padding: 10px;
+    }
+
+    #clickRow:hover {
+        background-color: transparent;
+    }
+}
