@@ -1,0 +1,36 @@
+﻿<h4>ServicePoints</h4>
+
+@if (GetInteger("ServicePointCounter") > 0)
+{
+    foreach (var dropPoint in GetLoop("ServicePoints"))
+    {
+        string pointRadioName = string.Format("{0}{1}", GetString("FieldPrefix"), "ServicePointId");
+        string pointRadioId = string.Format("{0}{1}", pointRadioName, dropPoint.GetString("ServicePointId"));
+        string pointRadioValue = dropPoint.GetString("ServicePointId");
+        string pointRadioChecked = dropPoint.GetBoolean("IsSelected") ? "checked" : string.Empty;
+
+        <div>
+            <label for="@pointRadioId">
+                <input @pointRadioChecked type="radio" id="@pointRadioId" name="@pointRadioName" value="@pointRadioValue" onclick="updateCart();" />
+                <b> @dropPoint.GetString("Name")</b>
+                <ul>
+                    <li><b>City:</b> @dropPoint.GetString("City")</li>
+                    <li><b>CountryCode:</b> @dropPoint.GetString("CountryCode")</li>
+                    <li><b>FieldPrefix:</b> @dropPoint.GetString("FieldPrefix")</li>
+                    <li><b>IsSelected:</b> @dropPoint.GetString("IsSelected")</li>
+                    <li><b>Latitude:</b> @dropPoint.GetString("Latitude")</li>
+                    <li><b>Longitude:</b> @dropPoint.GetString("Longitude")</li>
+                    <li><b>parentLoopIndex:</b> @dropPoint.GetString("parentLoopIndex")</li>
+                    <li><b>PostalCode:</b> @dropPoint.GetString("PostalCode")</li>
+                    <li><b>ServicePointId:</b> @dropPoint.GetString("ServicePointId")</li>
+                    <li><b>StreetName:</b> @dropPoint.GetString("StreetName")</li>
+                    <li><b>StreetNumber:</b> @dropPoint.GetString("StreetNumber")</li>
+                </ul>
+            </label>
+        </div>
+    }
+}
+else
+{
+    <div>No drop points available</div>
+}

@@ -1,0 +1,16 @@
+2024-04-18 17:31:00.8278|ERROR|Provider|GetProviders|Login failed for user ''.
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user ''.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Dynamicweb.Data.DatabaseConnectionProvider.CreateConnection(Boolean open)
+   at Dynamicweb.Data.Database.CreateConnection()
+   at Dynamicweb.Data.Database.CreateDataReader(CommandBuilder commandBuilder, IDbConnection connection, IDbTransaction transaction, Int32 commandTimeout)
+   at Dynamicweb.Security.UserManagement.ExternalAuthentication.ProviderRepository.GetProviders(CommandBuilder commandBuilder)
+   at Dynamicweb.Security.UserManagement.ExternalAuthentication.Provider.GetProviders()
+ClientConnectionId:989f0a5b-191e-457a-9637-19097cc9eb78
+Error Number:18456,State:1,Class:14

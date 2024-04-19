@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table tableName="EcomFieldType">
+    <item table="EcomFieldType">
+      <column columnName="FieldTypeName"><![CDATA[GDSNxmlDataProvider]]></column>
+      <column columnName="FieldTypeDW"><![CDATA[GDSNAdvancedXmlData]]></column>
+      <column columnName="FieldTypeSort"><![CDATA[0]]></column>
+      <column columnName="FieldTypeDBSQL"><![CDATA[NVARCHAR(MAX) NULL]]></column>
+      <column columnName="FieldTypeAdvanced"><![CDATA[0]]></column>
+      <column columnName="FieldTypeProvider"><![CDATA[Dynamicweb.Ecommerce.FieldTypeProviders.AdvancedXmlDataProvider]]></column>
+      <column columnName="FieldTypeProviderConfiguration">
+        <![CDATA[<?xml version="1.0" encoding="utf-8"?><Parameters addin="Dynamicweb.Ecommerce.FieldTypeProviders.AdvancedXmlDataProvider">
+        <Parameter addin="Dynamicweb.Ecommerce.FieldTypeProviders.AdvancedXmlDataProvider" name="Preview value XSLT Stylesheet" value="System/Integration/OpenCatalog/GDSN/GDSNAdvancedDataPreview.xslt" />
+      </Parameters>]]>
+      </column>
+    </item>
+  </table>
+  <table tableName="ScheduledTask">
+    <item table="ScheduledTask">
+      <column columnName="TaskName"><![CDATA[GDSN - Product information]]></column>
+      <column columnName="TaskBegin"><![CDATA[2021-03-03 13:00:00.000]]></column>
+      <column columnName="TaskEnd"><![CDATA[2999-12-31 00:00:00.000]]></column>
+      <column columnName="TaskLastRun"><![CDATA[2000-01-01 00:00:00.000]]></column>
+      <column columnName="TaskNextRun"><![CDATA[2000-01-01 00:00:00.000]]></column>
+      <column columnName="TaskEnabled"><![CDATA[1]]></column>
+      <column columnName="TaskType"><![CDATA[6]]></column>
+      <column columnName="TaskMinute"><![CDATA[0]]></column>
+      <column columnName="TaskHour"><![CDATA[-1]]></column>
+      <column columnName="TaskDay"><![CDATA[-1]]></column>
+      <column columnName="TaskWday"><![CDATA[-1]]></column>
+      <column columnName="TaskTarget"><![CDATA[]]></column>
+      <column columnName="TaskAssembly"><![CDATA[Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn]]></column>
+      <column columnName="TaskNamespace"><![CDATA[NULL]]></column>
+      <column columnName="TaskClass"><![CDATA[NULL]]></column>
+      <column columnName="TaskParam0"><![CDATA[NULL]]></column>
+      <column columnName="TaskParam1"><![CDATA[NULL]]></column>
+      <column columnName="TaskParam2"><![CDATA[NULL]]></column>
+      <column columnName="TaskParam3"><![CDATA[NULL]]></column>
+      <column columnName="TaskParam4"><![CDATA[NULL]]></column>
+      <column columnName="TaskAddInSettings">
+        <![CDATA[<?xml version="1.0" encoding="utf-8"?><Parameters addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn">
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="UserName" value="" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="Password" value="" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="Url" value="" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="CompanyCode" value="" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="CatalogCode" value="" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="ApiVersion" value="v1" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="MetaFile" value="" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="AdvancedFieldType" value="" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="ImportAssets" value="True" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="AssetsPath" value="/Images" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="AssetCategoryId" value="" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="QueryId" value="" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="ProductPortionSize" value="100" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="SuccessIntegrationActivity" value="" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="IncludeMissingProducts" value="True" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="ContentType" value="xml" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="OutputPath" value="/Files/Integration/GDSN" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="MakeUniqueFileName" value="False" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="DataFetched" value="" />
+        <Parameter addin="Dynamicweb.Scheduling.PIM.GDSNIntegration.GDSNIntegrationScheduledTaskAddIn" name="DataFound" value="" />
+      </Parameters>]]></column>
+      <column columnName="TaskStartFromLastRun"><![CDATA[1]]></column>
+      <column columnName="TaskLastException"><![CDATA[NULL]]></column>
+      <column columnName="TaskLastEventId"><![CDATA[0]]></column>
+      <column columnName="TaskLastResult"><![CDATA[NULL]]></column>
+      <column columnName="TaskCheckPrevious"><![CDATA[0]]></column>
+      <column columnName="TaskSort"><![CDATA[0]]></column>
+    </item>
+  </table>
+</tables>
